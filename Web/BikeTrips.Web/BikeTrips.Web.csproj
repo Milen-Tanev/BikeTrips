@@ -277,6 +277,20 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\BikeTrips.Data.Common\BikeTrips.Data.Common.csproj">
+      <Project>{1a06c937-1720-4979-851a-0001bb9eb1ae}</Project>
+      <Name>BikeTrips.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\BikeTrips.Data.Models\BikeTrips.Data.Models.csproj">
+      <Project>{0798AD76-AB34-4EA5-A8FB-28E7FCF70A51}</Project>
+      <Name>BikeTrips.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\BikeTrips.Data\BikeTrips.Data.csproj">
+      <Project>{F34E7F2C-BC95-4731-9B24-C898D2E6CDE7}</Project>
+      <Name>BikeTrips.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

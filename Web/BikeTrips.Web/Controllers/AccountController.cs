@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BikeTrips.Web.Models;
+using BikeTrips.Data.Models;
 
 namespace BikeTrips.Web.Controllers
 {
@@ -151,7 +152,7 @@ namespace BikeTrips.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new User(model.Email, UserType.User);
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -367,7 +368,9 @@ namespace BikeTrips.Web.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+                // TODO - fix user creation
+                var user = new User(model.ToString(), UserType.Admin);
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
