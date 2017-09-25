@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Comment.cs" />
     <Compile Include="Enums\TripType.cs" />
+    <Compile Include="Enums\UserType.cs" />
     <Compile Include="Trip.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,17 +1,30 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace BikeTrips.Data.Models
 {
     public class Comment
     {
-        public Comment(string content, User user)
+        private string content;
+        private User author;
+
+        public Comment(string content, User author, int localTimeOffsetMinutes)
         {
             this.Content = content;
-            this.CommentTime = DateTime.UtcNow;
+            this.Author = author;
+            this.UtcTime = DateTime.UtcNow;
         }
 
+        [Required]
         public string Content { get; set; }
-        public virtual User user { get; set; }
-        public DateTime CommentTime { get; set; }
+
+        [Required]
+        public virtual User Author { get; set; }
+
+        [Required]
+        public int LocalTimeOffsetMinutes { get; protected set; }
+
+        [Required]
+        public DateTime UtcTime { get; private set; }
     }
 }
