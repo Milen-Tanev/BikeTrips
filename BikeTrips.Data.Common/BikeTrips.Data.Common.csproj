@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>61b34829-075d-4237-8168-4ff457c97993</ProjectGuid>
+    <ProjectGuid>38237692-247d-4ae4-ad2c-de0f1ecb8893</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BikeTrips.Data.Common</RootNamespace>

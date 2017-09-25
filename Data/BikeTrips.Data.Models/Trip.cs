@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BikeTrips.Data.Common
+namespace BikeTrips.Data.Models
 {
-    public class Class1
+    class Trip
     {
     }
 }
