@@ -47,7 +47,8 @@ namespace BikeTrips.Web.App_Start
         private static void RegisterServices(ContainerBuilder builder)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
-
+            builder.RegisterType<BikeTripsDbContext>().AsSelf().InstancePerRequest();
+            builder.Register(c => c.Resolve<BikeTripsDbContext>()).As<DbContext>().InstancePerRequest();
         }
     }
 }

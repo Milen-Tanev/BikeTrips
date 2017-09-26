@@ -6,6 +6,10 @@ namespace BikeTrips.Web.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -64,6 +68,11 @@ namespace BikeTrips.Web.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

@@ -370,7 +370,7 @@ namespace BikeTrips.Web.Controllers
                 }
 
                 // TODO - fix user creation
-                var user = new User(model.ToString(), UserType.Admin);
+                var user = new User(model.UserName, UserType.User);
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

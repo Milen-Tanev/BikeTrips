@@ -15,6 +15,9 @@ namespace BikeTrips.Data.Models
             this.UtcTime = DateTime.UtcNow;
         }
 
+        [Key]
+        public int Id { get; set; }
+
         [Required]
         public string Content { get; set; }
 
