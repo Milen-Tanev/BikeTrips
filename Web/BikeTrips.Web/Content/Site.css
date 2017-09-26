@@ -22,3 +22,9 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navbar-brand
+{
+    background: url(Images/logo.png);
+    display: block;
+}
