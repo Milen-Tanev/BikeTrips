@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeTrips.Data", "Data\Bike
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeTrips.Web", "Web\BikeTrips.Web\BikeTrips.Web.csproj", "{603058C0-7FCD-4516-81AE-CBB544EEDE3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeTrips.Common", "Common\BikeTrips.Common.csproj", "{CDC143CC-B8FA-4A91-A0A5-045D5047D50D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{603058C0-7FCD-4516-81AE-CBB544EEDE3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{603058C0-7FCD-4516-81AE-CBB544EEDE3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{603058C0-7FCD-4516-81AE-CBB544EEDE3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDC143CC-B8FA-4A91-A0A5-045D5047D50D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDC143CC-B8FA-4A91-A0A5-045D5047D50D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDC143CC-B8FA-4A91-A0A5-045D5047D50D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDC143CC-B8FA-4A91-A0A5-045D5047D50D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

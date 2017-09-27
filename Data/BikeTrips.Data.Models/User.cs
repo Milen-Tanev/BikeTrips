@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -8,19 +9,15 @@ namespace BikeTrips.Data.Models
 {
     public class User : IdentityUser
     {
-        public User(string userName, UserType type)
+        public User()
         {
-            this.UserName = userName;
-            this.Role = type;
-
-            this.AdministeredEvents = new List<Trip>();
+            this.AdministeredEvents = new LinkedList<Trip>();
             this.VisitedEvents = new List<Trip>();
-            this.Comments = new List<Comment>();
         }
+
+        [Required]
+        public string Name { get; set; }
         
-
-        public UserType Role { get; protected set; }
-
         public virtual ICollection<Trip> AdministeredEvents { get; set; }
 
         public virtual ICollection<Trip> VisitedEvents { get; set; }

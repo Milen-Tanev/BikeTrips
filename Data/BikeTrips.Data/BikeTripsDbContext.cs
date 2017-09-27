@@ -11,17 +11,15 @@ namespace BikeTrips.Data
         {
         }
 
+        public IDbSet<Trip> Trips { get; set; }
+
+        public IDbSet<Comment> Comments { get; set; }
+
         public static BikeTripsDbContext Create()
         {
             return new BikeTripsDbContext();
         }
-
-        public DbSet<User> Users { get; set; }
-
-        public DbSet<Trip> Trips { get; set; }
-
-        public DbSet<Comment> Comments { get; set; }
-
+        
         public override int SaveChanges()
         {
             return base.SaveChanges();

@@ -28,7 +28,6 @@ namespace BikeTrips.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [Index(IsUnique = true)]
         public string TripName { get; protected set; }
 
         [Required]

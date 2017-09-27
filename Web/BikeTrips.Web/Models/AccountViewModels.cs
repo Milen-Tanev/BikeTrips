@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Common.Constants;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BikeTrips.Web.Models
@@ -69,9 +70,8 @@ namespace BikeTrips.Web.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Username")]
-        public string UserName { get; set; }
+        [Display(Name = "UserName")]
+        public string Name { get; set; }
 
         [Required]
         [EmailAddress]
@@ -79,14 +79,14 @@ namespace BikeTrips.Web.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(ValidationConstants.MaxPasswordLength, ErrorMessage = ErrorMessageConstants.InvalidPassordLength, MinimumLength = ValidationConstants.MinPassworLength)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = ErrorMessageConstants.PasswordConfirmationDoesNotMatch)]
         public string ConfirmPassword { get; set; }
     }
 
@@ -98,14 +98,14 @@ namespace BikeTrips.Web.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(ValidationConstants.MaxPasswordLength, ErrorMessage = ErrorMessageConstants.InvalidPassordLength, MinimumLength = ValidationConstants.MinPassworLength)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = ErrorMessageConstants.PasswordConfirmationDoesNotMatch)]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
