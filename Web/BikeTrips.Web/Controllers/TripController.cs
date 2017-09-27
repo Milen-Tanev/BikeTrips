@@ -40,12 +40,12 @@ namespace BikeTrips.Web.Controllers
                     TripName = model.TripName,
                     StartingPoint = model.StartingPoint,
                     Type = model.Type,
+                    Creator = this.users.GetCurrentUser(),
                     StartingTime = DateTime.Parse(model.TripDate), // model.TripTime
                     Distance = model.Distance,
                     Denivelation = model.Denivelation,
                     Description = model.Description,
                     LocalTimeOffsetMinutes = model.LocalTimeOffsetMinutes,
-                    Creator = this.users.GetCurrentUser(),
                     IsPassed = false,
                     IsDeleted = false
                 };

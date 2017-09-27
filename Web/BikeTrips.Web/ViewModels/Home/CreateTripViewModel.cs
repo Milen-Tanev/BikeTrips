@@ -13,36 +13,36 @@ namespace BikeTrips.Web.ViewModels.Home
     {
         [DisplayName("Trip name")]
         [Required]
-        public string TripName { get; protected set; }
+        public string TripName { get; set; }
 
         [DisplayName("Starting point")]
         [Required]
-        public string StartingPoint { get; protected set; }
+        public string StartingPoint { get; set; }
 
         [DisplayName("Trip type")]
         [Required]
-        public TripType Type { get; protected set; }
+        public TripType Type { get; set; }
 
         [DisplayName("Starting date")]
         [Required]
-        public string TripDate { get; protected set; }
+        public string TripDate { get; set; }
 
         [DisplayName("Starting time")]
         [Required]
-        public string TripTime { get; protected set; }
+        public string TripTime { get; set; }
 
         [Required]
-        public double Distance { get; protected set; }
+        public double Distance { get; set; }
 
-        public double Denivelation { get; protected set; }
+        public double Denivelation { get; set; }
 
         [Required]
-        public string Description { get; protected set; }
+        public string Description { get; set; }
 
         [Required]
         public int LocalTimeOffsetMinutes { get; set; }
 
-        public virtual User Creator { get; protected set; }
+        public virtual User Creator { get; set; }
 
         //public void CreateMappings(IMapperConfigurationExpression configuration)
         //{

@@ -2,6 +2,8 @@
 using BikeTrips.Data.Models;
 using BikeTrips.Services.Data.Contracts;
 using Microsoft.AspNet.Identity;
+using System;
+using System.Linq;
 using System.Web;
 
 namespace BikeTrips.Services.Data
@@ -20,8 +22,10 @@ namespace BikeTrips.Services.Data
 
         public User GetCurrentUser()
         {
-            var currentUserId = int.Parse(HttpContext.Current.User.Identity.GetUserId());
-            return this.users.GetById(currentUserId);
+            var currentUserUsername = HttpContext.Current.User.Identity.GetUserName();
+            var currentUser = users.All().Where(u => u.UserName == currentUserUsername).FirstOrDefault();
+
+            return currentUser;
         }
     }
 }
