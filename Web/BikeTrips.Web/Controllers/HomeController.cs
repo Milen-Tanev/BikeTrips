@@ -1,13 +1,16 @@
 ﻿using BikeTrips.Data.Common.Contracts;
 using BikeTrips.Data.Models;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace BikeTrips.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private IBikeTripsDbRepository<Trip> trips;
         public HomeController(IBikeTripsDbRepository<Trip> trips)
         {
+            this.trips = trips;
         }
         
         public ActionResult Index()
@@ -17,9 +20,9 @@ namespace BikeTrips.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            var trips = this.trips.All().Where(x => !x.IsPassed).OrderBy(x => x.TripDate).Take(5);
 
-            return View();
+            return View(trips);
         }
     }
 }

@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{7218EB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6700568C-8189-4D70-9AD1-41040BB1D4E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeTrips.Web.Infrastructure", "Web\BikeTrips.Web.Infrastructure\BikeTrips.Web.Infrastructure.csproj", "{E3672930-B97D-443C-8799-F21E856A6CA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{CDC143CC-B8FA-4A91-A0A5-045D5047D50D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDC143CC-B8FA-4A91-A0A5-045D5047D50D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDC143CC-B8FA-4A91-A0A5-045D5047D50D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3672930-B97D-443C-8799-F21E856A6CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3672930-B97D-443C-8799-F21E856A6CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3672930-B97D-443C-8799-F21E856A6CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3672930-B97D-443C-8799-F21E856A6CA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +68,6 @@ Global
 		{F34E7F2C-BC95-4731-9B24-C898D2E6CDE7} = {C446FB1D-99E4-41D3-9EDD-AD0C600FFBD6}
 		{603058C0-7FCD-4516-81AE-CBB544EEDE3C} = {A72ABED5-4DAB-4CB6-9418-8436C708C25D}
 		{CDC143CC-B8FA-4A91-A0A5-045D5047D50D} = {7218EB80-9373-48F7-BC6B-A3D6BF572CEA}
+		{E3672930-B97D-443C-8799-F21E856A6CA3} = {A72ABED5-4DAB-4CB6-9418-8436C708C25D}
 	EndGlobalSection
 EndGlobal
