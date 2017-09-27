@@ -1,5 +1,6 @@
-﻿using BikeTrips.Data.Common.Contracts;
-using BikeTrips.Data.Models;
+﻿using BikeTrips.Services.Data.Contracts;
+using BikeTrips.Web.Infrastructure.Mapping;
+using BikeTrips.Web.ViewModels.Home;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -7,22 +8,24 @@ namespace BikeTrips.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private IBikeTripsDbRepository<Trip> trips;
-        public HomeController(IBikeTripsDbRepository<Trip> trips)
+        private ITripsService trips;
+
+        public HomeController(ITripsService trips)
         {
             this.trips = trips;
         }
         
         public ActionResult Index()
         {
-            return View();
+            var trips = this.trips.GetComingTrips(5)
+                .To<TripViewModel>().ToList();
+
+            return this.View(trips);
         }
 
         public ActionResult About()
         {
-            var trips = this.trips.All().Where(x => !x.IsPassed).OrderBy(x => x.TripDate).Take(5);
-
-            return View(trips);
+            return this.View();
         }
     }
 }

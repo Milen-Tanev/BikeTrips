@@ -1,17 +1,12 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using BikeTrips.Data;
-using BikeTrips.Data.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using System.Data.Entity;
-using System.Diagnostics;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
-using System;
 using BikeTrips.Data.Common.Contracts;
+using BikeTrips.Services.Data;
+using BikeTrips.Services.Data.Contracts;
 
 namespace BikeTrips.Web.App_Start
 {
@@ -50,6 +45,8 @@ namespace BikeTrips.Web.App_Start
             // Configure the db context, user manager and signin manager to use a single instance per request
             builder.RegisterType<BikeTripsDbContext>().AsSelf().InstancePerRequest();
             builder.Register(c => c.Resolve<BikeTripsDbContext>()).As<DbContext>().InstancePerRequest();
+            var servicesAssembly = Assembly.GetAssembly(typeof(ITripsService));
+            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
 
             builder.RegisterGeneric(typeof(BikeTripsDbRepository<>)).As(typeof(IBikeTripsDbRepository<>)).InstancePerRequest();
         }

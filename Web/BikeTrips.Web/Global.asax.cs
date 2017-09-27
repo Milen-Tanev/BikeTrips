@@ -22,7 +22,6 @@ namespace BikeTrips.Web
             AutoMapperConfig automapperConfig = new AutoMapperConfig();
             automapperConfig.Execute(Assembly.GetExecutingAssembly());
 
-
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

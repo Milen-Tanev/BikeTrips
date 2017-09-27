@@ -23,8 +23,10 @@ textarea {
     max-width: 280px;
 }
 
-.navbar-brand
-{
-    background: url(Images/logo.png);
-    display: block;
+navbar navbar-inverse navbar-fixed-top {
+    background-color: blue;
+}
+
+#no-events-text {
+    font-size: 30px;
 }
