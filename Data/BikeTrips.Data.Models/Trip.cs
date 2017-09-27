@@ -22,52 +22,42 @@ namespace BikeTrips.Data.Models
         [Index]
         [MaxLength(CommonStringLengthConstants.LongMaxLength)]
         [MinLength(CommonStringLengthConstants.StandardMinLength)]
-        public string TripName { get; protected set; }
+        public string TripName { get; set; }
 
         [Required]
         [MaxLength(CommonStringLengthConstants.LongMaxLength)]
         [MinLength(CommonStringLengthConstants.StandardMinLength)]
-        public string StartingPoint { get; protected set; }
+        public string StartingPoint { get; set; }
 
         [Required]
-        public TripType Type { get; protected set; }
+        public TripType Type { get; set; }
 
         [Required]
-        public DateTime TripDate { get; protected set; }
+        public DateTime StartingTime { get; set; }
 
         [Required]
-        [MaxLength(CommonStringLengthConstants.StandardMaxLength)]
-        [MinLength(CommonStringLengthConstants.StandardMinLength)]
-        public string TripTime { get; protected set; }
+        public double Distance { get; set; }
 
-        [Required]
-        public double Distance { get; protected set; }
-
-        public double Denivelation { get; protected set; }
-
-        [Required]
-        [MaxLength(CommonStringLengthConstants.StandardMaxLength)]
-        [MinLength(CommonStringLengthConstants.StandardMinLength)]
-        public string LandMark { get; protected set; }
+        public double Denivelation { get; set; }
 
         [Required]
         [MinLength(CommonStringLengthConstants.StandardMinLength)]
-        public string Description { get; protected set; }
+        public string Description { get; set; }
 
         [Required]
-        public int LocalTimeOffsetMinutes { get; protected set; }
+        public int LocalTimeOffsetMinutes { get; set; }
 
         [Required]
         public DateTime ServerTimeReservation { get; protected set; }
 
         [Required]
-        public virtual User Creator { get; protected set; }
+        public virtual User Creator { get; set; }
 
         public virtual ICollection<User> Participants { get; protected set; }
 
         public virtual ICollection<Comment> Comments { get; protected set; }
 
-        public bool IsPassed { get; protected set; }
+        public bool IsPassed { get; set; }
 
         public bool IsDeleted { get; set; }
     }

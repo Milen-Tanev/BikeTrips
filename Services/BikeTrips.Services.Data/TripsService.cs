@@ -16,13 +16,12 @@ namespace BikeTrips.Services.Data
         {
             this.trips = trips;
         }
-
-        public int MyProperty { get; set; }
+        
         public IQueryable<Trip> GetComingTrips(int count)
         {
             return this.trips.All()
                 .Where(x => !x.IsPassed)
-                .OrderBy(x => x.TripDate).Take(5);
+                .OrderBy(x => x.StartingTime).Take(5);
         }
     }
 }

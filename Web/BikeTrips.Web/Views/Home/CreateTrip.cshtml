@@ -11,20 +11,22 @@
         @Html.LabelFor(m => m.TripName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.TripName, new { @class = "form-control" })
+            Choose a name for your trip
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.StartingPoint, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.StartingPoint, new { @class = "form-control" })
+            Type the starting address of the trip
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Type, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.RadioButtonFor(m => m.Type, TripType.Road, new { @Name= TripType.Road }) @TripType.Road<br />
-            @Html.RadioButtonFor(m => m.Type, TripType.XC, new { @Name = TripType.XC }) @TripType.XC<br />
-            @Html.RadioButtonFor(m => m.Type, TripType.DH, new { @Name = TripType.DH }) @TripType.DH
+            <label>@Html.RadioButtonFor(m => m.Type, TripType.Road, new { @Name = "tripType" }) Road</label><br />
+            <label>@Html.RadioButtonFor(m => m.Type, TripType.XC, new { @Name = "tripType" }) Cross-country</label><br />
+            <label>@Html.RadioButtonFor(m => m.Type, TripType.DH, new { @Name = "tripType" }) Downhill</label>
         </div>
     </div>
     <div class="form-group">
@@ -42,7 +44,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Distance, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Distance, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.Distance, new { @class = "form-control col-xs-2" })
         </div>
     </div>
     <div class="form-group">
@@ -52,15 +54,9 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.LandMark, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.LandMark, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
         @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.LandMark, new { @class = "form-control" })
+            @Html.TextArea("Description", "Additioinal information", 10,  5, new { @class = "form-control" })
         </div>
     </div>
 
