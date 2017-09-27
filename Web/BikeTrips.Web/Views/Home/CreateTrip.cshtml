@@ -56,15 +56,19 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextArea("Description", "Additioinal information", 10,  5, new { @class = "form-control" })
+            @Html.TextArea("Description", "Additioinal information", 10, 5, new { @class = "form-control" })
         </div>
     </div>
-
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Create" />
         </div>
     </div>
-}
+    @Html.HiddenFor(m => m.LocalTimeOffsetMinutes, new { id = "hiddenUserLoginDate"})
+    }
 
-
+<script type="text/javascript">
+    var offset = new Date().getTimezoneOffset();
+    document.getElementById("hiddenUserLoginDate").value = offset;
+    console.log(offset);
+</script>

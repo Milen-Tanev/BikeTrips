@@ -44,7 +44,7 @@ namespace BikeTrips.Web.Controllers
                     Distance = model.Distance,
                     Denivelation = model.Denivelation,
                     Description = model.Description,
-                    LocalTimeOffsetMinutes = 0,
+                    LocalTimeOffsetMinutes = model.LocalTimeOffsetMinutes,
                     Creator = this.users.GetCurrentUser(),
                     IsPassed = false,
                     IsDeleted = false

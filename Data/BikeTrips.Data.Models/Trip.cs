@@ -19,14 +19,9 @@ namespace BikeTrips.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [Index]
-        [MaxLength(CommonStringLengthConstants.LongMaxLength)]
-        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string TripName { get; set; }
 
         [Required]
-        [MaxLength(CommonStringLengthConstants.LongMaxLength)]
-        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string StartingPoint { get; set; }
 
         [Required]
@@ -41,7 +36,6 @@ namespace BikeTrips.Data.Models
         public double Denivelation { get; set; }
 
         [Required]
-        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string Description { get; set; }
 
         [Required]

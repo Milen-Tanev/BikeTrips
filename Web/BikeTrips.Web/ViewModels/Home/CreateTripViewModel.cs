@@ -13,14 +13,10 @@ namespace BikeTrips.Web.ViewModels.Home
     {
         [DisplayName("Trip name")]
         [Required]
-        [MaxLength(CommonStringLengthConstants.LongMaxLength)]
-        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string TripName { get; protected set; }
 
         [DisplayName("Starting point")]
         [Required]
-        [MaxLength(CommonStringLengthConstants.LongMaxLength)]
-        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string StartingPoint { get; protected set; }
 
         [DisplayName("Trip type")]
@@ -41,21 +37,12 @@ namespace BikeTrips.Web.ViewModels.Home
         public double Denivelation { get; protected set; }
 
         [Required]
-        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string Description { get; protected set; }
 
         [Required]
-        public int LocalTimeOffsetMinutes { get; protected set; }
+        public int LocalTimeOffsetMinutes { get; set; }
 
-        [Required]
-        public DateTime ServerTimeReservation { get; protected set; }
-
-        [Required]
         public virtual User Creator { get; protected set; }
-
-        public bool IsPassed { get; protected set; }
-
-        public bool IsDeleted { get; set; }
 
         //public void CreateMappings(IMapperConfigurationExpression configuration)
         //{
