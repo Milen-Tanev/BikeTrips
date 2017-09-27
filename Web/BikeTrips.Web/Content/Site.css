@@ -23,10 +23,6 @@ textarea {
     max-width: 280px;
 }
 
-navbar navbar-inverse navbar-fixed-top {
-    background-color: blue;
-}
-
 #no-events-text {
     font-size: 30px;
 }

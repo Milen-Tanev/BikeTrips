@@ -27,3 +27,11 @@
     }
 
 </div>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <div class="col-md-4">
+            @Html.ActionLink("Create trip", "CreateTrip", new { }, new { @class = "btn btn-info" , @role="button"})
+        </div>
+    </div>
+}

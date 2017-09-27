@@ -1,0 +1,74 @@
+﻿@using BikeTrips.Web.ViewModels.Home
+@model CreateTripViewModel
+
+@using (Html.BeginForm("Create", "Trip", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Create new trip</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.TripName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.TripName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartingPoint, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.StartingPoint, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Type, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.RadioButtonFor(m => m.Type, TripType.Road, new { @Name= TripType.Road }) @TripType.Road<br />
+            @Html.RadioButtonFor(m => m.Type, TripType.XC, new { @Name = TripType.XC }) @TripType.XC<br />
+            @Html.RadioButtonFor(m => m.Type, TripType.DH, new { @Name = TripType.DH }) @TripType.DH
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TripDate, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.TripDate, new { @class = "form-control", type = "date" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TripTime, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.TripTime, new { @class = "form-control", type = "time" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Distance, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Distance, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Denivelation, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Denivelation, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LandMark, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LandMark, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LandMark, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Create" />
+        </div>
+    </div>
+}
+
+

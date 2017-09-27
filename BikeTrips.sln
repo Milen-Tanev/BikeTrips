@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeTrips.Web.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeTrips.Services.Data", "Services\BikeTrips.Services.Data\BikeTrips.Services.Data.csproj", "{B6FEE1CC-2C78-4CC8-86B9-F7A55A92F8D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeTrips.Services.Web", "Services\BikeTrips.Services.Web\BikeTrips.Services.Web.csproj", "{79C4BB75-ACAA-4562-BBAA-9B09EF7EF760}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{B6FEE1CC-2C78-4CC8-86B9-F7A55A92F8D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6FEE1CC-2C78-4CC8-86B9-F7A55A92F8D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6FEE1CC-2C78-4CC8-86B9-F7A55A92F8D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79C4BB75-ACAA-4562-BBAA-9B09EF7EF760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79C4BB75-ACAA-4562-BBAA-9B09EF7EF760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79C4BB75-ACAA-4562-BBAA-9B09EF7EF760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79C4BB75-ACAA-4562-BBAA-9B09EF7EF760}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,5 +82,6 @@ Global
 		{CDC143CC-B8FA-4A91-A0A5-045D5047D50D} = {7218EB80-9373-48F7-BC6B-A3D6BF572CEA}
 		{E3672930-B97D-443C-8799-F21E856A6CA3} = {A72ABED5-4DAB-4CB6-9418-8436C708C25D}
 		{B6FEE1CC-2C78-4CC8-86B9-F7A55A92F8D1} = {E1A138A8-EFE0-4527-8F7A-9DCCE4E22F9F}
+		{79C4BB75-ACAA-4562-BBAA-9B09EF7EF760} = {E1A138A8-EFE0-4527-8F7A-9DCCE4E22F9F}
 	EndGlobalSection
 EndGlobal

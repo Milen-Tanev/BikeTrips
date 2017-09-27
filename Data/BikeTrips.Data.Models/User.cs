@@ -15,6 +15,7 @@ namespace BikeTrips.Data.Models
         {
             this.AdministeredEvents = new LinkedList<Trip>();
             this.VisitedEvents = new List<Trip>();
+            this.Comments = new List<Comment>();
         }
 
         [Required]

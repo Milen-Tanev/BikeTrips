@@ -33,7 +33,7 @@ namespace BikeTrips.Data.Models
         public TripType Type { get; protected set; }
 
         [Required]
-        public string TripDate { get; protected set; }
+        public DateTime TripDate { get; protected set; }
 
         [Required]
         [MaxLength(CommonStringLengthConstants.StandardMaxLength)]

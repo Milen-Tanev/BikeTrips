@@ -5,8 +5,9 @@ using System.Data.Entity;
 using System.Reflection;
 using System.Web.Mvc;
 using BikeTrips.Data.Common.Contracts;
-using BikeTrips.Services.Data;
 using BikeTrips.Services.Data.Contracts;
+using BikeTrips.Services.Web;
+using BikeTrips.Services.Web.Contracts;
 
 namespace BikeTrips.Web.App_Start
 {
@@ -47,6 +48,7 @@ namespace BikeTrips.Web.App_Start
             builder.Register(c => c.Resolve<BikeTripsDbContext>()).As<DbContext>().InstancePerRequest();
             var servicesAssembly = Assembly.GetAssembly(typeof(ITripsService));
             builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
+            builder.Register(x => new HttpCacheService()).As<ICacheService>().InstancePerRequest();
 
             builder.RegisterGeneric(typeof(BikeTripsDbRepository<>)).As(typeof(IBikeTripsDbRepository<>)).InstancePerRequest();
         }
