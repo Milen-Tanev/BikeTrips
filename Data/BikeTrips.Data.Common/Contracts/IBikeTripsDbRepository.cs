@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BikeTrips.Data.Common.Contracts;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 

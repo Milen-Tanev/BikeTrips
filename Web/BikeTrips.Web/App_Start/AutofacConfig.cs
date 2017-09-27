@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System;
+using BikeTrips.Data.Common.Contracts;
 
 namespace BikeTrips.Web.App_Start
 {
@@ -49,6 +50,8 @@ namespace BikeTrips.Web.App_Start
             // Configure the db context, user manager and signin manager to use a single instance per request
             builder.RegisterType<BikeTripsDbContext>().AsSelf().InstancePerRequest();
             builder.Register(c => c.Resolve<BikeTripsDbContext>()).As<DbContext>().InstancePerRequest();
+
+            builder.RegisterGeneric(typeof(BikeTripsDbRepository<>)).As(typeof(IBikeTripsDbRepository<>)).InstancePerRequest();
         }
     }
 }

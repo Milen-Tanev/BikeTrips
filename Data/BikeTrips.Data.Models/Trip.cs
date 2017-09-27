@@ -1,25 +1,16 @@
-﻿using System;
+﻿using BikeTrips.Data.Common.Contracts;
+using Common.Constants;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BikeTrips.Data.Models
 {
-    public class Trip
+    public class Trip : IDeletable
     {
-        public Trip(string tripName, string startingPoint, TripType type, string tripDate,
-            string tripTime, double distance, double? denivelation, string landMark,
-            string description, DateTimeOffset localTimeOffset, User creator)
+        public Trip()
         {
-            this.TripName = tripName;
-            this.StartingPoint = startingPoint;
-            this.Type = type;
-            this.TripDate = tripDate;
-            this.TripTime = tripTime;
-            this.Distance = distance;
-            this.Denivelation = (denivelation != null) ? (double)denivelation : -1.0D;
-            this.ServerTimeReservation = DateTime.UtcNow;
-
             this.Participants = new List<User>();
             this.Comments = new List<Comment>();
         }
@@ -28,9 +19,14 @@ namespace BikeTrips.Data.Models
         public int Id { get; set; }
 
         [Required]
+        [Index]
+        [MaxLength(CommonStringLengthConstants.LongMaxLength)]
+        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string TripName { get; protected set; }
 
         [Required]
+        [MaxLength(CommonStringLengthConstants.LongMaxLength)]
+        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string StartingPoint { get; protected set; }
 
         [Required]
@@ -40,6 +36,8 @@ namespace BikeTrips.Data.Models
         public string TripDate { get; protected set; }
 
         [Required]
+        [MaxLength(CommonStringLengthConstants.StandardMaxLength)]
+        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string TripTime { get; protected set; }
 
         [Required]
@@ -48,13 +46,16 @@ namespace BikeTrips.Data.Models
         public double Denivelation { get; protected set; }
 
         [Required]
+        [MaxLength(CommonStringLengthConstants.StandardMaxLength)]
+        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string LandMark { get; protected set; }
 
         [Required]
+        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string Description { get; protected set; }
 
         [Required]
-        public DateTimeOffset LocalTimeOffset { get; protected set; }
+        public int LocalTimeOffsetMinutes { get; protected set; }
 
         [Required]
         public DateTime ServerTimeReservation { get; protected set; }
@@ -68,6 +69,6 @@ namespace BikeTrips.Data.Models
 
         public bool IsPassed { get; protected set; }
 
-        public bool IsDeleted { get; protected set; }
+        public bool IsDeleted { get; set; }
     }
 }

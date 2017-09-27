@@ -1,10 +1,12 @@
-﻿using System.Web.Mvc;
+﻿using BikeTrips.Data.Common.Contracts;
+using BikeTrips.Data.Models;
+using System.Web.Mvc;
 
 namespace BikeTrips.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        public HomeController(IBikeTripsDbRepository<Trip> trips)
         {
         }
         

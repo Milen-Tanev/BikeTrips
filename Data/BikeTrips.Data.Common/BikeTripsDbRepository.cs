@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace BikeTrips.Data.Common.Contracts
 {
-    class BikeTripsDbRepository<T> : IBikeTripsDbRepository<T>
+    public class BikeTripsDbRepository<T> : IBikeTripsDbRepository<T>
         where T : class, IDeletable
     {
         public BikeTripsDbRepository(DbContext context)

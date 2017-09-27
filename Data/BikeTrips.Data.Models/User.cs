@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using BikeTrips.Data.Common.Contracts;
+using Common.Constants;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BikeTrips.Data.Models
 {
-    public class User : IdentityUser
+    public class User : IdentityUser, IDeletable
     {
         public User()
         {
@@ -16,6 +18,8 @@ namespace BikeTrips.Data.Models
         }
 
         [Required]
+        [MaxLength(CommonStringLengthConstants.StandardMaxLength)]
+        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string Name { get; set; }
         
         public virtual ICollection<Trip> AdministeredEvents { get; set; }
@@ -24,7 +28,7 @@ namespace BikeTrips.Data.Models
 
         public virtual ICollection<Comment> Comments { get; set; }
 
-        public bool IsDeleted { get; protected set; }
+        public bool IsDeleted { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

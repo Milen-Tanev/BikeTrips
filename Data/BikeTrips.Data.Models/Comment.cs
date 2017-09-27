@@ -1,9 +1,11 @@
-﻿using System;
+﻿using BikeTrips.Data.Common.Contracts;
+using Common.Constants;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace BikeTrips.Data.Models
 {
-    public class Comment
+    public class Comment : IDeletable
     {
         private string content;
         private User author;
@@ -19,6 +21,7 @@ namespace BikeTrips.Data.Models
         public int Id { get; set; }
 
         [Required]
+        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string Content { get; set; }
 
         [Required]
@@ -29,5 +32,7 @@ namespace BikeTrips.Data.Models
 
         [Required]
         public DateTime UtcTime { get; private set; }
+
+        public bool IsDeleted {  get; set; }
     }
 }

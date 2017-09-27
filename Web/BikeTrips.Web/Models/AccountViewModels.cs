@@ -79,7 +79,7 @@ namespace BikeTrips.Web.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(ValidationConstants.MaxPasswordLength, ErrorMessage = ErrorMessageConstants.InvalidPassordLength, MinimumLength = ValidationConstants.MinPassworLength)]
+        [StringLength(CommonStringLengthConstants.StandardMaxLength, ErrorMessage = ErrorMessageConstants.InvalidPassordLength, MinimumLength = CommonStringLengthConstants.StandardMinLength)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -98,7 +98,7 @@ namespace BikeTrips.Web.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(ValidationConstants.MaxPasswordLength, ErrorMessage = ErrorMessageConstants.InvalidPassordLength, MinimumLength = ValidationConstants.MinPassworLength)]
+        [StringLength(CommonStringLengthConstants.StandardMaxLength, ErrorMessage = ErrorMessageConstants.InvalidPassordLength, MinimumLength = CommonStringLengthConstants.StandardMinLength)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }

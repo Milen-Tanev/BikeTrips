@@ -59,7 +59,6 @@
   <ItemGroup>
     <Compile Include="BikeTripsDbRepository.cs" />
     <Compile Include="Contracts\IBikeTripsDbRepository.cs" />
-    <Compile Include="Contracts\IDeletable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +66,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BikeTrips.Data.Models\BikeTrips.Data.Models.csproj">
+      <Project>{0798AD76-AB34-4EA5-A8FB-28E7FCF70A51}</Project>
+      <Name>BikeTrips.Data.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BikeTrips.Data\BikeTrips.Data.csproj">
       <Project>{F34E7F2C-BC95-4731-9B24-C898D2E6CDE7}</Project>
       <Name>BikeTrips.Data</Name>
