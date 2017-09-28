@@ -13,6 +13,7 @@ namespace BikeTrips.Data.Models
         {
             this.Participants = new List<User>();
             this.Comments = new List<Comment>();
+            this.ServerTimeReservation = DateTime.UtcNow;
         }
 
         [Key]
@@ -28,6 +29,7 @@ namespace BikeTrips.Data.Models
         public TripType Type { get; set; }
 
         [Required]
+        [DataType(DataType.DateTime)]
         public DateTime StartingTime { get; set; }
 
         [Required]

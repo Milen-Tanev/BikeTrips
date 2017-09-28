@@ -14,7 +14,7 @@ namespace BikeTrips.Services.Utils
             int minute = time.Minute;
             int second = time.Second;
 
-            return new DateTime(year, month, day, hour, minute, second);
+            return new DateTime(year, month, day, hour, minute, second, 0,DateTimeKind.Unspecified);
         }
     }
 }
