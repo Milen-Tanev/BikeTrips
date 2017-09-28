@@ -10,14 +10,17 @@ namespace BikeTrips.Services.Data
 {
     public class UserService : IUserService
     {
-        IBikeTripsDbRepository<User> users;
+        private IBikeTripsDbRepository<User> users;
+        private IUnitOfWork unitOfWork;
+
         public UserService()
         {
         }
 
-        public UserService(IBikeTripsDbRepository<User> users)
+        public UserService(IBikeTripsDbRepository<User> users, IUnitOfWork unitOfWork)
         {
             this.users = users;
+            this.unitOfWork = unitOfWork;
         }
 
         public User GetCurrentUser()

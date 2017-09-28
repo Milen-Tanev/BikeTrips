@@ -66,11 +66,6 @@ namespace BikeTrips.Data.Common.Contracts
             return entity;
         }
 
-        public void Save()
-        {
-            this.Context.SaveChanges();
-        }
-
         public IQueryable<T> Search(Expression<Func<T, bool>> predicate)
         {
             return this.DbSet.Where(predicate)

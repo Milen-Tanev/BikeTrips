@@ -30,6 +30,11 @@ namespace BikeTrips.Web.Controllers
             return View();
         }
 
+        public ActionResult CreateTrip()
+        {
+            return this.View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateTripViewModel model)

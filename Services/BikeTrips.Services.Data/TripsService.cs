@@ -9,19 +9,22 @@ namespace BikeTrips.Services.Data
     public class TripsService : ITripsService
     {
         IBikeTripsDbRepository<Trip> trips;
+        IUnitOfWork unitOfWork;
+
         public TripsService()
         {
         }
 
-        public TripsService(IBikeTripsDbRepository<Trip> trips)
+        public TripsService(IBikeTripsDbRepository<Trip> trips, IUnitOfWork unitOfWork)
         {
             this.trips = trips;
+            this.unitOfWork = unitOfWork;
         }
 
         public void AddTrip(Trip trip)
         {
             this.trips.Add(trip);
-            this.trips.Save();
+            this.unitOfWork.Commit();
         }
 
         public IQueryable<Trip> GetComingTrips(int count)

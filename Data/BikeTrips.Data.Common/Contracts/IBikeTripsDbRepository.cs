@@ -22,7 +22,5 @@ namespace BikeTrips.Data.Common.Contracts
 
 
         IQueryable<T> Search(Expression<Func<T, bool>> predicate);
-
-        void Save();
     }
 }

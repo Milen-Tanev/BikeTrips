@@ -32,9 +32,6 @@ namespace BikeTrips.Web.Controllers
             return this.View();
         }
 
-        public ActionResult CreateTrip()
-        {
-            return this.View();
-        }
+
     }
 }
