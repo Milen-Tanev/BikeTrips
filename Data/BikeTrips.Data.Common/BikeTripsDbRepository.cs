@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -69,6 +70,7 @@ namespace BikeTrips.Data.Common.Contracts
         public void Save()
         {
             this.Context.SaveChanges();
+            Trace.WriteLine("Saving");
         }
 
         public IQueryable<T> Search(Expression<Func<T, bool>> predicate)

@@ -1,10 +1,7 @@
 ﻿using BikeTrips.Data.Models;
-using BikeTrips.Services.Data;
 using BikeTrips.Services.Data.Contracts;
+using BikeTrips.Services.Utils.Contracts;
 using BikeTrips.Web.ViewModels.Home;
-using Microsoft.AspNet.Identity;
-using System;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace BikeTrips.Web.Controllers
@@ -12,14 +9,18 @@ namespace BikeTrips.Web.Controllers
     public class TripController : Controller
     {
         private IUserService users;
+        private ITripsService trips;
+        private IDateTimeConverter converter;
 
         public TripController()
         {
 
         }
-        public TripController(IUserService users)
+        public TripController(IUserService users, ITripsService trips, IDateTimeConverter converter)
         {
             this.users = users;
+            this.trips = trips;
+            this.converter = converter;
         }
 
         // GET: Trip
@@ -35,13 +36,15 @@ namespace BikeTrips.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.Creator = this.users.GetCurrentUser();
+
                 var trip = new Trip
                 {
                     TripName = model.TripName,
                     StartingPoint = model.StartingPoint,
                     Type = model.Type,
                     Creator = this.users.GetCurrentUser(),
-                    StartingTime = DateTime.Parse(model.TripDate), // model.TripTime
+                    StartingTime = converter.Convert(model.TripDate, model.TripTime),
                     Distance = model.Distance,
                     Denivelation = model.Denivelation,
                     Description = model.Description,
@@ -49,11 +52,13 @@ namespace BikeTrips.Web.Controllers
                     IsPassed = false,
                     IsDeleted = false
                 };
+
+                this.trips.AddTrip(trip);
                 return View();
             }
             
             return View();
-
+            
         }
 
         // If we got this far, something failed, redisplay form

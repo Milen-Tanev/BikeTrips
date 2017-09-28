@@ -1,15 +1,13 @@
 ﻿using BikeTrips.Data.Models;
 using BikeTrips.Web.Infrastructure.Mappings;
-using Common.Constants;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using System.ComponentModel;
 
 namespace BikeTrips.Web.ViewModels.Home
 {
-    public class CreateTripViewModel : IMapTo<Trip>//, ICustomMappings
+    public class CreateTripViewModel : IMapTo<Trip>
     {
         [DisplayName("Trip name")]
         [Required]
@@ -25,11 +23,11 @@ namespace BikeTrips.Web.ViewModels.Home
 
         [DisplayName("Starting date")]
         [Required]
-        public string TripDate { get; set; }
+        public DateTime TripDate { get; set; }
 
         [DisplayName("Starting time")]
         [Required]
-        public string TripTime { get; set; }
+        public DateTime TripTime { get; set; }
 
         [Required]
         public double Distance { get; set; }
@@ -44,11 +42,9 @@ namespace BikeTrips.Web.ViewModels.Home
 
         public virtual User Creator { get; set; }
 
-        //public void CreateMappings(IMapperConfigurationExpression configuration)
-        //{
-        //    //dateString = "15/06/2008 08:30";
-        //    configuration.CreateMap<Trip, CreateTripViewModel>()
-        //        .ForMember(x => DateTime.Parse($"{x.TripDate} {x.TripTime}"), opt => opt.MapFrom(x => x.StartingTime));
-        //}
+        public void CreateMappings(IMapperConfigurationExpression configuration)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

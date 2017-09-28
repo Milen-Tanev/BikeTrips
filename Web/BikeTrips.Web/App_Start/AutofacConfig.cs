@@ -8,6 +8,8 @@ using BikeTrips.Data.Common.Contracts;
 using BikeTrips.Services.Data.Contracts;
 using BikeTrips.Services.Web;
 using BikeTrips.Services.Web.Contracts;
+using BikeTrips.Services.Utils;
+using BikeTrips.Services.Utils.Contracts;
 
 namespace BikeTrips.Web.App_Start
 {
@@ -49,6 +51,7 @@ namespace BikeTrips.Web.App_Start
             var servicesAssembly = Assembly.GetAssembly(typeof(ITripsService));
             builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
             builder.Register(x => new HttpCacheService()).As<ICacheService>().InstancePerRequest();
+            builder.Register(x => new DateTimeConverter()).As<IDateTimeConverter>().InstancePerRequest();
 
             builder.RegisterGeneric(typeof(BikeTripsDbRepository<>)).As(typeof(IBikeTripsDbRepository<>)).InstancePerRequest();
         }
