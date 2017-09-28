@@ -30,7 +30,6 @@ namespace BikeTrips.Web.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateTripViewModel model)
         {
