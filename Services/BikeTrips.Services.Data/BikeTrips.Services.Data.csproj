@@ -58,10 +58,6 @@
       <Project>{0798AD76-AB34-4EA5-A8FB-28E7FCF70A51}</Project>
       <Name>BikeTrips.Data.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BikeTrips.Services.Utils\BikeTrips.Services.Utils.csproj">
-      <Project>{7765EAFB-85D9-4364-A4D3-B6B6DD41696C}</Project>
-      <Name>BikeTrips.Services.Utils</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

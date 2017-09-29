@@ -3,6 +3,9 @@ using AutoMapper;
 using BikeTrips.Data.Models;
 using BikeTrips.Web.Infrastructure.Mappings;
 using System.Collections.Generic;
+using BikeTrips.Services.Web.Contracts;
+using BikeTrips.Services.Web;
+using System.Linq;
 
 namespace BikeTrips.Web.ViewModels.Home
 {
@@ -30,14 +33,26 @@ namespace BikeTrips.Web.ViewModels.Home
 
         public string User { get; set; }
 
-        //public virtual ICollection<User> Participants { get; protected set; }
+        public ICollection<User> Participants { get; set; }
 
-        //public virtual ICollection<Comment> Comments { get; protected set; }
+        public ICollection<Comment> Comments { get; set; }
+
+        public string UrlId
+        {
+            get
+            {
+                IIdentifierProvider identifier = new IdentifierProvider();
+                return identifier.GetUrlId(this.Id);
+            }
+        }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<Trip, FullTripViewModel>()
                 .ForMember(x => x.User, opt => opt.MapFrom(x => x.Creator.Name));
+            configuration.CreateMap<Trip, FullTripViewModel>()
+                .ForMember(x => x.Comments, opt => opt.MapFrom(x => x.Comments
+                .Select(p => p.Id).ToList()));
         }
     }
 }

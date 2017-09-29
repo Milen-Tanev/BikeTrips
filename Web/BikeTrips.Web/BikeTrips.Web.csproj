@@ -388,7 +388,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Trip\Create.cshtml" />
-    <Content Include="Views\Trip\Index.cshtml" />
+    <Content Include="Views\Trip\ById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -418,10 +418,6 @@
     <ProjectReference Include="..\..\Services\BikeTrips.Services.Data\BikeTrips.Services.Data.csproj">
       <Project>{b6fee1cc-2c78-4cc8-86b9-f7a55a92f8d1}</Project>
       <Name>BikeTrips.Services.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Services\BikeTrips.Services.Utils\BikeTrips.Services.Utils.csproj">
-      <Project>{7765EAFB-85D9-4364-A4D3-B6B6DD41696C}</Project>
-      <Name>BikeTrips.Services.Utils</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\BikeTrips.Services.Web\BikeTrips.Services.Web.csproj">
       <Project>{79C4BB75-ACAA-4562-BBAA-9B09EF7EF760}</Project>

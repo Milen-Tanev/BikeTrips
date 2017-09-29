@@ -7,13 +7,8 @@ namespace BikeTrips.Data.Models
 {
     public class Comment : IDeletable
     {
-        private string content;
-        private User author;
-
-        public Comment(string content, User author, int localTimeOffsetMinutes)
+        public Comment()
         {
-            this.Content = content;
-            this.Author = author;
             this.UtcTime = DateTime.UtcNow;
         }
 

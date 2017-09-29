@@ -1,9 +1,8 @@
 ﻿using BikeTrips.Data.Models;
 using BikeTrips.Services.Data.Contracts;
-using BikeTrips.Services.Utils.Contracts;
+using BikeTrips.Services.Web.Contracts;
 using BikeTrips.Web.Infrastructure.Mappings;
 using BikeTrips.Web.ViewModels.Home;
-using System;
 using System.Web.Mvc;
 
 namespace BikeTrips.Web.Controllers
@@ -13,22 +12,28 @@ namespace BikeTrips.Web.Controllers
         private IUserService users;
         private ITripsService trips;
         private IDateTimeConverter converter;
+        private IIdentifierProvider identifierProvider;
 
         public TripController()
         {
 
         }
 
-        public TripController(IUserService users, ITripsService trips, IDateTimeConverter converter)
+        public TripController(IUserService users,
+            ITripsService trips,
+            IDateTimeConverter converter,
+            IIdentifierProvider identifierProvider)
         {
             this.users = users;
             this.trips = trips;
             this.converter = converter;
+            this.identifierProvider = identifierProvider;
         }
 
-        //[HttpGet]
-        public ActionResult Index(int id)
+        [HttpGet]
+        public ActionResult ById(string urlId)
         {
+            var id = this.identifierProvider.GetId(urlId);
             var model = this.trips.GetTripById(id);
             var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<FullTripViewModel>(model);
             return View(viewModel);
@@ -65,7 +70,10 @@ namespace BikeTrips.Web.Controllers
                 };
 
                 this.trips.AddTrip(trip);
-                return RedirectToAction("Index" ,"Trip", new { id = trip.Id });
+                var viewModel = AutoMapperConfig
+                    .Configuration.CreateMapper()
+                    .Map<FullTripViewModel>(trip);
+                return RedirectToAction("ById", new { urlId = viewModel.UrlId });
             }
             
             return View();
