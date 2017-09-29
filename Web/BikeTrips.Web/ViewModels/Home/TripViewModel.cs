@@ -1,5 +1,4 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using BikeTrips.Data.Models;
 using BikeTrips.Web.Infrastructure.Mappings;
 

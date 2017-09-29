@@ -59,7 +59,7 @@ namespace BikeTrips.Web.Controllers
                 };
 
                 this.trips.AddTrip(trip);
-                return View();
+                return View(trip);
             }
             
             return View();
