@@ -7,9 +7,9 @@ using BikeTrips.Services.Web.Contracts;
 using BikeTrips.Services.Web;
 using System.Linq;
 
-namespace BikeTrips.Web.ViewModels.Home
+namespace BikeTrips.Web.ViewModels.Trip
 {
-    public class FullTripViewModel : IMapFrom<Trip>, IMapTo<Trip>, ICustomMappings
+    public class FullTripViewModel : IMapFrom<Data.Models.Trip>, IMapTo<Data.Models.Trip>, ICustomMappings
     {
         public int Id { get; set; }
 

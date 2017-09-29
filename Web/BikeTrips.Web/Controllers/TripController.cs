@@ -2,7 +2,7 @@
 using BikeTrips.Services.Data.Contracts;
 using BikeTrips.Services.Web.Contracts;
 using BikeTrips.Web.Infrastructure.Mappings;
-using BikeTrips.Web.ViewModels.Home;
+using BikeTrips.Web.ViewModels.TripModels;
 using System.Web.Mvc;
 
 namespace BikeTrips.Web.Controllers

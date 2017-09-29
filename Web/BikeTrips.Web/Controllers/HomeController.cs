@@ -1,7 +1,7 @@
 ﻿using BikeTrips.Services.Data.Contracts;
 using BikeTrips.Services.Web.Contracts;
 using BikeTrips.Web.Infrastructure.Mapping;
-using BikeTrips.Web.ViewModels.Home;
+using BikeTrips.Web.ViewModels.TripModels;
 using System.Linq;
 using System.Web.Mvc;
 

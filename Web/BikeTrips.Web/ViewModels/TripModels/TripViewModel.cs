@@ -2,7 +2,7 @@
 using BikeTrips.Data.Models;
 using BikeTrips.Web.Infrastructure.Mappings;
 
-namespace BikeTrips.Web.ViewModels.Home
+namespace BikeTrips.Web.ViewModels.TripModels
 {
     public class TripViewModel : IMapFrom<Trip>, ICustomMappings
     {

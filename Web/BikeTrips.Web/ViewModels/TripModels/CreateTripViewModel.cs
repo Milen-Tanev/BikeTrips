@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using System.ComponentModel;
 
-namespace BikeTrips.Web.ViewModels.Home
+namespace BikeTrips.Web.ViewModels.TripModels
 {
     public class CreateTripViewModel : IMapTo<Trip>
     {
