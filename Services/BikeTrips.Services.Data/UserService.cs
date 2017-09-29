@@ -2,7 +2,6 @@
 using BikeTrips.Data.Models;
 using BikeTrips.Services.Data.Contracts;
 using Microsoft.AspNet.Identity;
-using System;
 using System.Linq;
 using System.Web;
 

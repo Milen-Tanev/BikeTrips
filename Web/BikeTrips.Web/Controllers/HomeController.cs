@@ -21,7 +21,7 @@ namespace BikeTrips.Web.Controllers
         public ActionResult Index()
         {
             var trips = this.cacheService.Get("trips", () =>
-                this.trips.GetComingTrips(5)
+                this.trips.GetComingTrips(6)
                 .To<TripViewModel>().ToList(), 15 * 60);
 
             return this.View(trips);
