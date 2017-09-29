@@ -6,8 +6,10 @@ using System.Collections.Generic;
 
 namespace BikeTrips.Web.ViewModels.Home
 {
-    public class FullTripViewModel : IMapFrom<Trip>, ICustomMappings
+    public class FullTripViewModel : IMapFrom<Trip>, IMapTo<Trip>, ICustomMappings
     {
+        public int Id { get; set; }
+
         public string TripName { get; set; }
 
         public string StartingPoint { get; set; }

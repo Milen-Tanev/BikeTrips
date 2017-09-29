@@ -2,7 +2,7 @@
 using BikeTrips.Data.Models;
 using BikeTrips.Data.Common.Contracts;
 using System.Linq;
-
+using System;
 
 namespace BikeTrips.Services.Data
 {
@@ -33,6 +33,11 @@ namespace BikeTrips.Services.Data
                 .Where(x => !x.IsPassed)
                 .OrderBy(x => x.StartingTime)
                 .Take(count);
+        }
+
+        public Trip GetTripById(int id)
+        {
+            return this.trips.GetById(id);
         }
     }
 }

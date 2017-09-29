@@ -24,13 +24,16 @@ namespace BikeTrips.Web.Controllers
             this.converter = converter;
         }
 
-        // GET: Trip
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(int id)
         {
-            return View();
+            var model = this.trips.GetTripById(id);
+            return View(model);
         }
 
-        public ActionResult CreateTrip()
+        [HttpGet]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Create()
         {
             return this.View();
         }
@@ -59,7 +62,7 @@ namespace BikeTrips.Web.Controllers
                 };
 
                 this.trips.AddTrip(trip);
-                return View(trip);
+                return RedirectToAction("Index", "Trip", new { id = trip.Id });
             }
             
             return View();
