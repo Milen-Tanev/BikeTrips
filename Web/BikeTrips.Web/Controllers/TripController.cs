@@ -1,6 +1,7 @@
 ﻿using BikeTrips.Data.Models;
 using BikeTrips.Services.Data.Contracts;
 using BikeTrips.Services.Utils.Contracts;
+using BikeTrips.Web.Infrastructure.Mappings;
 using BikeTrips.Web.ViewModels.Home;
 using System;
 using System.Web.Mvc;
@@ -17,6 +18,7 @@ namespace BikeTrips.Web.Controllers
         {
 
         }
+
         public TripController(IUserService users, ITripsService trips, IDateTimeConverter converter)
         {
             this.users = users;
@@ -24,15 +26,16 @@ namespace BikeTrips.Web.Controllers
             this.converter = converter;
         }
 
-        [HttpGet]
+        //[HttpGet]
         public ActionResult Index(int id)
         {
             var model = this.trips.GetTripById(id);
-            return View(model);
+            var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<FullTripViewModel>(model);
+            return View(viewModel);
         }
 
-        [HttpGet]
         //[ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult Create()
         {
             return this.View();
@@ -62,13 +65,11 @@ namespace BikeTrips.Web.Controllers
                 };
 
                 this.trips.AddTrip(trip);
-                return RedirectToAction("Index", "Trip", new { id = trip.Id });
+                return RedirectToAction("Index" ,"Trip", new { id = trip.Id });
             }
             
             return View();
             
         }
-
-        // If we got this far, something failed, redisplay form
     }
 }

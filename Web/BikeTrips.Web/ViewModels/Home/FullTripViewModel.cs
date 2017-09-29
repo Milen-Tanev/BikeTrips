@@ -30,9 +30,9 @@ namespace BikeTrips.Web.ViewModels.Home
 
         public string User { get; set; }
 
-        public virtual ICollection<User> Participants { get; protected set; }
+        //public virtual ICollection<User> Participants { get; protected set; }
 
-        public virtual ICollection<Comment> Comments { get; protected set; }
+        //public virtual ICollection<Comment> Comments { get; protected set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
