@@ -30,6 +30,7 @@ Created by @Model.User
     else
     {
         <p>This event has @Model.Participants.Count participants</p>
+        @Html.Partial("_ParticipantsPartial", Model)
     }
 </div>
 @if (User.Identity.IsAuthenticated)

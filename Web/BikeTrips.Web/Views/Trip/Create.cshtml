@@ -71,10 +71,8 @@
 }
 else
 {
-    <h1>Please log in to create a new trip</h1>
+    <h1 class="page-title">Please log in to create a new trip</h1>
 }
-@section Scripts
-    {
-    <script src="~/Scripts/Custom/getTimeOffset.js"></script>
-    <script src="~/Scripts/Custom/redirectAfterWait.js"></script>
-}
+
+@Scripts.Render("~/Scripts/Custom/getTimeOffset.js")
+@Scripts.Render("~/Scripts/Custom/redirectAfterWait.js")
