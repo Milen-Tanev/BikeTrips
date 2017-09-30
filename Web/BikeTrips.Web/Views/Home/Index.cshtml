@@ -5,7 +5,7 @@
 }
 
 <div class="jumbotron">
-    <h1>Bike Trips</h1>
+    <h1 id="homeTitle">Bike Trips</h1>
 </div>
 
 <div class="row">
@@ -13,8 +13,14 @@
     {
         foreach (var trip in Model)
         {
-            <div class="col-md-4">
-                <h3>@trip.TripName</h3>
+            <div class="col-md-4 trip-container">
+                @Html.ActionLink(
+                 @trip.TripName,
+                 "ById",
+                 "Trip",
+                 new { urlId = trip.UrlId },
+                 new { @class = "trip-title" })
+                <p>Starting on: @trip.TripDate</p>
                 <p>Created by: @trip.User</p>
             </div>
         }
@@ -31,7 +37,7 @@
 {
     <div class="row">
         <div class="col-md-4">
-            @Html.ActionLink("Create trip", "../Trip/Create", null, new { @class = "btn btn-info" , @role="button"})
+            @Html.ActionLink("Create trip", "../Trip/Create", null, new { @class = "btn btn-info", @role = "button" })
         </div>
     </div>
 }

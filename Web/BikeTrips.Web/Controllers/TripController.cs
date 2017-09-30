@@ -33,6 +33,11 @@ namespace BikeTrips.Web.Controllers
         [HttpGet]
         public ActionResult ById(string urlId)
         {
+            if (urlId == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             var id = this.identifierProvider.GetId(urlId);
             var model = this.trips.GetTripById(id);
             var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<FullTripViewModel>(model);

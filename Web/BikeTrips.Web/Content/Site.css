@@ -26,3 +26,31 @@ textarea {
 #no-events-text {
     font-size: 30px;
 }
+
+.jumbotron {
+    background-color: #4CBB17;
+    text-align: center;
+}
+
+.trip-container {
+    border: 1px solid #4CBB17;
+    background-color: #4CBB17;
+    color: #ffffff;
+    font-size: 1.3em;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 5px;
+    margin-left: 10px;
+    width: 32%;
+}
+
+.trip-title {
+    color: #ffffff;
+    font-size: 2em;
+}
+
+/*Crete trip btn*/
+body > div.container.body-content > div:nth-child(3) > div > a {
+    font-size: 2em;
+    background-color: #4CBB17;
+}
