@@ -5,6 +5,9 @@
     ViewBag.Title = Model.TripName;
 }
 
-<h2>Name: @Model.TripName</h2>
-Created by @Model.User
+<h2 class="page-title">Name: @Model.TripName</h2>
+<p class="enlarge-text">@Model.Type.ToString()</p>
+<p class="enlarge-text">Starting in: @Model.StartingPoint</p>
+<p class="enlarge-text">On: @Model.StartingTime</p>
+<p>Created by @Model.User</p>
 

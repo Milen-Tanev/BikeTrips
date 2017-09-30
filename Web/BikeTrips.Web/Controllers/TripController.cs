@@ -16,7 +16,6 @@ namespace BikeTrips.Web.Controllers
 
         public TripController()
         {
-
         }
 
         public TripController(IUserService users,
@@ -55,6 +54,7 @@ namespace BikeTrips.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateTripViewModel model)
         {
+
             if (ModelState.IsValid)
             {
                 model.Creator = this.users.GetCurrentUser();

@@ -13,7 +13,7 @@ namespace BikeTrips.Web.ViewModels.TripModels
 
         public string TripName { get; set; }
 
-        public DateTime TripDate { get; set; }
+        public DateTime StartingTime { get; set; }
 
         public string User { get; set; }
 

@@ -47,12 +47,12 @@ namespace BikeTrips.Web.ViewModels.TripModels
         }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
-        {
-            configuration.CreateMap<Data.Models.Trip, FullTripViewModel>()
+        {            
+            //configuration.CreateMap<Trip, FullTripViewModel>()
+            //    .ForMember(x => x.Comments, opt => opt.MapFrom(x => x.Comments
+            //    .Select(p => p.Id).ToList()));
+            configuration.CreateMap<Trip, FullTripViewModel>()
                 .ForMember(x => x.User, opt => opt.MapFrom(x => x.Creator.Name));
-            configuration.CreateMap<Data.Models.Trip, FullTripViewModel>()
-                .ForMember(x => x.Comments, opt => opt.MapFrom(x => x.Comments
-                .Select(p => p.Id).ToList()));
         }
     }
 }

@@ -5,7 +5,7 @@
 }
 
 <div class="jumbotron">
-    <h1 id="homeTitle">Bike Trips</h1>
+    <h1 class="page-title">Bike Trips</h1>
 </div>
 
 <div class="row">
@@ -20,7 +20,7 @@
                  "Trip",
                  new { urlId = trip.UrlId },
                  new { @class = "trip-title" })
-                <p>Starting on: @trip.TripDate</p>
+                <p>Starting on: @trip.StartingTime</p>
                 <p>Created by: @trip.User</p>
             </div>
         }
