@@ -48,11 +48,16 @@ namespace BikeTrips.Services.Data
 
         public void AddTrip(Trip trip, DateTime tripDate, DateTime tripTime)
         {
-            if (trip.StartingTime < DateTime.UtcNow)
+            var startingTime = converter.Convert(tripDate, tripTime);
+
+            if (startingTime.Year <= DateTime.UtcNow.Year
+                && startingTime.Month <= DateTime.UtcNow.Month
+                && startingTime.Date < DateTime.UtcNow.Date)
             {
-                throw new ArgumentException("Starting time cannot be les than the current time!");
+                throw new ArgumentException("Starting time cannot be less than the current time!");
             }
-            trip.StartingTime = converter.Convert(tripDate, tripTime);
+
+            trip.StartingTime = startingTime;
             var user = this.users.GetCurrentUser();
             user.AdministeredEvents.Add(trip);
             trip.Creator = user;
