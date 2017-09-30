@@ -67,3 +67,17 @@ body > div.container.body-content > div:nth-child(3) > div > a {
 .enlarge-text{
     font-size: 1.5em;
 }
+
+.participants-container {
+    border: 1px solid #022a50;
+    border-radius: 20px;
+    padding: 20px;
+    width: 32%;
+}
+
+.comments-container {
+    border: 1px solid #022a50;
+    border-radius: 20px;
+    padding: 20px;
+    width: 32%;
+}

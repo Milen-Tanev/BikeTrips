@@ -2,7 +2,6 @@
 using BikeTrips.Data.Models;
 using BikeTrips.Data.Common.Contracts;
 using System.Linq;
-using System;
 
 namespace BikeTrips.Services.Data
 {
@@ -23,6 +22,9 @@ namespace BikeTrips.Services.Data
 
         public void AddTrip(Trip trip)
         {
+            var user = trip.Creator;
+            user.AdministeredEvents.Add(trip);
+            trip.Participants.Add(user);
             this.trips.Add(trip);
             this.unitOfWork.Commit();
         }

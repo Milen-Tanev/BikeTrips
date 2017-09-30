@@ -7,16 +7,16 @@ using System.Web;
 
 namespace BikeTrips.Services.Data
 {
-    public class UserService : IUserService
+    public class UsersService : IUserService
     {
         private IBikeTripsDbRepository<User> users;
         private IUnitOfWork unitOfWork;
 
-        public UserService()
+        public UsersService()
         {
         }
 
-        public UserService(IBikeTripsDbRepository<User> users, IUnitOfWork unitOfWork)
+        public UsersService(IBikeTripsDbRepository<User> users, IUnitOfWork unitOfWork)
         {
             this.users = users;
             this.unitOfWork = unitOfWork;

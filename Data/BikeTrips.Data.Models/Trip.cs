@@ -13,7 +13,7 @@ namespace BikeTrips.Data.Models
         {
             this.Participants = new List<User>();
             this.Comments = new List<Comment>();
-            this.ServerTimeReservation = DateTime.UtcNow;
+            this.UtcTime = DateTime.UtcNow;
         }
 
         [Key]
@@ -44,9 +44,8 @@ namespace BikeTrips.Data.Models
         public int LocalTimeOffsetMinutes { get; set; }
 
         [Required]
-        public DateTime ServerTimeReservation { get; protected set; }
+        public DateTime UtcTime { get; protected set; }
 
-        [Required]
         public virtual User Creator { get; set; }
 
         public virtual ICollection<User> Participants { get; protected set; }

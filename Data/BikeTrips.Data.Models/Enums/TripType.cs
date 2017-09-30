@@ -1,11 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System.ComponentModel.DataAnnotations;
 
 public enum TripType
 {
-    [Description("Cross-country")]
+    [Display(Name = "Cross-country")]
     XC = 1,
-    [Description("Road bikes")]
     Road = 2,
-    [Description("Downhill/enduro")]
+    [Display(Name = "Downhill / enduro")]
     DH = 3
 }

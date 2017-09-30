@@ -40,7 +40,7 @@ namespace BikeTrips.Web.ViewModels.TripModels
         [Required]
         public int LocalTimeOffsetMinutes { get; set; }
 
-        public virtual User Creator { get; set; }
+        public User Creator { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {

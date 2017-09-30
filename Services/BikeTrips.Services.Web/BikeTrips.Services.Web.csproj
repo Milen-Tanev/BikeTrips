@@ -45,6 +45,7 @@
     <Compile Include="Contracts\IDateTimeConverter.cs" />
     <Compile Include="Contracts\IIdentifierProvider.cs" />
     <Compile Include="DateTimeConverter.cs" />
+    <Compile Include="EnumDescriptionParser.cs" />
     <Compile Include="HttpCacheService.cs" />
     <Compile Include="Contracts\ICacheService.cs" />
     <Compile Include="IdentifierProvider.cs" />

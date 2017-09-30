@@ -33,6 +33,8 @@ namespace BikeTrips.Web.ViewModels.TripModels
 
         public string User { get; set; }
 
+        public User Creator { get; set; }
+
         public ICollection<User> Participants { get; set; }
 
         public ICollection<Comment> Comments { get; set; }

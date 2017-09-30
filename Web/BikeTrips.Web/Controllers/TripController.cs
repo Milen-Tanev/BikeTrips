@@ -42,19 +42,18 @@ namespace BikeTrips.Web.Controllers
             var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<FullTripViewModel>(model);
             return View(viewModel);
         }
-
-        //[ValidateAntiForgeryToken]
+        
         [HttpGet]
         public ActionResult Create()
         {
             return this.View();
         }
 
+        // Improve?
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateTripViewModel model)
         {
-
             if (ModelState.IsValid)
             {
                 model.Creator = this.users.GetCurrentUser();

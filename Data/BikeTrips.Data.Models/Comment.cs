@@ -23,7 +23,10 @@ namespace BikeTrips.Data.Models
         public virtual User Author { get; set; }
 
         [Required]
-        public int LocalTimeOffsetMinutes { get; protected set; }
+        public int LocalTimeOffsetMinutes { get; set; }
+        
+        [Required]
+        public virtual Trip Subject { get; set; }
 
         [Required]
         public DateTime UtcTime { get; private set; }
