@@ -2,6 +2,8 @@
 using BikeTrips.Data.Models;
 using BikeTrips.Data.Common.Contracts;
 using System.Linq;
+using System.Linq.Expressions;
+using System;
 
 namespace BikeTrips.Services.Data
 {
@@ -18,6 +20,21 @@ namespace BikeTrips.Services.Data
         {
             this.trips = trips;
             this.unitOfWork = unitOfWork;
+        }
+
+        public IQueryable Search(string sortOrder, string searchString)
+        {
+            var searchResult = this.trips.All();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                searchString = searchString.ToLower();
+                searchResult = searchResult.Where(t => t.TripName.ToLower().Contains(searchString)
+                                                        || t.Creator.Name.ToLower().Contains(searchString)
+                                                        || t.StartingPoint.ToLower().Contains(searchString));
+            }
+
+            return searchResult;
         }
 
         public void AddTrip(Trip trip)

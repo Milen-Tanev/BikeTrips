@@ -3,6 +3,7 @@
 /// <reference path="bootstrap.js" />
 /// <reference path="bootstrap-datetimepicker.min.js" />
 /// <reference path="custom/gettimeoffset.js" />
+/// <reference path="custom/listinmodal.js" />
 /// <reference path="custom/redirectafterwait.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />

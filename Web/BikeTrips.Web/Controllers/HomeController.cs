@@ -2,6 +2,7 @@
 using BikeTrips.Services.Web.Contracts;
 using BikeTrips.Web.Infrastructure.Mapping;
 using BikeTrips.Web.ViewModels.TripModels;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -18,12 +19,12 @@ namespace BikeTrips.Web.Controllers
             this.cacheService = cacheService;
         }
         
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            var trips = this.cacheService.Get("trips", () =>
-                this.trips.GetComingTrips(6)
-                .To<TripViewModel>().ToList(), 15 * 60);
-
+            var trips =  this.trips.Search(sortOrder, searchString)
+                .To<TripViewModel>()
+                .ToList();
+            
             return this.View(trips);
         }
 

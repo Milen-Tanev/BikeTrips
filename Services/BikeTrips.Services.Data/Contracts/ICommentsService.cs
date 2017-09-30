@@ -4,6 +4,6 @@ namespace BikeTrips.Services.Data.Contracts
 {
     public interface ICommentsService
     {
-        void AddComment(Comment comment);
+        void AddComment(Comment comment, string tripUrl);
     }
 }

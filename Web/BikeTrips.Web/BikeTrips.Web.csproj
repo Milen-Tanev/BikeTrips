@@ -244,9 +244,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Images\457661.jpg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\images\background.jpg" />
+    <Content Include="Content\images\bike.png" />
+    <Content Include="Content\images\logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -343,6 +344,7 @@
     <Content Include="Content\fonts\round-regular.ttf" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\Custom\getTimeOffset.js" />
+    <Content Include="Scripts\Custom\listInModal.js" />
     <Content Include="Scripts\Custom\redirectAfterWait.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -393,6 +395,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Trip\Create.cshtml" />
     <Content Include="Views\Trip\ById.cshtml" />
+    <Content Include="Views\Trip\_ParticipantsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

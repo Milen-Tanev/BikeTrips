@@ -1,6 +1,7 @@
 ﻿using BikeTrips.Data.Models;
 using BikeTrips.Services.Data.Contracts;
 using BikeTrips.Services.Web.Contracts;
+using BikeTrips.Web.Infrastructure.Mappings;
 using BikeTrips.Web.ViewModels.CommentModels;
 using System;
 using System.Collections.Generic;
@@ -39,12 +40,10 @@ namespace BikeTrips.Web.Controllers
         public ActionResult Create(CreateCommentViewModel model, string tripUrlId)
         {
             model.Author = this.users.GetCurrentUser();
-
-            var tripId = this.identifierProvider.GetId(tripUrlId);
-            var trip = trips.GetTripById(tripId);
-            var comment = new Comment { Content = model.Content, LocalTimeOffsetMinutes = model.LocalTimeOffsetMinutes };
-            trip.Comments.Add(comment);
-
+            var comment = AutoMapperConfig
+                    .Configuration.CreateMapper()
+                    .Map<Comment>(model);
+            this.comments.AddComment(comment, tripUrlId);
             return this.View();
         }
     }

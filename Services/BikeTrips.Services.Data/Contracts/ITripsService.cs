@@ -10,5 +10,8 @@ namespace BikeTrips.Services.Data.Contracts
         IQueryable<Trip> GetComingTrips(int count);
 
         Trip GetTripById(int id);
+
+        IQueryable Search(string sortOrder, string searchString);
+
     }
 }

@@ -60,6 +60,10 @@
       <Project>{0798AD76-AB34-4EA5-A8FB-28E7FCF70A51}</Project>
       <Name>BikeTrips.Data.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BikeTrips.Services.Web\BikeTrips.Services.Web.csproj">
+      <Project>{79C4BB75-ACAA-4562-BBAA-9B09EF7EF760}</Project>
+      <Name>BikeTrips.Services.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,9 +1,8 @@
 ﻿@using BikeTrips.Web.ViewModels.TripModels
 @model CreateTripViewModel
+
 @if (Request.IsAuthenticated)
 {
-
-
     using (Html.BeginForm("Create", "Trip", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
@@ -27,12 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.Type, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @*<label>@Html.RadioButtonFor(m => m.Type, TripType.Road, new { @Name = "tripType" }) Road</label><br />
-                <label>@Html.RadioButtonFor(m => m.Type, TripType.XC, new { @Name = "tripType" }) Cross-country</label><br />
-                <label>@Html.RadioButtonFor(m => m.Type, TripType.DH, new { @Name = "tripType" }) Downhill</label>*@
-
                 @Html.EnumDropDownListFor(m => m.Type, "Choose trip type", new { @class = "form-control" })
-
                 @Html.ValidationMessageFor(m => m.Type)
             </div>
         </div>
@@ -80,10 +74,6 @@
 }
 else
 {
-
     <h1>Please log in to create a new trip</h1>
-    @section Scripts
-    {
-        <script src="~/Scripts/Custom/redirectAfterWait.js"></script>
-    }
+    @Scripts.Render("~/Scripts/Custom/redirectAfterWait.js")
 }

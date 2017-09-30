@@ -4,8 +4,7 @@
 }
 
 body {
-    background-image: url('Images/457661.jpg');
-    
+    background-image: url('images/background.jpg');
     font-family: round-regular;
     padding-top: 50px;
     padding-bottom: 20px;
@@ -41,22 +40,13 @@ textarea {
     background-color: transparent;
 }
 
-.trip-container {
-    border: 1px solid #022a50;
-    font-size: 1.3em;
-    border-radius: 20px;
-    padding: 20px;
-    margin: 5px;
-    margin-left: 10px;
-    width: 32%;
-}
-.page-title{
-    font-family:round-regular;
+.page-title {
+    font-family: round-regular;
 }
 
 .trip-title {
     color: #2C5197;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 /*Crete trip btn*/
@@ -64,8 +54,12 @@ body > div.container.body-content > div:nth-child(3) > div > a {
     font-size: 1.5em;
 }
 
-.enlarge-text{
-    font-size: 1.5em;
+.text-medium {
+    font-size: 1.3em;
+}
+
+.text-large {
+    font-size: 1.8em;
 }
 
 .participants-container {
@@ -80,4 +74,61 @@ body > div.container.body-content > div:nth-child(3) > div > a {
     border-radius: 20px;
     padding: 20px;
     width: 32%;
+}
+
+/* Not working! */
+.navbar-brand {
+    background-image: url('Images/logo.png');
+}
+
+ul {
+    list-style-image: url('images/bike.png');
+}
+
+#trips-table {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.trips-row {
+    padding: 5px;
+    border-bottom: 2px solid #2C5197;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+/*.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}*/
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
 }

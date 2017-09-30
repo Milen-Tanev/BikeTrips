@@ -13,6 +13,10 @@ namespace BikeTrips.Web.ViewModels.TripModels
 
         public string TripName { get; set; }
 
+        public string StartingPoint { get; set; }
+
+        public TripType Type { get; set; }
+
         public DateTime StartingTime { get; set; }
 
         public string User { get; set; }

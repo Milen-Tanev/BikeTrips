@@ -7,39 +7,41 @@
 }
 <div class="row">
     <h2 class="page-title">Name: @Model.TripName</h2>
-    <p class="enlarge-text">@Model.Type.GetDescription()</p>
-    <p class="enlarge-text">Starting in: @Model.StartingPoint</p>
-    <p class="enlarge-text">On: @Model.StartingTime</p>
+    @Html.ActionLink("Join", "../Trip/Create", null, new { @class = "btn btn-info", @role = "button" })
+    <p class="text-medium">@Model.Type.GetDescription()</p>
+    <p class="text-medium">Starting in: @Model.StartingPoint</p>
+    <p class="text-medium">On: @Model.StartingTime</p>
 </div>
-<div class="row">Created by @Model.User</div>
+<div class="row">
+Created by @Model.User 
+</div>
+
 <div class="row participants-container">
     <h3 class="page-title">Participants</h3>
     @if (Model.Participants.Count <= 0)
     {
-        <p class="enlarge-text">This events has no participants currently</p>
+        <p class="text-medium">This events has no participants currently</p>
+    }
+    else if (Model.Participants.Count == 1)
+    {
+        <p>This event has 1 participant</p>
+        @Html.Partial("_ParticipantsPartial", Model)
     }
     else
     {
-        <ul class="enlarge-text">
-            Participants:
-            @foreach (var participant in Model.Participants)
-            {
-            <li>Name: @participant.Name</li>
-            }
-        </ul>
+        <p>This event has @Model.Participants.Count participants</p>
     }
-
-    @Html.ActionLink("Join", "../Trip/Create", null, new { @class = "btn btn-info", @role = "button" })
 </div>
-<div class="row comments-container">
+@if (User.Identity.IsAuthenticated)
+{
     <h3 class="page-title">Comments</h3>
-    @if (Model.Comments.Count <= 0)
+    if (Model.Comments.Count <= 0)
     {
-        <p class="enlarge-text">There are no comments for this trip</p>
+        <p class="text-medium">There are no comments for this trip</p>
     }
     else
     {
-        <ul class="enlarge-text">
+        <ul class="text-medium">
             Comments:
             @foreach (var comment in Model.Comments)
             {
@@ -50,9 +52,9 @@
             }
         </ul>
     }
-
     @Html.ActionLink("Comment", "../Trip/Create", null, new { @class = "btn btn-info", @role = "button" })
-</div>
+}
+
 
 
 

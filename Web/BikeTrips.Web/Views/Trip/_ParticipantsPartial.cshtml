@@ -1,0 +1,36 @@
+﻿@using BikeTrips.Web.ViewModels.TripModels
+@model FullTripViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_ParticipantsPartial</title>
+
+</head>
+<body>
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn" class="btn btn-info">View participants</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h5>Participants in @Model.TripName</h5>
+            <ul>
+                @foreach (var user in Model.Participants)
+                {
+                    <li>@user.UserName</li>
+                }
+            </ul>
+        </div>
+    </div>
+    @Scripts.Render("~/Scripts/Custom/listInModal.js")
+</body>
+</html>

@@ -41,10 +41,5 @@ namespace BikeTrips.Web.ViewModels.TripModels
         public int LocalTimeOffsetMinutes { get; set; }
 
         public User Creator { get; set; }
-
-        public void CreateMappings(IMapperConfigurationExpression configuration)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
