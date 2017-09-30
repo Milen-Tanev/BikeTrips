@@ -49,10 +49,8 @@ namespace BikeTrips.Services.Data
         public void AddTrip(Trip trip, DateTime tripDate, DateTime tripTime)
         {
             var startingTime = converter.Convert(tripDate, tripTime);
-
-            if (startingTime.Year <= DateTime.UtcNow.Year
-                && startingTime.Month <= DateTime.UtcNow.Month
-                && startingTime.Date < DateTime.UtcNow.Date)
+            var currentUserTime = DateTime.UtcNow.AddMinutes(trip.LocalTimeOffsetMinutes);
+            if (startingTime < currentUserTime)
             {
                 throw new ArgumentException("Starting time cannot be less than the current time!");
             }
