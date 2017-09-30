@@ -13,50 +13,56 @@
     <p class="text-medium">On: @Model.StartingTime</p>
 </div>
 <div class="row">
-Created by @Model.User 
+    Created by @Model.User
 </div>
 
 <div class="row participants-container">
-    <h3 class="page-title">Participants</h3>
     @if (Model.Participants.Count <= 0)
     {
         <p class="text-medium">This events has no participants currently</p>
     }
     else if (Model.Participants.Count == 1)
     {
-        <p>This event has 1 participant</p>
         @Html.Partial("_ParticipantsPartial", Model)
+        <p>/This event has 1 participant/</p>
     }
     else
     {
-        <p>This event has @Model.Participants.Count participants</p>
         @Html.Partial("_ParticipantsPartial", Model)
+        <p>/This event has @Model.Participants.Count participants/</p>
     }
 </div>
 @if (User.Identity.IsAuthenticated)
 {
-    <h3 class="page-title">Comments</h3>
-    if (Model.Comments.Count <= 0)
-    {
-        <p class="text-medium">There are no comments for this trip</p>
-    }
-    else
-    {
-        <ul class="text-medium">
-            Comments:
-            @foreach (var comment in Model.Comments)
-            {
-                <li>
-                    <h5>Name: @comment.Author.Name</h5>
-                    <div>@comment.Content</div>
-                </li>
-            }
-        </ul>
-    }
-    @Html.ActionLink("Comment", "../Trip/Create", null, new { @class = "btn btn-info", @role = "button" })
+    <div class="row comments-container">
+        <h3 class="page-title">Comments</h3>
+        @if (Model.Comments.Count <= 0)
+        {
+            <p class="text-medium">There are no comments for this trip</p>
+        }
+        else
+        {
+            <ul class="text-medium">
+                Comments:
+                @foreach (var comment in Model.Comments)
+                {
+                    <li>
+                        <h5>Name: @comment.Author.Name</h5>
+                        <div>@comment.Content</div>
+                    </li>
+                }
+            </ul>
+        }
+        @using (Html.BeginForm("Create", "Comment", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.TextArea("myTextArea", null, 10, 100, new { @class = "form-control" }) 
+                </div>
+            </div>
+            @Html.HiddenFor(m => m.LocalTimeOffsetMinutes, new { id = "hiddenUserLoginDate" })
+        }
+        @Html.ActionLink("Comment", "../Trip/Create", null, new { @class = "btn btn-info", @role = "button" })
+    </div>
 }
-
-
-
-
-
+@Scripts.Render("~/Scripts/Custom/getTimeOffset.js")

@@ -5,7 +5,6 @@ using BikeTrips.Web.Infrastructure.Mappings;
 using System.Collections.Generic;
 using BikeTrips.Services.Web.Contracts;
 using BikeTrips.Services.Web;
-using System.Linq;
 using BikeTrips.Web.ViewModels.UserModels;
 
 namespace BikeTrips.Web.ViewModels.TripModels

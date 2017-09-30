@@ -63,20 +63,6 @@ body > div.container.body-content > div:nth-child(3) > div > a {
     font-size: 1.8em;
 }
 
-.participants-container {
-    border: 1px solid #022a50;
-    border-radius: 20px;
-    padding: 20px;
-    width: 32%;
-}
-
-.comments-container {
-    border: 1px solid #022a50;
-    border-radius: 20px;
-    padding: 20px;
-    width: 32%;
-}
-
 /* Not working! */
 .navbar-brand {
     background-image: url('Images/logo.png');
