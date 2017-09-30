@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using BikeTrips.Services.Web.Contracts;
 using BikeTrips.Services.Web;
 using System.Linq;
+using BikeTrips.Web.ViewModels.UserModels;
 
 namespace BikeTrips.Web.ViewModels.TripModels
 {
@@ -35,7 +36,7 @@ namespace BikeTrips.Web.ViewModels.TripModels
 
         public User Creator { get; set; }
 
-        public ICollection<User> Participants { get; set; }
+        public ICollection<ShortUserViewModel> Participants { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
 

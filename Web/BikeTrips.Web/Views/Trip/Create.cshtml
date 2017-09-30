@@ -67,13 +67,14 @@
         </div>
         @Html.HiddenFor(m => m.LocalTimeOffsetMinutes, new { id = "hiddenUserLoginDate" })
     }
-    @section Scripts
-    {
-        <script src="~/Scripts/Custom/getTimeOffset.js"></script>
-    }
+    
 }
 else
 {
     <h1>Please log in to create a new trip</h1>
-    @Scripts.Render("~/Scripts/Custom/redirectAfterWait.js")
+}
+@section Scripts
+    {
+    <script src="~/Scripts/Custom/getTimeOffset.js"></script>
+    <script src="~/Scripts/Custom/redirectAfterWait.js"></script>
 }
