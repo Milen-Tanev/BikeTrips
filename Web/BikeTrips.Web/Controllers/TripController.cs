@@ -11,22 +11,16 @@ namespace BikeTrips.Web.Controllers
     {
         private IUserService users;
         private ITripsService trips;
-        private IDateTimeConverter converter;
-        private IIdentifierProvider identifierProvider;
 
         public TripController()
         {
         }
 
         public TripController(IUserService users,
-            ITripsService trips,
-            IDateTimeConverter converter,
-            IIdentifierProvider identifierProvider)
+            ITripsService trips)
         {
             this.users = users;
             this.trips = trips;
-            this.converter = converter;
-            this.identifierProvider = identifierProvider;
         }
 
         [HttpGet]
@@ -36,9 +30,8 @@ namespace BikeTrips.Web.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-
-            var id = this.identifierProvider.GetId(urlId);
-            var model = this.trips.GetTripById(id);
+            
+            var model = this.trips.GetTripById(urlId);
             var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<FullTripViewModel>(model);
             return View(viewModel);
         }
@@ -49,31 +42,17 @@ namespace BikeTrips.Web.Controllers
             return this.View();
         }
 
-        // Improve?
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateTripViewModel model)
         {
             if (ModelState.IsValid)
             {
-                model.Creator = this.users.GetCurrentUser();
+                var trip = AutoMapperConfig
+                    .Configuration.CreateMapper()
+                    .Map<Trip>(model);
+                this.trips.AddTrip(trip, model.TripDate, model.TripTime);
 
-                var trip = new Trip
-                {
-                    TripName = model.TripName,
-                    StartingPoint = model.StartingPoint,
-                    Type = model.Type,
-                    Creator = this.users.GetCurrentUser(),
-                    StartingTime = converter.Convert(model.TripDate, model.TripTime),
-                    Distance = model.Distance,
-                    Denivelation = model.Denivelation,
-                    Description = model.Description,
-                    LocalTimeOffsetMinutes = model.LocalTimeOffsetMinutes,
-                    IsPassed = false,
-                    IsDeleted = false
-                };
-
-                this.trips.AddTrip(trip);
                 var viewModel = AutoMapperConfig
                     .Configuration.CreateMapper()
                     .Map<FullTripViewModel>(trip);
@@ -81,7 +60,6 @@ namespace BikeTrips.Web.Controllers
             }
             
             return View();
-            
         }
     }
 }

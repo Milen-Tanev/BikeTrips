@@ -13,7 +13,6 @@ namespace BikeTrips.Web.Controllers
 {
     public class CommentController : Controller
     {
-        private IUserService users;
         private ITripsService trips;
         private ICommentsService comments;
         private IIdentifierProvider identifierProvider;
@@ -22,12 +21,10 @@ namespace BikeTrips.Web.Controllers
         {
         }
 
-        public CommentController(IUserService users, ITripsService trips, ICommentsService comments, IIdentifierProvider identifierProvider)
+        public CommentController(ITripsService trips, ICommentsService comments)
         {
-            this.users = users;
             this.trips = trips;
             this.comments = comments;
-            this.identifierProvider = identifierProvider;
         }
 
         // GET: Comment
@@ -39,7 +36,6 @@ namespace BikeTrips.Web.Controllers
 
         public ActionResult Create(CreateCommentViewModel model, string tripUrlId)
         {
-            model.Author = this.users.GetCurrentUser();
             var comment = AutoMapperConfig
                     .Configuration.CreateMapper()
                     .Map<Comment>(model);

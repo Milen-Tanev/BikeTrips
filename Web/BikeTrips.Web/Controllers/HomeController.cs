@@ -2,7 +2,6 @@
 using BikeTrips.Services.Web.Contracts;
 using BikeTrips.Web.Infrastructure.Mapping;
 using BikeTrips.Web.ViewModels.TripModels;
-using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -19,9 +18,9 @@ namespace BikeTrips.Web.Controllers
             this.cacheService = cacheService;
         }
         
-        public ActionResult Index(string sortOrder, string searchString)
+        public ActionResult Index(string searchString)
         {
-            var trips =  this.trips.Search(sortOrder, searchString)
+            var trips =  this.trips.Search(searchString)
                 .To<TripViewModel>()
                 .ToList();
             

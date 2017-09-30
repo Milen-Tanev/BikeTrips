@@ -10,26 +10,36 @@ namespace BikeTrips.Services.Data
     {
         private IBikeTripsDbRepository<Comment> comments;
         private IBikeTripsDbRepository<Trip> trips;
+        private IUserService users;
         private IIdentifierProvider provider;
+        private IUnitOfWork unitOfWork;
 
         public CommenstService()
         {
         }
 
-        public CommenstService(IBikeTripsDbRepository<Comment> comments, IBikeTripsDbRepository<Trip> trips, IIdentifierProvider provider)
+        public CommenstService(IBikeTripsDbRepository<Comment> comments,
+                                IBikeTripsDbRepository<Trip> trips,
+                                IUserService users,
+                                IIdentifierProvider provider,
+                                IUnitOfWork unitOfWork)
         {
             this.comments = comments;
             this.trips = trips;
+            this.users = users;
             this.provider = provider;
+            this.unitOfWork = unitOfWork;
         }
 
         public void AddComment(Comment comment, string tripUrl)
         {
+            comment.Author = this.users.GetCurrentUser();
             var tripId = this.provider.GetId(tripUrl);
             var trip = this.trips.GetById(tripId);
             trip.Comments.Add(comment);
             comment.Subject = trip;
             this.comments.Add(comment);
+            this.unitOfWork.Commit();
         }
     }
 }

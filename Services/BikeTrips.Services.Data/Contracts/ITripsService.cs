@@ -1,17 +1,18 @@
 ﻿using BikeTrips.Data.Models;
+using System;
 using System.Linq;
 
 namespace BikeTrips.Services.Data.Contracts
 {
     public interface ITripsService
     {
-        void AddTrip(Trip trip);
-
-        IQueryable<Trip> GetComingTrips(int count);
-
+        void AddTrip(Trip trip, DateTime tripDate, DateTime tripTime);
+        
         Trip GetTripById(int id);
 
-        IQueryable Search(string sortOrder, string searchString);
+        Trip GetTripById(string id);
+
+        IQueryable Search(string searchString);
 
     }
 }
