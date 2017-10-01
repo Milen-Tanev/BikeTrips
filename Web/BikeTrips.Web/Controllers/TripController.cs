@@ -11,16 +11,18 @@ namespace BikeTrips.Web.Controllers
     {
         private IUserService users;
         private ITripsService trips;
+        private ICacheService cacheService;
 
         public TripController()
         {
         }
 
         public TripController(IUserService users,
-            ITripsService trips)
+            ITripsService trips, ICacheService cacheService)
         {
             this.users = users;
             this.trips = trips;
+            this.cacheService = cacheService;
         }
 
         [HttpGet]
@@ -52,6 +54,8 @@ namespace BikeTrips.Web.Controllers
                     .Configuration.CreateMapper()
                     .Map<Trip>(model);
                 this.trips.AddTrip(trip, model.TripDate, model.TripTime);
+
+                this.cacheService.Remove("trips");
 
                 var viewModel = AutoMapperConfig
                     .Configuration.CreateMapper()

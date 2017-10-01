@@ -9,6 +9,8 @@ namespace BikeTrips.Data.Models
 {
     public class Trip : IDeletable
     {
+        private bool isDeleted;
+
         public Trip()
         {
             this.Participants = new List<User>();
@@ -54,6 +56,23 @@ namespace BikeTrips.Data.Models
 
         public bool IsPassed { get; set; }
 
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted {
+            get
+            {
+                if (this.isDeleted == false)
+                {
+                    var currentUserTime = DateTime.UtcNow.AddMinutes(this.LocalTimeOffsetMinutes);
+                    if (this.StartingTime < currentUserTime)
+                    {
+                        this.isDeleted = true;
+                    }
+                }
+                return this.isDeleted;
+            }
+            set
+            {
+                this.isDeleted = value;
+            }
+        }
     }
 }

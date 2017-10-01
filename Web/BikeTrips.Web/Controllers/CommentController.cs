@@ -3,10 +3,6 @@ using BikeTrips.Services.Data.Contracts;
 using BikeTrips.Services.Web.Contracts;
 using BikeTrips.Web.Infrastructure.Mappings;
 using BikeTrips.Web.ViewModels.CommentModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BikeTrips.Web.Controllers

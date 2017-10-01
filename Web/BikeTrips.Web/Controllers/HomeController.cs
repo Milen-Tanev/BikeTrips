@@ -18,20 +18,34 @@ namespace BikeTrips.Web.Controllers
             this.cacheService = cacheService;
         }
         
-        public ActionResult Index(string searchString)
+        [HttpGet]
+        public ActionResult Index()
         {
-            var trips =  this.trips.Search(searchString)
-                .To<TripViewModel>()
-                .ToList();
+            var trips = this.cacheService.Get("trips", () =>
+            this.trips.GetAll()
+            .To<TripViewModel>().ToList(), 2 * 60 * 60);
             
             return this.View(trips);
+        }
+
+        [HttpPost]
+        public PartialViewResult Search(string searchString)
+        {
+            searchString = searchString.ToLower();
+
+            var trips = this.cacheService.Get("trips", () =>
+            this.trips.GetAll()
+            .To<TripViewModel>().ToList(), 2 * 60 * 60)
+            .Where(t => t.StartingPoint.ToLower().Contains(searchString)
+                            || t.User.ToLower().Contains(searchString)
+                            || t.StartingPoint.ToLower().Contains(searchString));
+
+            return PartialView("_TripsResults", trips);
         }
 
         public ActionResult About()
         {
             return this.View();
         }
-
-
     }
 }

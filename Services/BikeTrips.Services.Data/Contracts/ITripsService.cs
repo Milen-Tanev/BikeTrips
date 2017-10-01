@@ -12,7 +12,8 @@ namespace BikeTrips.Services.Data.Contracts
 
         Trip GetTripById(string id);
 
-        IQueryable Search(string searchString);
+        IQueryable GetAll();
 
+        //IQueryable<Trip> Search(string searchString);
     }
 }

@@ -28,23 +28,31 @@ namespace BikeTrips.Services.Data
             this.identifierProvider = identifierProvider;
         }
 
-        public IQueryable Search(string searchString)
+        public IQueryable GetAll()
         {
-            var searchResult = this.trips.All()
-                .Where(x => x.IsDeleted == false)
+            var allTrips = this.trips.All()
                 .OrderBy(t => t.StartingTime);
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                searchString = searchString.ToLower();
-                searchResult = searchResult.Where(t => t.TripName.ToLower().Contains(searchString)
-                                                    || t.Creator.Name.ToLower().Contains(searchString)
-                                                    || t.StartingPoint.ToLower().Contains(searchString))
-                                                    .OrderBy(t => t.StartingTime);
-            }
-
-            return searchResult;
+            
+            return allTrips;
         }
+
+        //public IQueryable<Trip> Search(string searchString)
+        //{
+        //    var searchResult = this.trips.All()
+        //        .Where(x => x.IsDeleted == false)
+        //        .OrderBy(t => t.StartingTime);
+
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        searchString = searchString.ToLower();
+        //        searchResult = searchResult.Where(t => t.TripName.ToLower().Contains(searchString)
+        //                                            || t.Creator.Name.ToLower().Contains(searchString)
+        //                                            || t.StartingPoint.ToLower().Contains(searchString))
+        //                                            .OrderBy(t => t.StartingTime);
+        //    }
+
+        //    return searchResult;
+        //}
 
         public void AddTrip(Trip trip, DateTime tripDate, DateTime tripTime)
         {

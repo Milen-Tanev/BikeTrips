@@ -7,44 +7,26 @@
 <div class="jumbotron">
     <h1 class="page-title">Bike Trips</h1>
 </div>
-
-@using (Html.BeginForm())
-{
-    <p>
-        @Html.TextBox("SearchString")
-        <input type="submit" value="Search" class="btn-info" />
-    </p>
-}
-
-<div class="row">
-    @if (Model.Count() > 0)
+<div>
+    @using (Ajax.BeginForm(actionName: "Search", controllerName: "Home", routeValues: new { },
+                ajaxOptions: new AjaxOptions
+                {
+                    UpdateTargetId = "trips",
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "POST"
+                }, htmlAttributes: new { id = "searchForm" }))
     {
-        <table id="trips-table">
-            <tr class="trips-row">
-                <th class="trip-list text-large">Trip name</th>
-                <th class="trip-list text-large">Location</th>
-                <th class="trip-list text-large">Starting in</th>
-                <th class="trip-list text-large">Created by</th>
-            </tr>
-
-            @foreach(var trip in Model)
-            {
-                <tr class="trips-row">
-                    <td class="trip-list">@Html.ActionLink(@trip.TripName, "ById", "Trip", new { urlId = trip.UrlId}, new { @class = "trip-title"})</td>
-                    <td class="trip-list">@trip.StartingPoint</td>
-                    <td class="trip-list">@trip.StartingTime</td>
-                    <td class="trip-list">@trip.User</td>
-                </tr>
-            }
-        </table>
-    }
-    else
-    {
-        <div id="no-events-text" class="col-md-4">
-            <p>No coming events</p>
+        <div class="text-medium">
+            Search
+            <input type="text" name="searchString" oninput="changed()" />
         </div>
     }
+</div>
 
+<div class="row">
+    <div id="trips">
+        @Html.Partial("_TripsResults", Model)
+    </div>
 </div>
 @if (User.Identity.IsAuthenticated)
 {
@@ -54,3 +36,9 @@
         </div>
     </div>
 }
+
+<script type="text/javascript">
+    function changed() {
+        $('#searchForm').submit();
+    }
+</script>

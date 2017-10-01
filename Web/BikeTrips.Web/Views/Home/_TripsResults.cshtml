@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BikeTrips.Web.ViewModels.TripModels.TripViewModel>
+@{
+    Layout = null;
+}
+@if (Model.Count() > 0)
+{
+    <table id="trips-table">
+        <tr class="trips-row">
+            <th class="trip-list text-large">Trip name</th>
+            <th class="trip-list text-large">Location</th>
+            <th class="trip-list text-large">Starting in</th>
+            <th class="trip-list text-large">Created by</th>
+        </tr>
+
+        @foreach (var trip in Model)
+        {
+            <tr class="trips-row trips-data" id="trip-container">
+                <td class="trip-list">@Html.ActionLink(@trip.TripName, "ById", "Trip", new { urlId = trip.UrlId }, new { @class = "trip-title" })</td>
+                <td class="trip-list">@trip.StartingPoint</td>
+                <td class="trip-list">@trip.StartingTime</td>
+                <td class="trip-list">@trip.User</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div id="no-events-text" class="col-md-4">
+        <p>No coming events</p>
+    </div>
+}
