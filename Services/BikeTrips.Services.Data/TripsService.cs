@@ -79,6 +79,25 @@ namespace BikeTrips.Services.Data
             this.unitOfWork.Commit();
         }
 
+        public void RemoveParticipantFrom(Trip trip)
+        {
+            var user = this.users.GetCurrentUser();
+            trip.Participants.Remove(user);
+            this.unitOfWork.Commit();
+        }
+
+        public void DeleteTrip(Trip trip)
+        {
+            var user = this.users.GetCurrentUser();
+            if (user != trip.Creator)
+            {
+                throw new ArgumentException("You cannot delete a trip if you are not it's creator");
+            }
+
+            trip.IsDeleted = true;
+            this.unitOfWork.Commit();
+        }
+
         public Trip GetTripById(int id)
         {
             return this.trips.GetById(id);

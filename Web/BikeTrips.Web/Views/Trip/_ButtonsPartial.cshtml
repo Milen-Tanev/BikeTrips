@@ -4,7 +4,11 @@
 
 @if (Model.Participants.Any(x => x.id == User.Identity.GetUserId()))
 {
-    @Html.ActionLink("Leave event", "LeaveTrip", "Trip", new { id = Model.Id }, new { @class = "btn btn-warning", @role = "button" })
+    @Ajax.ActionLink("Leave event", "LeaveTrip", "Trip", new { id = Model.Id },
+          new AjaxOptions()
+          {
+              HttpMethod = "POST"
+          }, new { @class = "btn btn-warning", @role = "button" })
 }
 else
 {
@@ -13,18 +17,12 @@ else
           {
               HttpMethod = "POST"
           }, new { @class = "btn btn-info", @role = "button" });
-
-    @*(actionName: "Search", controllerName: "Home", routeValues: new { },
-        ajaxOptions: new AjaxOptions
-        {
-            UpdateTargetId = "trips",
-            InsertionMode = InsertionMode.Replace,
-            HttpMethod = "POST"*@
-
-
-    // @Html.ActionLink("Join event", "JoinTrip", "Trip", new { id = Model.Id }, new { @class = "btn btn-info", @role = "button" })
 }
 @if (Model.Creator.Id == User.Identity.GetUserId())
 {
-    @Html.ActionLink("Delete event", "DeleteTrip", "Trip", new { id = Model.Id }, new { @class = "btn btn-danger", @role = "button" })
+    @Ajax.ActionLink("Delete event", "DeleteTrip", "Trip", new { id = Model.Id },
+          new AjaxOptions()
+          {
+              HttpMethod = "POST"
+          }, new { @class = "btn btn-danger", @role = "button" })
 }

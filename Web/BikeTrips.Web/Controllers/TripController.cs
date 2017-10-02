@@ -66,7 +66,8 @@ namespace BikeTrips.Web.Controllers
             return View();
         }
 
-        public ActionResult JoinTrip(int id)
+        [HttpPost]
+        public PartialViewResult JoinTrip(int id)
         {
             var trip = this.trips.GetTripById(id);
             this.trips.AddParticipantTo(trip);
@@ -75,18 +76,31 @@ namespace BikeTrips.Web.Controllers
             var viewModel = AutoMapperConfig
                     .Configuration.CreateMapper()
                     .Map<FullTripViewModel>(trip);
-            return Redirect(Request.UrlReferrer.ToString());
-            //return this.PartialView("_ButtonsPartial", viewModel);
+            return PartialView("_ButtonsPartial", viewModel);
         }
 
-        public PartialViewResult LeaveTrip(FullTripViewModel model)
+        [HttpPost]
+        public PartialViewResult LeaveTrip(int id)
         {
-            return this.PartialView("_ButtonsPartial");
+            var trip = this.trips.GetTripById(id);
+            this.trips.RemoveParticipantFrom(trip);
+            this.cacheService.Remove("trips");
+            
+            var viewModel = AutoMapperConfig
+                    .Configuration.CreateMapper()
+                    .Map<FullTripViewModel>(trip);
+
+            return PartialView("_ButtonsPartial", viewModel);
         }
 
-        public PartialViewResult DeleteTrip(FullTripViewModel model)
+        [HttpPost]
+        public ActionResult DeleteTrip(int id)
         {
-            return this.PartialView("_ButtonsPartial");
+            var trip = this.trips.GetTripById(id);
+            this.trips.DeleteTrip(trip);
+            this.cacheService.Remove("trips");
+            
+            return RedirectToAction("Index", "Home");
         }
     }
 }

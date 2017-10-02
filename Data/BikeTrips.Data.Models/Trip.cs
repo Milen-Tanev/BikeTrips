@@ -9,8 +9,6 @@ namespace BikeTrips.Data.Models
 {
     public class Trip : IDeletable
     {
-        private bool isDeleted;
-
         public Trip()
         {
             this.Participants = new List<User>();
@@ -53,8 +51,6 @@ namespace BikeTrips.Data.Models
         public virtual ICollection<User> Participants { get; protected set; }
 
         public virtual ICollection<Comment> Comments { get; protected set; }
-
-        public bool IsPassed { get; set; }
 
         public bool IsDeleted { get; set; }
     }
