@@ -7,22 +7,28 @@
     @Ajax.ActionLink("Leave event", "LeaveTrip", "Trip", new { id = Model.Id },
           new AjaxOptions()
           {
-              HttpMethod = "POST"
-          }, new { @class = "btn btn-warning", @role = "button" })
+              HttpMethod = "POST",
+              UpdateTargetId = "buttons-container",
+              InsertionMode=InsertionMode.Replace
+          }, new { @class = "btn btn-warning my-custom-button", @role = "button" })
 }
 else
 {
         @Ajax.ActionLink("Join event", "JoinTrip", "Trip", new { id = Model.Id },
           new AjaxOptions()
           {
-              HttpMethod = "POST"
-          }, new { @class = "btn btn-info", @role = "button" });
+              HttpMethod = "POST",
+              UpdateTargetId = "buttons-container",
+              InsertionMode = InsertionMode.Replace
+          }, new { @class = "btn btn-info my-custom-button", @role = "button" });
 }
 @if (Model.Creator.Id == User.Identity.GetUserId())
 {
     @Ajax.ActionLink("Delete event", "DeleteTrip", "Trip", new { id = Model.Id },
           new AjaxOptions()
           {
-              HttpMethod = "POST"
-          }, new { @class = "btn btn-danger", @role = "button" });
+              HttpMethod = "POST",
+              UpdateTargetId = "buttons-container",
+              InsertionMode = InsertionMode.Replace
+          }, new { @class = "btn btn-danger my-custom-button", @role = "button" });
 }
