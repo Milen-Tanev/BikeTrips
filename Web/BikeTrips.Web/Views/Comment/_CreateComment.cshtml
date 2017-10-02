@@ -1,0 +1,13 @@
+﻿@using BikeTrips.Web.ViewModels.CommentModels
+@model CreateCommentViewModel
+
+@using (Html.BeginForm("Create", "Comment", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.TextArea("myTextArea", null, 10, 100, new { @class = "form-control" })
+        </div>
+    </div>
+            @Html.HiddenFor(m => m.LocalTimeOffsetMinutes, new { id = "hiddenUserLoginDate" })
+}
+@Html.ActionLink("Comment", "../Comment/Create", null, new { @class = "btn btn-info", @role = "button" })

@@ -2,6 +2,7 @@
 using BikeTrips.Services.Web.Contracts;
 using BikeTrips.Web.Infrastructure.Mapping;
 using BikeTrips.Web.ViewModels.TripModels;
+using PagedList;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -19,17 +20,19 @@ namespace BikeTrips.Web.Controllers
         }
         
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var trips = this.cacheService.Get("trips", () =>
             this.trips.GetAll()
             .To<TripViewModel>().ToList(), 2 * 60 * 60);
+            var pageNumber = page ?? 1;
+            var onePageOfTrips = trips.ToPagedList(pageNumber, 10);
             
-            return this.View(trips);
+            return this.View(onePageOfTrips);
         }
 
         [HttpPost]
-        public PartialViewResult Search(string searchString)
+        public PartialViewResult Search(string searchString, int? page)
         {
             searchString = searchString.ToLower();
 
@@ -40,7 +43,10 @@ namespace BikeTrips.Web.Controllers
                             || t.User.ToLower().Contains(searchString)
                             || t.StartingPoint.ToLower().Contains(searchString));
 
-            return PartialView("_TripsResults", trips);
+            var pageNumber = page ?? 1;
+            var onePageOfTrips = trips.ToPagedList(pageNumber, 10);
+
+            return PartialView("_TripsResults", onePageOfTrips);
         }
 
         public ActionResult About()
