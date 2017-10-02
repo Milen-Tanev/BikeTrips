@@ -72,6 +72,13 @@ namespace BikeTrips.Services.Data
             this.unitOfWork.Commit();
         }
 
+        public void AddParticipantTo(Trip trip)
+        {
+            var user = this.users.GetCurrentUser();
+            trip.Participants.Add(user);
+            this.unitOfWork.Commit();
+        }
+
         public Trip GetTripById(int id)
         {
             return this.trips.GetById(id);

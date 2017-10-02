@@ -22,14 +22,10 @@
                 <td class="trip-list">@trip.StartingPoint</td>
                 <td class="trip-list">@trip.StartingTime</td>
                 <td class="trip-list">@trip.User</td>
-
-
             </tr>
-
         }
     </table>
     @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
-
 }
 else
 {
@@ -37,3 +33,5 @@ else
         <p>No coming events</p>
     </div>
 }
+
+@Styles.Render("~/Content/PagedList.css")

@@ -11,7 +11,6 @@ namespace BikeTrips.Web.Controllers
     {
         private ITripsService trips;
         private ICommentsService comments;
-        private IIdentifierProvider identifierProvider;
 
         public CommentController()
         {

@@ -26,7 +26,7 @@ namespace BikeTrips.Web.Controllers
             this.trips.GetAll()
             .To<TripViewModel>().ToList(), 2 * 60 * 60);
             var pageNumber = page ?? 1;
-            var onePageOfTrips = trips.ToPagedList(pageNumber, 10);
+            var onePageOfTrips = trips.ToPagedList(pageNumber, 5);
             
             return this.View(onePageOfTrips);
         }
@@ -44,7 +44,7 @@ namespace BikeTrips.Web.Controllers
                             || t.StartingPoint.ToLower().Contains(searchString));
 
             var pageNumber = page ?? 1;
-            var onePageOfTrips = trips.ToPagedList(pageNumber, 10);
+            var onePageOfTrips = trips.ToPagedList(pageNumber, 5);
 
             return PartialView("_TripsResults", onePageOfTrips);
         }

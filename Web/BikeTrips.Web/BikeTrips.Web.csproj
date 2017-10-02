@@ -406,6 +406,7 @@
     <Content Include="Views\Trip\ById.cshtml" />
     <Content Include="Views\Trip\_ParticipantsPartial.cshtml" />
     <Content Include="Views\Home\_TripsResults.cshtml" />
+    <Content Include="Views\Trip\_ButtonsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

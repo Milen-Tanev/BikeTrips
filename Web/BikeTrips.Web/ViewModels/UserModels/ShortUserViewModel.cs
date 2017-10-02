@@ -5,6 +5,8 @@ namespace BikeTrips.Web.ViewModels.UserModels
 {
     public class ShortUserViewModel : IMapFrom<User>
     {
+        public string id;
+
         public string Name { get; set; }
     }
 }

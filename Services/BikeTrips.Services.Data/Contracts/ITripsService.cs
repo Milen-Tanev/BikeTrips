@@ -14,6 +14,6 @@ namespace BikeTrips.Services.Data.Contracts
 
         IQueryable GetAll();
 
-        //IQueryable<Trip> Search(string searchString);
+        void AddParticipantTo(Trip trip);
     }
 }

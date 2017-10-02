@@ -1,4 +1,5 @@
 ﻿@using BikeTrips.Services.Web;
+@using Microsoft.AspNet.Identity
 @using BikeTrips.Web.ViewModels.TripModels
 @model FullTripViewModel
 
@@ -7,7 +8,8 @@
 }
 <div class="row">
     <h2 class="page-title">Name: @Model.TripName</h2>
-    @Html.ActionLink("Join", "../Trip/Create", null, new { @class = "btn btn-info", @role = "button" })
+    @Html.Partial("_ButtonsPartial", Model)
+
     <p class="text-medium">@Model.Type.GetDescription()</p>
     <p class="text-medium">Starting in: @Model.StartingPoint</p>
     <p class="text-medium">On: @Model.StartingTime</p>

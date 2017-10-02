@@ -65,5 +65,28 @@ namespace BikeTrips.Web.Controllers
             
             return View();
         }
+
+        public ActionResult JoinTrip(int id)
+        {
+            var trip = this.trips.GetTripById(id);
+            this.trips.AddParticipantTo(trip);
+            this.cacheService.Remove("trips");
+
+            var viewModel = AutoMapperConfig
+                    .Configuration.CreateMapper()
+                    .Map<FullTripViewModel>(trip);
+            return Redirect(Request.UrlReferrer.ToString());
+            //return this.PartialView("_ButtonsPartial", viewModel);
+        }
+
+        public PartialViewResult LeaveTrip(FullTripViewModel model)
+        {
+            return this.PartialView("_ButtonsPartial");
+        }
+
+        public PartialViewResult DeleteTrip(FullTripViewModel model)
+        {
+            return this.PartialView("_ButtonsPartial");
+        }
     }
 }
