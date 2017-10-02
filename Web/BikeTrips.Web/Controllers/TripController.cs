@@ -99,8 +99,9 @@ namespace BikeTrips.Web.Controllers
             var trip = this.trips.GetTripById(id);
             this.trips.DeleteTrip(trip);
             this.cacheService.Remove("trips");
-            
-            return RedirectToAction("Index", "Home");
+
+            return Redirect("/Home/Indes");
         }
     }
 }
+
