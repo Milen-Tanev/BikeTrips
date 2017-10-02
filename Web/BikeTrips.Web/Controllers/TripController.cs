@@ -94,13 +94,13 @@ namespace BikeTrips.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteTrip(int id)
+        public void DeleteTrip(int id)
         {
             var trip = this.trips.GetTripById(id);
             this.trips.DeleteTrip(trip);
             this.cacheService.Remove("trips");
 
-            return Redirect("/Home/Indes");
+             RedirectToAction("Index", "Home");
         }
     }
 }

@@ -8,6 +8,7 @@
 }
 <div class="row">
     <h2 class="page-title">Name: @Model.TripName</h2>
+
     @Html.Partial("_ButtonsPartial", Model)
 
     <p class="text-medium">@Model.Type.GetDescription()</p>
