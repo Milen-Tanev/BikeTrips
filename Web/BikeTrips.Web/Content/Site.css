@@ -63,11 +63,6 @@ body > div.container.body-content > div:nth-child(3) > div > a {
     font-size: 1.8em;
 }
 
-/* Not working! */
-.navbar-brand {
-    background-image: url('Images/logo.png');
-}
-
 ul {
     list-style-image: url('images/bike.png');
 }
@@ -105,17 +100,31 @@ ul {
     width: 80%;
 }
 
-/* The Close Button */
-/*.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}*/
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.information-container{
+    width: 30%;
+    float: left;
+}
 
-    .close:hover,
-    .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
+.chat-container {
+    width: 60%;
+    float: right;
+}
+
+.chat-preview-container{
+    border: 2px solid #2C5197;
+    border-radius: 5px;
+    overflow-y: scroll;
+    height: 300px;
+    background-color: rgba(255,255,255,0.5);
+    margin-top: 20px;
+}
+
+textarea{
+    resize:none;
 }

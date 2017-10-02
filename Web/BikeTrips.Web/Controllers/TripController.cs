@@ -102,6 +102,11 @@ namespace BikeTrips.Web.Controllers
 
             return JavaScript("window.location = '/Home/Index'");
         }
+
+        public ActionResult Chat()
+        {
+            return this.View();
+        }
     }
 }
 

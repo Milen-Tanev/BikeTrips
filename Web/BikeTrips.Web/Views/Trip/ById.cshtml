@@ -1,5 +1,4 @@
 ﻿@using BikeTrips.Services.Web;
-@using Microsoft.AspNet.Identity
 @using BikeTrips.Web.ViewModels.TripModels
 @model FullTripViewModel
 
@@ -7,79 +6,48 @@
     ViewBag.Title = Model.TripName;
 }
 <div class="row">
-    <h2 class="page-title">Name: @Model.TripName</h2>
-    
-    <div id="buttons-container">
-        @Html.Partial("_ButtonsPartial", Model)
+    <div class="information-container">
+        <h2 class="page-title">Name: @Model.TripName</h2>
+
+        <div id="buttons-container">
+            @Html.Partial("_ButtonsPartial", Model)
+        </div>
+
+        <p class="text-medium">@Model.Type.GetDescription()</p>
+        <p class="text-medium">Starting in: @Model.StartingPoint</p>
+        <p class="text-medium">On: @Model.StartingTime</p>
+
+
+        Distance length: @Model.Distance km.
+        @if (Model.Denivelation > 0.5)
+        {
+            <p>Denivelation: @Model.Denivelation m.</p>
+        }
+        <p>Details: @Model.Description</p>
+        <p>Created by @Model.User</p>
+        <div class="participants-container">
+            @if (Model.Participants.Count <= 0)
+            {
+                <p class="text-medium">This events has no participants currently</p>
+            }
+            else if (Model.Participants.Count == 1)
+            {
+                @Html.Partial("_ParticipantsPartial", Model)
+                <p>/This event has 1 participant/</p>
+            }
+            else
+            {
+                @Html.Partial("_ParticipantsPartial", Model)
+                <p>/This event has @Model.Participants.Count participants/</p>
+            }
+        </div>
     </div>
 
-    <p class="text-medium">@Model.Type.GetDescription()</p>
-    <p class="text-medium">Starting in: @Model.StartingPoint</p>
-    <p class="text-medium">On: @Model.StartingTime</p>
-</div>
-<div class="row">
-    Additional information: @Model.Description;
-</div>
-<div class="row">
-    Created by @Model.User
-</div>
-
-<div class="row participants-container">
-    @if (Model.Participants.Count <= 0)
+    @if (User.Identity.IsAuthenticated)
     {
-        <p class="text-medium">This events has no participants currently</p>
-    }
-    else if (Model.Participants.Count == 1)
-    {
-        @Html.Partial("_ParticipantsPartial", Model)
-        <p>/This event has 1 participant/</p>
-    }
-    else
-    {
-        @Html.Partial("_ParticipantsPartial", Model)
-        <p>/This event has @Model.Participants.Count participants/</p>
+        <div class="chat-container">
+            @Html.Partial("_ChatPartial");
+        </div>
     }
 </div>
-@if (User.Identity.IsAuthenticated)
-{
-    <div class="row comments-container">
-        <h3 class="page-title">Comments</h3>
-        @if (Model.Comments.Count <= 0)
-        {
-            <p class="text-medium">There are no comments for this trip</p>
-        }
-        else
-        {
-            <ul class="text-medium">
-                Comments:
-                @foreach (var comment in Model.Comments)
-                {
-                    <li>
-                        <h5>Name: @comment.Author.Name</h5>
-                        <div>@comment.Content</div>
-                    </li>
-                }
-            </ul>
-        }
-        @using (Html.BeginForm("Create", "Comment", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-        {
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.TextArea("myTextArea", null, 10, 100, new { @class = "form-control" }) 
-                </div>
-            </div>
-            @Html.HiddenFor(m => m.LocalTimeOffsetMinutes, new { id = "hiddenUserLoginDate" })
-        }
-        @Html.ActionLink("Comment", "../Trip/Create", null, new { @class = "btn btn-info", @role = "button" })
-    </div>
-}
 @Scripts.Render("~/Scripts/Custom/getTimeOffset.js")
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.my-custom-button').click(function () {
-            $('#buttons-container').load('/Home/Index');
-        });
-    })
-
-</script>
