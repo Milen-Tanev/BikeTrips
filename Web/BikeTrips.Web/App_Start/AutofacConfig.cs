@@ -1,17 +1,18 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.SignalR;
 using BikeTrips.Data;
-using System.Data.Entity;
-using System.Reflection;
-using System.Web.Mvc;
+using BikeTrips.Data.Common;
 using BikeTrips.Data.Common.Contracts;
+using BikeTrips.Services.Data;
 using BikeTrips.Services.Data.Contracts;
 using BikeTrips.Services.Web;
 using BikeTrips.Services.Web.Contracts;
-using BikeTrips.Data.Common;
-using Autofac.Integration.SignalR;
 using BikeTrips.Web.Hubs;
 using Microsoft.AspNet.SignalR;
+using System.Data.Entity;
+using System.Reflection;
+using System.Web.Mvc;
 
 namespace BikeTrips.Web.App_Start
 {
@@ -43,9 +44,9 @@ namespace BikeTrips.Web.App_Start
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
             DependencyResolver.SetResolver(new Autofac.Integration.Mvc.AutofacDependencyResolver(container));
-
-            GlobalHost.DependencyResolver = new Autofac.Integration.SignalR.AutofacDependencyResolver(container);
-
+            
+            //SignalR
+            //GlobalHost.DependencyResolver = new Autofac.Integration.SignalR.AutofacDependencyResolver(container);
         }
 
         private static void RegisterServices(ContainerBuilder builder)
@@ -63,6 +64,7 @@ namespace BikeTrips.Web.App_Start
 
             //SignalR !!!!!
             builder.RegisterType<ChatHub>().ExternallyOwned();
+            builder.Register(x => new ChatService()).As<IChatService>().InstancePerLifetimeScope();
 
             builder.RegisterGeneric(typeof(BikeTripsDbRepository<>)).As(typeof(IBikeTripsDbRepository<>)).InstancePerRequest();
         }
