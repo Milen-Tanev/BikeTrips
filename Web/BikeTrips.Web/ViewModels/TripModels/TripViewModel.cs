@@ -33,7 +33,7 @@ namespace BikeTrips.Web.ViewModels.TripModels
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<Trip, TripViewModel>()
-                .ForMember(x => x.User, opt => opt.MapFrom(x => x.Creator.Name));
+                .ForMember(x => x.User, opt => opt.MapFrom(x => x.Creator.UserName));
         }
     }
 }

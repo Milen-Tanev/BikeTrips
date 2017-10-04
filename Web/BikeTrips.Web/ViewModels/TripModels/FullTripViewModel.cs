@@ -54,7 +54,7 @@ namespace BikeTrips.Web.ViewModels.TripModels
             //    .ForMember(x => x.Comments, opt => opt.MapFrom(x => x.Comments
             //    .Select(p => p.Id).ToList()));
             configuration.CreateMap<Trip, FullTripViewModel>()
-                .ForMember(x => x.User, opt => opt.MapFrom(x => x.Creator.Name));
+                .ForMember(x => x.User, opt => opt.MapFrom(x => x.Creator.UserName));
         }
     }
 }

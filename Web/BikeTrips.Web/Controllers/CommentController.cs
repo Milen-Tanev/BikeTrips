@@ -10,13 +10,13 @@ namespace BikeTrips.Web.Controllers
     public class CommentController : Controller
     {
         private ITripsService trips;
-        private ICommentsService comments;
+        private IChatService comments;
 
         public CommentController()
         {
         }
 
-        public CommentController(ITripsService trips, ICommentsService comments)
+        public CommentController(ITripsService trips, IChatService comments)
         {
             this.trips = trips;
             this.comments = comments;
@@ -34,7 +34,7 @@ namespace BikeTrips.Web.Controllers
             var comment = AutoMapperConfig
                     .Configuration.CreateMapper()
                     .Map<Comment>(model);
-            this.comments.AddComment(comment, tripUrlId);
+            this.comments.Add(comment, tripUrlId);
             return this.View();
         }
     }

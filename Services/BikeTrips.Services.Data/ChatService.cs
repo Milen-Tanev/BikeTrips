@@ -6,7 +6,7 @@ using BikeTrips.Services.Web.Contracts;
 
 namespace BikeTrips.Services.Data
 {
-    public class CommenstService : ICommentsService
+    public class ChatService : IChatService
     {
         private IBikeTripsDbRepository<Comment> comments;
         private IBikeTripsDbRepository<Trip> trips;
@@ -14,11 +14,11 @@ namespace BikeTrips.Services.Data
         private IIdentifierProvider provider;
         private IUnitOfWork unitOfWork;
 
-        public CommenstService()
+        public ChatService()
         {
         }
 
-        public CommenstService(IBikeTripsDbRepository<Comment> comments,
+        public ChatService(IBikeTripsDbRepository<Comment> comments,
                                 IBikeTripsDbRepository<Trip> trips,
                                 IUserService users,
                                 IIdentifierProvider provider,
@@ -31,7 +31,7 @@ namespace BikeTrips.Services.Data
             this.unitOfWork = unitOfWork;
         }
 
-        public void AddComment(Comment comment, string tripUrl)
+        public void Add(Comment comment, string tripUrl)
         {
             comment.Author = this.users.GetCurrentUser();
             var tripId = this.provider.GetId(tripUrl);

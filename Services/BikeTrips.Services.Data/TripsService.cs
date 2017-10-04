@@ -46,7 +46,7 @@ namespace BikeTrips.Services.Data
         //    {
         //        searchString = searchString.ToLower();
         //        searchResult = searchResult.Where(t => t.TripName.ToLower().Contains(searchString)
-        //                                            || t.Creator.Name.ToLower().Contains(searchString)
+        //                                            || t.Creator.UserName.ToLower().Contains(searchString)
         //                                            || t.StartingPoint.ToLower().Contains(searchString))
         //                                            .OrderBy(t => t.StartingTime);
         //    }

@@ -7,6 +7,6 @@ namespace BikeTrips.Web.ViewModels.UserModels
     {
         public string id;
 
-        public string Name { get; set; }
+        public string UserName { get; set; }
     }
 }

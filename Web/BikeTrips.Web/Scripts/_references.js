@@ -6,6 +6,7 @@
 /// <reference path="custom/listinmodal.js" />
 /// <reference path="custom/redirectafterwait.js" />
 /// <reference path="custom/searchonchange.js" />
+/// <reference path="jquery.signalr-2.1.1.min.js" />
 /// <reference path="jquery.unobtrusive-ajax.min.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />

@@ -17,12 +17,7 @@ namespace BikeTrips.Data.Models
             this.VisitedEvents = new List<Trip>();
             this.Comments = new List<Comment>();
         }
-
-        [Required]
-        [MaxLength(CommonStringLengthConstants.StandardMaxLength)]
-        [MinLength(CommonStringLengthConstants.StandardMinLength)]
-        public string Name { get; set; }
-        
+          
         public virtual ICollection<Trip> AdministeredEvents { get; set; }
 
         public virtual ICollection<Trip> VisitedEvents { get; set; }
