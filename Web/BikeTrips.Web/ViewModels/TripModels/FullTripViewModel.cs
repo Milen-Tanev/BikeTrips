@@ -27,7 +27,7 @@ namespace BikeTrips.Web.ViewModels.TripModels
 
         public string Description { get; set; }
 
-        public int LocalTimeOffsetMinutes { get; set; }
+        public short LocalTimeOffsetMinutes { get; set; }
 
         public DateTime ServerTimeReservation { get; protected set; }
 

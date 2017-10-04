@@ -3,6 +3,8 @@ using BikeTrips.Services.Data.Contracts;
 using BikeTrips.Services.Web.Contracts;
 using BikeTrips.Web.Infrastructure.Mappings;
 using BikeTrips.Web.ViewModels.TripModels;
+using Common.Constants;
+using System;
 using System.Web.Mvc;
 
 namespace BikeTrips.Web.Controllers
@@ -50,6 +52,23 @@ namespace BikeTrips.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (model.Description == null)
+                {
+                    model.Description = UiMessageConstants.NoTripDescription;
+                }
+
+                if (this.trips.GetTripByName(model.TripName) != null)
+                {
+                    ModelState.AddModelError("TripName", "Please, choose another trip name.");
+                    return View(model);
+                }
+
+                if (model.TripDate < DateTime.UtcNow.AddMinutes(model.LocalTimeOffsetMinutes))
+                {
+                    ModelState.AddModelError("TripDate", "The date of the trip cannot be in the past.");
+                    return View(model);
+                }
+
                 var trip = AutoMapperConfig
                     .Configuration.CreateMapper()
                     .Map<Trip>(model);

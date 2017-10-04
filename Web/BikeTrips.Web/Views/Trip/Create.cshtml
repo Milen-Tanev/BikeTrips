@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.TripTime, new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(m => m.TripTime, new { @class = "col-md-2 control-label", @id="startingTime"})
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.TripTime, new { @class = "form-control", type = "time" })
             </div>
@@ -75,3 +75,4 @@ else
 }
 
 @Scripts.Render("~/Scripts/Custom/getTimeOffset.js")
+@Scripts.Render("~/Scripts/Custom/setupDatePicker.js")

@@ -1,5 +1,4 @@
 ﻿using BikeTrips.Data.Common.Contracts;
-using Common.Constants;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
@@ -24,6 +23,7 @@ namespace BikeTrips.Data.Models
 
         public virtual ICollection<Comment> Comments { get; set; }
 
+        [Required]
         public bool IsDeleted { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

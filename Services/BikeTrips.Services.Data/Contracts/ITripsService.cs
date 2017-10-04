@@ -18,5 +18,7 @@ namespace BikeTrips.Services.Data.Contracts
 
         void RemoveParticipantFrom(Trip trip);
         void DeleteTrip(Trip trip);
+
+        Trip GetTripByName(string tripName);
     }
 }

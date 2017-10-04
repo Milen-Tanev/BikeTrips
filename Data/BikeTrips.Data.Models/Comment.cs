@@ -23,7 +23,8 @@ namespace BikeTrips.Data.Models
         public virtual User Author { get; set; }
 
         [Required]
-        public int LocalTimeOffsetMinutes { get; set; }
+        [Range(CommonNumericConstants.MinOffset, CommonNumericConstants.MaxOffset)]
+        public short LocalTimeOffsetMinutes { get; set; }
         
         [Required]
         public virtual Trip Subject { get; set; }
@@ -31,6 +32,7 @@ namespace BikeTrips.Data.Models
         [Required]
         public DateTime UtcTime { get; private set; }
 
+        [Required]
         public bool IsDeleted {  get; set; }
     }
 }

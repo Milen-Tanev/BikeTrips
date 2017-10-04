@@ -108,5 +108,12 @@ namespace BikeTrips.Services.Data
             var id = this.identifierProvider.GetId(urlId);
             return this.trips.GetById(id);
         }
+
+        public Trip GetTripByName(string tripName)
+        {
+            var trip = this.trips.All()
+                .Where(t => t.TripName == tripName).FirstOrDefault();
+            return trip;
+        }
     }
 }

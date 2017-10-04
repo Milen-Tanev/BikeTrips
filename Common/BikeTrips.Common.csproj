@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\CommonNumericConstants.cs" />
     <Compile Include="Constants\CommonStringLengthConstants.cs" />
     <Compile Include="Constants\ErrorMessageConstants.cs" />
     <Compile Include="Constants\IdentityConstants.cs" />
+    <Compile Include="Constants\UiMessageConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

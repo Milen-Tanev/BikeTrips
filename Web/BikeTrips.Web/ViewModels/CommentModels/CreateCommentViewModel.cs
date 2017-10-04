@@ -2,8 +2,6 @@
 using BikeTrips.Web.Infrastructure.Mappings;
 using Common.Constants;
 using System.ComponentModel.DataAnnotations;
-using AutoMapper;
-using System;
 
 namespace BikeTrips.Web.ViewModels.CommentModels
 {
@@ -17,7 +15,7 @@ namespace BikeTrips.Web.ViewModels.CommentModels
         public virtual User Author { get; set; }
 
         [Required]
-        public int LocalTimeOffsetMinutes { get; set; }
+        public short LocalTimeOffsetMinutes { get; set; }
 
         public Trip Subject { get; set; }
     }

@@ -4,17 +4,24 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using System.ComponentModel;
+using Common.Constants;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BikeTrips.Web.ViewModels.TripModels
 {
     public class CreateTripViewModel : IMapTo<Trip>
     {
-        [DisplayName("Trip name")]
         [Required]
+        [DisplayName("Trip name")]
+        [StringLength(CommonStringLengthConstants.StandardMaxLength,
+            ErrorMessage = ErrorMessageConstants.InvalidTripNameLengthErrorMessage,
+            MinimumLength = CommonStringLengthConstants.StandardMinLength)]
         public string TripName { get; set; }
 
-        [DisplayName("Starting point")]
         [Required]
+        [StringLength(CommonStringLengthConstants.StandardMaxLength,
+            ErrorMessage = ErrorMessageConstants.InvalidTripStartingPointLengthErrorMessage)]
+        [DisplayName("Starting point")]
         public string StartingPoint { get; set; }
 
         [DisplayName("Trip type")]
@@ -32,14 +39,14 @@ namespace BikeTrips.Web.ViewModels.TripModels
         [Required]
         public double Distance { get; set; }
 
-        public double Denivelation { get; set; }
+        public double? Denivelation { get; set; }
 
-        [Required]
+        [StringLength(CommonStringLengthConstants.LongMaxLength,
+            ErrorMessage = ErrorMessageConstants.InvalidTripNameLengthErrorMessage,
+            MinimumLength = CommonStringLengthConstants.StandardMinLength)]
         public string Description { get; set; }
 
         [Required]
-        public int LocalTimeOffsetMinutes { get; set; }
-
-        public User Creator { get; set; }
+        public short LocalTimeOffsetMinutes { get; set; }
     }
 }

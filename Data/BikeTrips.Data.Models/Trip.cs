@@ -20,8 +20,12 @@ namespace BikeTrips.Data.Models
         public int Id { get; set; }
 
         [Required]
+        [Index(IsUnique = true)]
+        [MaxLength(CommonStringLengthConstants.StandardMaxLength)]
+        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string TripName { get; set; }
 
+        [MaxLength(CommonStringLengthConstants.StandardMaxLength)]
         [Required]
         public string StartingPoint { get; set; }
 
@@ -33,15 +37,20 @@ namespace BikeTrips.Data.Models
         public DateTime StartingTime { get; set; }
 
         [Required]
+        [Range(CommonNumericConstants.MinDistance, CommonNumericConstants.MaxDistance)]
         public double Distance { get; set; }
 
+        [Range(CommonNumericConstants.MinDistance, CommonNumericConstants.MaxDistance)]
         public double Denivelation { get; set; }
 
         [Required]
+        [MaxLength(CommonStringLengthConstants.LongMaxLength)]
+        [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string Description { get; set; }
 
         [Required]
-        public int LocalTimeOffsetMinutes { get; set; }
+        [Range(CommonNumericConstants.MinOffset, CommonNumericConstants.MaxOffset)]
+        public short LocalTimeOffsetMinutes { get; set; }
 
         [Required]
         public DateTime UtcTime { get; protected set; }
@@ -52,6 +61,7 @@ namespace BikeTrips.Data.Models
 
         public virtual ICollection<Comment> Comments { get; protected set; }
 
+        [Required]
         public bool IsDeleted { get; set; }
     }
 }
