@@ -29,13 +29,13 @@ namespace BikeTrips.Web.Controllers
         }
 
 
-        public ActionResult Create(CreateCommentViewModel model, string tripUrlId)
-        {
-            var comment = AutoMapperConfig
-                    .Configuration.CreateMapper()
-                    .Map<Comment>(model);
-            this.comments.Add(comment, tripUrlId);
-            return this.View();
-        }
+        //public ActionResult Create(CreateCommentViewModel model, string tripUrlId)
+        //{
+        //    var comment = AutoMapperConfig
+        //            .Configuration.CreateMapper()
+        //            .Map<Comment>(model);
+        //    this.comments.AddComment(comment, tripUrlId);
+        //    return this.View();
+        //}
     }
 }

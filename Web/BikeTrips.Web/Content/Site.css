@@ -128,3 +128,11 @@ ul {
 textarea{
     resize:none;
 }
+
+.current-user{
+    color: #2C5197;
+}
+
+.other-user{
+    color: #C21807;
+}

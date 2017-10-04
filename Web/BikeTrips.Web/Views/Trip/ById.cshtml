@@ -17,7 +17,6 @@
         <p class="text-medium">Starting in: @Model.StartingPoint</p>
         <p class="text-medium">On: @Model.StartingTime</p>
 
-
         Distance length: @Model.Distance km.
         @if (Model.Denivelation > 0.5)
         {
@@ -46,13 +45,50 @@
     @if (User.Identity.IsAuthenticated)
     {
         <div class="chat-container">
-            @Html.Partial("_ChatPartial");
+            @Html.Partial("_ChatPartial")
         </div>
     }
 </div>
 @section scripts{
     <script src="~/Scripts/jquery.signalR-2.1.1.js" type="text/javascript"></script>
     <script src="~/SignalR/hubs" type="text/javascript"></script>
-    @*<script src="~/Scripts/Custom/timer.js"></script>
-    <script src="~/Scripts/Custom/getTimeOffset.js"></script>*@
+    @*<script src="~/Scripts/Custom/getTimeOffset.js"></script>*@
+
+    <script>
+        $(document).ready(function () {
+            // Reference the auto-generated proxy for the hub.
+            var chat = $.connection.chatHub;
+            // Create a function that the hub can call back to display messages.
+            chat.client.addNewMessageToPage = function (name, message) {
+                // Add the message to the page.
+                if (name == "@Context.User.Identity.Name") {
+                    $('#discussion').append('<li class="current-user"><strong>' + htmlEncode(name)
+                        + '</strong>: ' + htmlEncode(message) + '</li>');
+                    console.log("user");
+                }
+                else {
+                    $('#discussion').append('<li class="other-user"><strong>' + htmlEncode(name)
+                        + '</strong>: ' + htmlEncode(message) + '</li>');
+                }
+            };
+
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+                var room = "@Model.UrlId";
+                chat.server.join(room);
+
+                $('#sendmessage').click(function () {
+                    // Call the Send method on the hub.
+                    chat.server.send($('#message').val(), room);
+                    // Clear text box and reset focus for next comment.
+                    $('#message').val('');
+                });
+            });
+        });
+
+        function htmlEncode(value) {
+            var encodedValue = $('<div />').text(value).html();
+            return encodedValue;
+        }
+    </script>
 }

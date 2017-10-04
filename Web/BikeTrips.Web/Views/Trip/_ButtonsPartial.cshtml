@@ -12,7 +12,7 @@
               InsertionMode=InsertionMode.Replace
           }, new { @class = "btn btn-warning my-custom-button", @role = "button" })
 }
-else
+else if (User.Identity.IsAuthenticated)
 {
         @Ajax.ActionLink("Join event", "JoinTrip", "Trip", new { id = Model.Id },
           new AjaxOptions()

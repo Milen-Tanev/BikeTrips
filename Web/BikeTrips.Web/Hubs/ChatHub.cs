@@ -20,15 +20,27 @@ namespace BikeTrips.Web.Hubs
             this.chat = chat;
         }
 
-        public void Send(string message/*, string room*/)
+        public void Join(string urlId)
+        {
+            if (!HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                throw new Exception("Please, log in in order to comment");
+            }
+
+            Groups.Add(Context.ConnectionId, urlId);
+        }
+
+        public void Send(string content, string urlId)
         {
             if (!HttpContext.Current.User.Identity.IsAuthenticated)
             {
                 throw new Exception("Please, log in in order to comment");
             }
             var name = HttpContext.Current.User.Identity.Name;
-            //this.chat.Add(message, "");
-            Clients.All.AddNewMessageToPage(name, message);
+
+            //this.chat.AddComment(content, urlId);
+
+            Clients.Group(urlId).AddNewMessageToPage(name, content);
         }
     }
 }

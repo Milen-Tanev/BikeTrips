@@ -31,11 +31,19 @@ namespace BikeTrips.Services.Data
             this.unitOfWork = unitOfWork;
         }
 
-        public void Add(Comment comment, string tripUrl)
+        public void AddComment(string content, string tripUrl)
         {
-            comment.Author = this.users.GetCurrentUser();
             var tripId = this.provider.GetId(tripUrl);
             var trip = this.trips.GetById(tripId);
+
+            var comment = new Comment
+            {
+                Author = this.users.GetCurrentUser(),
+                Content = content,
+                Subject = trip,
+                LocalTimeOffsetMinutes = trip.LocalTimeOffsetMinutes
+            };
+
             trip.Comments.Add(comment);
             comment.Subject = trip;
             this.comments.Add(comment);

@@ -420,7 +420,6 @@
     <Content Include="Views\Home\_TripsResults.cshtml" />
     <Content Include="Views\Trip\_ButtonsPartial.cshtml" />
     <Content Include="Views\Trip\_ChatPartial.cshtml" />
-    <Content Include="Views\Trip\Chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,10 +19,11 @@ namespace BikeTrips.Web.Controllers
         {
         }
 
-        public TripController(
-            IUserService users,
-            ITripsService trips,
-            ICacheService cacheService
+        public TripController
+            (
+                IUserService users,
+                ITripsService trips,
+                ICacheService cacheService
             )
         {
             this.users = users;
@@ -37,7 +38,7 @@ namespace BikeTrips.Web.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            
+
             var model = this.trips.GetTripById(urlId);
 
             if (model == null)
@@ -53,7 +54,7 @@ namespace BikeTrips.Web.Controllers
             var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<FullTripViewModel>(model);
             return View(viewModel);
         }
-        
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -95,7 +96,7 @@ namespace BikeTrips.Web.Controllers
                     .Map<FullTripViewModel>(trip);
                 return RedirectToAction("ById", new { urlId = viewModel.UrlId });
             }
-            
+
             return View();
         }
 
@@ -118,7 +119,7 @@ namespace BikeTrips.Web.Controllers
             var trip = this.trips.GetTripById(id);
             this.trips.RemoveParticipantFrom(trip);
             this.cacheService.Remove("trips");
-            
+
             var viewModel = AutoMapperConfig
                     .Configuration.CreateMapper()
                     .Map<FullTripViewModel>(trip);
@@ -134,11 +135,6 @@ namespace BikeTrips.Web.Controllers
             this.cacheService.Remove("trips");
 
             return JavaScript("window.location = '/Home/Index'");
-        }
-
-        public ActionResult Chat()
-        {
-            return this.View();
         }
     }
 }
