@@ -1,0 +1,26 @@
+﻿using BikeTrips.Services.Web.Contracts;
+using System;
+using BikeTrips.Data.Models;
+
+namespace BikeTrips.Services.Web
+{
+    public class DateTimeUtil : IDateTimeUtil
+    {
+        public DateTime Convert(DateTime date, DateTime time)
+        {
+            int year = date.Year;
+            int month = date.Month;
+            int day = date.Day;
+            int hour = time.Hour;
+            int minute = time.Minute;
+            int second = time.Second;
+
+            return new DateTime(year, month, day, hour, minute, second, 0, DateTimeKind.Unspecified);
+        }
+
+        public bool Compare(Trip trip)
+        {
+            return trip.StartingTime.AddMinutes(trip.LocalTimeOffsetMinutes) < DateTime.UtcNow;
+        }
+    }
+}

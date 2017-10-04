@@ -21,6 +21,8 @@ namespace BikeTrips.Web.ViewModels.TripModels
 
         public string User { get; set; }
 
+        public short LocalTimeOffsetMinutes { get; set; }
+
         public string UrlId
         {
             get

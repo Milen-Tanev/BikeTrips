@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using System.ComponentModel;
 using Common.Constants;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BikeTrips.Web.ViewModels.TripModels
 {

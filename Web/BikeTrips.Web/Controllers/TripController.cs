@@ -19,8 +19,11 @@ namespace BikeTrips.Web.Controllers
         {
         }
 
-        public TripController(IUserService users,
-            ITripsService trips, ICacheService cacheService)
+        public TripController(
+            IUserService users,
+            ITripsService trips,
+            ICacheService cacheService
+            )
         {
             this.users = users;
             this.trips = trips;
@@ -36,6 +39,17 @@ namespace BikeTrips.Web.Controllers
             }
             
             var model = this.trips.GetTripById(urlId);
+
+            if (model == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            if (model.StartingTime.AddMinutes(model.LocalTimeOffsetMinutes) < DateTime.UtcNow)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<FullTripViewModel>(model);
             return View(viewModel);
         }
@@ -59,13 +73,13 @@ namespace BikeTrips.Web.Controllers
 
                 if (this.trips.GetTripByName(model.TripName) != null)
                 {
-                    ModelState.AddModelError("TripName", "Please, choose another trip name.");
+                    ModelState.AddModelError("TripName", ErrorMessageConstants.TripNameAlreadyExists);
                     return View(model);
                 }
 
                 if (model.TripDate < DateTime.UtcNow.AddMinutes(model.LocalTimeOffsetMinutes))
                 {
-                    ModelState.AddModelError("TripDate", "The date of the trip cannot be in the past.");
+                    ModelState.AddModelError("TripDate", ErrorMessageConstants.TripDateInThePast);
                     return View(model);
                 }
 

@@ -52,7 +52,7 @@ namespace BikeTrips.Web.App_Start
             builder.Register(x => new HttpCacheService()).As<ICacheService>().InstancePerRequest();
             builder.Register(x => new DateTimeConverter()).As<IDateTimeConverter>().InstancePerRequest();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
-            builder.Register(x => new IdentifierProvider()).As<IIdentifierProvider>();
+            builder.Register(x => new IdentifierProvider()).As<IIdentifierProvider>().InstancePerRequest();
 
             builder.RegisterGeneric(typeof(BikeTripsDbRepository<>)).As(typeof(IBikeTripsDbRepository<>)).InstancePerRequest();
         }

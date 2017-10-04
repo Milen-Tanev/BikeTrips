@@ -58,6 +58,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BikeTripsDbContext.cs" />
+    <Compile Include="Migrations\201710040942503_Initial migration.cs" />
+    <Compile Include="Migrations\201710040942503_Initial migration.Designer.cs">
+      <DependentUpon>201710040942503_Initial migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710040944184_Remove unique index from TripName.cs" />
+    <Compile Include="Migrations\201710040944184_Remove unique index from TripName.Designer.cs">
+      <DependentUpon>201710040944184_Remove unique index from TripName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +78,14 @@
       <Project>{0798ad76-ab34-4ea5-a8fb-28e7fcf70a51}</Project>
       <Name>BikeTrips.Data.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710040942503_Initial migration.resx">
+      <DependentUpon>201710040942503_Initial migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710040944184_Remove unique index from TripName.resx">
+      <DependentUpon>201710040944184_Remove unique index from TripName.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

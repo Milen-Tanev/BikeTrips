@@ -20,7 +20,6 @@ namespace BikeTrips.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [Index(IsUnique = true)]
         [MaxLength(CommonStringLengthConstants.StandardMaxLength)]
         [MinLength(CommonStringLengthConstants.StandardMinLength)]
         public string TripName { get; set; }

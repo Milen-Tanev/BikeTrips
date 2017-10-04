@@ -42,9 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IDateTimeConverter.cs" />
     <Compile Include="Contracts\IIdentifierProvider.cs" />
-    <Compile Include="DateTimeConverter.cs" />
     <Compile Include="EnumDescriptionParser.cs" />
     <Compile Include="HttpCacheService.cs" />
     <Compile Include="Contracts\ICacheService.cs" />
@@ -55,6 +53,10 @@
     <ProjectReference Include="..\..\Common\BikeTrips.Common.csproj">
       <Project>{CDC143CC-B8FA-4A91-A0A5-045D5047D50D}</Project>
       <Name>BikeTrips.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\BikeTrips.Data.Models\BikeTrips.Data.Models.csproj">
+      <Project>{0798AD76-AB34-4EA5-A8FB-28E7FCF70A51}</Project>
+      <Name>BikeTrips.Data.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -19,7 +19,12 @@ namespace BikeTrips.Services.Data
         {
         }
 
-        public TripsService(IBikeTripsDbRepository<Trip> trips, IUserService users, IUnitOfWork unitOfWork, IDateTimeConverter converter, IIdentifierProvider identifierProvider)
+        public TripsService(
+            IBikeTripsDbRepository<Trip> trips,
+            IUserService users,
+            IUnitOfWork unitOfWork,
+            IDateTimeConverter converter, 
+            IIdentifierProvider identifierProvider)
         {
             this.trips = trips;
             this.users = users;

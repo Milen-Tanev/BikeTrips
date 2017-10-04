@@ -3,6 +3,7 @@ using BikeTrips.Services.Web.Contracts;
 using BikeTrips.Web.Infrastructure.Mapping;
 using BikeTrips.Web.ViewModels.TripModels;
 using PagedList;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -24,7 +25,8 @@ namespace BikeTrips.Web.Controllers
         {
             var trips = this.cacheService.Get("trips", () =>
             this.trips.GetAll()
-            .To<TripViewModel>().ToList(), 2 * 60 * 60);
+            .To<TripViewModel>().ToList()
+            .Where(t => t.StartingTime.AddMinutes(t.LocalTimeOffsetMinutes) > DateTime.UtcNow), 2 * 60 * 60);
             var pageNumber = page ?? 1;
             var onePageOfTrips = trips.ToPagedList(pageNumber, 5);
             
@@ -41,8 +43,8 @@ namespace BikeTrips.Web.Controllers
             .To<TripViewModel>().ToList(), 2 * 60 * 60)
             .Where(t => t.StartingPoint.ToLower().Contains(searchString)
                             || t.User.ToLower().Contains(searchString)
-                            || t.StartingPoint.ToLower().Contains(searchString));
-
+                            || t.TripName.ToLower().Contains(searchString));
+            
             var pageNumber = page ?? 1;
             var onePageOfTrips = trips.ToPagedList(pageNumber, 5);
 
