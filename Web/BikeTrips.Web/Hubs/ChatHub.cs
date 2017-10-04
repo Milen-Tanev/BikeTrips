@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
 using BikeTrips.Services.Data.Contracts;
@@ -9,25 +7,26 @@ namespace BikeTrips.Web.Hubs
 {
     public class ChatHub : Hub
     {
-        private IChatService chat;
+        private IChatService comments;
 
         public ChatHub()
         {
         }
 
-        public ChatHub(IChatService chat)
+        public ChatHub(IChatService comments)
         {
-            this.chat = chat;
+            this.comments = comments;
         }
 
         public void Join(string urlId)
         {
-            if (!HttpContext.Current.User.Identity.IsAuthenticated)
+            if (HttpContext.Current.User != null)
             {
-                throw new Exception("Please, log in in order to comment");
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    Groups.Add(Context.ConnectionId, urlId);
+                }
             }
-
-            Groups.Add(Context.ConnectionId, urlId);
         }
 
         public void Send(string content, string urlId)
@@ -38,7 +37,7 @@ namespace BikeTrips.Web.Hubs
             }
             var name = HttpContext.Current.User.Identity.Name;
 
-            //this.chat.AddComment(content, urlId);
+            // this.comments.AddComment(content, urlId);
 
             Clients.Group(urlId).AddNewMessageToPage(name, content);
         }

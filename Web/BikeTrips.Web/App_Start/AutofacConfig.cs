@@ -9,6 +9,9 @@ using BikeTrips.Services.Data.Contracts;
 using BikeTrips.Services.Web;
 using BikeTrips.Services.Web.Contracts;
 using BikeTrips.Data.Common;
+using Autofac.Integration.SignalR;
+using BikeTrips.Web.Hubs;
+using Microsoft.AspNet.SignalR;
 
 namespace BikeTrips.Web.App_Start
 {
@@ -39,7 +42,10 @@ namespace BikeTrips.Web.App_Start
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            DependencyResolver.SetResolver(new Autofac.Integration.Mvc.AutofacDependencyResolver(container));
+
+            GlobalHost.DependencyResolver = new Autofac.Integration.SignalR.AutofacDependencyResolver(container);
+
         }
 
         private static void RegisterServices(ContainerBuilder builder)
@@ -53,6 +59,10 @@ namespace BikeTrips.Web.App_Start
             builder.Register(x => new DateTimeConverter()).As<IDateTimeConverter>().InstancePerRequest();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.Register(x => new IdentifierProvider()).As<IIdentifierProvider>().InstancePerRequest();
+
+
+            //SignalR !!!!!
+            builder.RegisterType<ChatHub>().ExternallyOwned();
 
             builder.RegisterGeneric(typeof(BikeTripsDbRepository<>)).As(typeof(IBikeTripsDbRepository<>)).InstancePerRequest();
         }

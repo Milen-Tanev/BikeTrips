@@ -1,5 +1,4 @@
-﻿using System;
-using BikeTrips.Data.Models;
+﻿using BikeTrips.Data.Models;
 using BikeTrips.Services.Data.Contracts;
 using BikeTrips.Data.Common.Contracts;
 using BikeTrips.Services.Web.Contracts;
