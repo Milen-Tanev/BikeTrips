@@ -365,6 +365,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\fonts\round-regular.ttf" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
+    <Content Include="Scripts\Custom\chatScript.js" />
     <Content Include="Scripts\Custom\getTimeOffset.js" />
     <Content Include="Scripts\Custom\listInModal.js" />
     <Content Include="Scripts\Custom\setupDatePicker.js" />

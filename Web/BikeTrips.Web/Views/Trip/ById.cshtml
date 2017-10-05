@@ -1,4 +1,4 @@
-﻿@using BikeTrips.Services.Web;
+﻿@using System.Web.Script.Serialization
 @using BikeTrips.Web.ViewModels.TripModels
 @model FullTripViewModel
 
@@ -44,6 +44,8 @@
 
     @if (User.Identity.IsAuthenticated)
     {
+        @Html.Hidden("UserNamePasser", Context.User.Identity.Name, new { @id = "user-username" })
+        @Html.Hidden("UrlPasser", Model.UrlId, new { @id = "trip-url" })
         <div class="chat-container">
             @Html.Partial("_ChatPartial", Model.Comments)
         </div>
@@ -52,43 +54,5 @@
 @section Scripts{
     @Scripts.Render("~/Scripts/jquery.signalR-2.1.1.js")
     @Scripts.Render("~/SignalR/hubs")
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var chat = $.connection.chatHub;
-
-            chat.client.addNewMessageToPage = function (name, message) {
-                if (name === "@Context.User.Identity.Name") {
-                    $('#discussion').prepend('<li class="current-user"><strong>' + htmlEncode(name)
-                        + '</strong>: ' + htmlEncode(message) + '</li>');
-                    console.log("user");
-                }
-                else {
-                    $('#discussion').prepend('<li class="other-user"><strong>' + htmlEncode(name)
-                        + '</strong>: ' + htmlEncode(message) + '</li>');
-                }
-            };
-
-            $.connection.hub.start().done(function () {
-                var room = "@Model.UrlId";
-                chat.server.join(room);
-
-                $('#message').keypress(function (event) {
-                    if (event.which == 13) {
-                        $('#sendmessage').click();
-                    }
-                });
-                $('#sendmessage').click(function () {
-                    chat.server.send($('#message').val(), room);
-
-                    $('#message').val('');
-                });
-            });
-
-        });
-        function htmlEncode(value) {
-            var encodedValue = $('<div />').text(value).html();
-            return encodedValue;
-        }
-    </script>
+    @Scripts.Render("~/Scripts/Custom/chatScript.js")
 }

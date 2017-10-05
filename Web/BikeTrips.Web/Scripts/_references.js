@@ -2,6 +2,7 @@
 /// <reference path="ai.0.15.0-build58334.js" />
 /// <reference path="bootstrap.js" />
 /// <reference path="bootstrap-datetimepicker.min.js" />
+/// <reference path="custom/chatscript.js" />
 /// <reference path="custom/gettimeoffset.js" />
 /// <reference path="custom/listinmodal.js" />
 /// <reference path="custom/redirectafterwait.js" />
