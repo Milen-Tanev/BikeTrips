@@ -42,7 +42,7 @@
 
         [StringLength(CommonStringLengthConstants.LongMaxLength,
             ErrorMessage = ErrorMessageConstants.InvalidTripNameLengthErrorMessage,
-            MinimumLength = CommonStringLengthConstants.MinMinLength)]
+            MinimumLength = CommonStringLengthConstants.StandardMinLength)]
         public string Description { get; set; }
 
         [Required]

@@ -5,18 +5,16 @@
     using System.Linq;
     using System.Linq.Expressions;
 
+    using Utils;
+
     public class BikeTripsDbRepository<T> : IBikeTripsDbRepository<T>
         where T : class, IDeletable
     {
         public BikeTripsDbRepository(DbContext context)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException("An instance of DbContext is required to use this repository.", nameof(context));
-            }
+            Guard.ThrowIfNull(context, "Context");
 
             this.Context = context;
-
             this.DbSet = this.Context.Set<T>();
         }
 

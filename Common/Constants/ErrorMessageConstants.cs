@@ -12,5 +12,11 @@
         public const string TripDateInThePast = "The date of the trip cannot be in the past.";
 
         public const string NullError = "{0} cannot be null.";
+
+        public const string NotCreator = "You cannot delete a trip if you are not it's creator.";
+
+        public const string TripHasPassed = "Starting time cannot be less than the current time.";
+
+        public const string  UserNotLoggedIn = "User not logged in.";
     }
 }

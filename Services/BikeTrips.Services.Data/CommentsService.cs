@@ -1,7 +1,5 @@
 ﻿namespace BikeTrips.Services.Data
 {
-    using System;
-
     using BikeTrips.Data.Models;
     using BikeTrips.Data.Common.Contracts;
     using Contracts;
@@ -41,18 +39,15 @@
 
         public void AddComment(string content, string tripUrl)
         {
+            Guard.ThrowIfNull(content, "Comment content");
+            Guard.ThrowIfNull(tripUrl, "Subject url");
+
             var tripId = this.identifierProvider.GetId(tripUrl);
             var trip = this.trips.GetById(tripId);
             var author = this.users.GetCurrentUser();
-            if (trip == null)
-            {
-                throw new ArgumentException("No trip with such Id exists");
-            }
 
-            if (author == null)
-            {
-                throw new ArgumentException("The author of the comment cannot be null");
-            }
+            Guard.ThrowIfNull(trip, "Trip");
+            Guard.ThrowIfNull(author, "Author");
 
             var comment = new Comment
             {

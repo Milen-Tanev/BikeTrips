@@ -14,5 +14,21 @@
                 throw new ArgumentNullException(ErrorMessageConstants.NullError, argumentName);
             }
         }
+
+        public static void ThrowIfDifferent(object firstElement, object secondElement, string errorText)
+        {
+            if (firstElement != secondElement)
+            {
+                throw new UnauthorizedAccessException(errorText);
+            }
+        }
+
+        public static void ThrowIfDateEarlier(DateTime firstDate, DateTime secondDate, string errorText)
+        {
+            if (firstDate < secondDate)
+            {
+                throw new ArgumentException(errorText);
+            }
+        }
     }
 }

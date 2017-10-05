@@ -5,6 +5,7 @@
 
     using BikeTrips.Data.Models;
     using BikeTrips.Data.Common.Contracts;
+    using Common.Constants;
     using Contracts;
     using Utils;
     using Web.Contracts;
@@ -48,33 +49,13 @@
             
             return allTrips;
         }
-
-        //public IQueryable<Trip> Search(string searchString)
-        //{
-        //    var searchResult = this.trips.All()
-        //        .Where(x => x.IsDeleted == false)
-        //        .OrderBy(t => t.StartingTime);
-
-        //    if (!String.IsNullOrEmpty(searchString))
-        //    {
-        //        searchString = searchString.ToLower();
-        //        searchResult = searchResult.Where(t => t.TripName.ToLower().Contains(searchString)
-        //                                            || t.Creator.UserName.ToLower().Contains(searchString)
-        //                                            || t.StartingPoint.ToLower().Contains(searchString))
-        //                                            .OrderBy(t => t.StartingTime);
-        //    }
-
-        //    return searchResult;
-        //}
-
+        
         public void AddTrip(Trip trip, DateTime tripDate, DateTime tripTime)
         {
             var startingTime = converter.Convert(tripDate, tripTime);
             var currentUserTime = DateTime.UtcNow.AddMinutes(trip.LocalTimeOffsetMinutes);
-            if (startingTime < currentUserTime)
-            {
-                throw new ArgumentException("Starting time cannot be less than the current time!");
-            }
+
+            Guard.ThrowIfDateEarlier(startingTime, currentUserTime, ErrorMessageConstants.TripHasPassed);
 
             trip.StartingTime = startingTime;
             var user = this.users.GetCurrentUser();
@@ -102,10 +83,8 @@
         public void DeleteTrip(Trip trip)
         {
             var user = this.users.GetCurrentUser();
-            if (user != trip.Creator)
-            {
-                throw new ArgumentException("You cannot delete a trip if you are not it's creator");
-            }
+
+            Guard.ThrowIfDifferent(user, trip.Creator, ErrorMessageConstants.NotCreator);
 
             trip.IsDeleted = true;
             this.unitOfWork.Commit();

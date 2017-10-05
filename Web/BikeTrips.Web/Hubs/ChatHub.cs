@@ -4,6 +4,7 @@
     using System;
     using System.Web;
 
+    using Common.Constants;
     using Services.Data.Contracts;
     using Utils;
 
@@ -37,7 +38,7 @@
         {
             if (!HttpContext.Current.User.Identity.IsAuthenticated)
             {
-                throw new Exception("Please, log in in order to comment");
+                throw new Exception(ErrorMessageConstants.UserNotLoggedIn);
             }
             var name = HttpContext.Current.User.Identity.Name;
 
