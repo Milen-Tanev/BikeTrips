@@ -3,10 +3,8 @@
 
     chat.client.addNewMessageToPage = function (name, message) {
         if (name === $('#user-username').val()) {
-            console.log('enter');
             $('#discussion').prepend('<li class="current-user"><strong>' + htmlEncode(name)
                 + '</strong>: ' + htmlEncode(message) + '</li>');
-            console.log("user");
         }
         else {
             $('#discussion').prepend('<li class="other-user"><strong>' + htmlEncode(name)
