@@ -10,5 +10,7 @@
 
         public const string TripNameAlreadyExists = "Trip name already exists. Please, choose another trip name.";
         public const string TripDateInThePast = "The date of the trip cannot be in the past.";
+
+        public const string NullError = "{0} cannot be null.";
     }
 }

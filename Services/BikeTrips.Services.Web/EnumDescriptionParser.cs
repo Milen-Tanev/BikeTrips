@@ -9,10 +9,10 @@ namespace BikeTrips.Services.Web
         public static string GetDescription(this Enum value)
         {
             FieldInfo field = value.GetType().GetField(value.ToString());
-            object[] attрs = field.GetCustomAttributes(typeof(DescriptionAttribute), true);
-            if (attрs.Length > 0)
+            object[] attrs = field.GetCustomAttributes(typeof(DescriptionAttribute), true);
+            if (attrs.Length > 0)
             {
-                return ((DescriptionAttribute)attрs[0]).Description;
+                return ((DescriptionAttribute)attrs[0]).Description;
             }
             return string.Empty;
         }

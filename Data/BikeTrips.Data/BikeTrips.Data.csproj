@@ -90,6 +90,10 @@
     <Compile Include="Migrations\201710051133088_Changing Db ICollections.Designer.cs">
       <DependentUpon>201710051133088_Changing Db ICollections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710051409246_Reduced min comment length.cs" />
+    <Compile Include="Migrations\201710051409246_Reduced min comment length.Designer.cs">
+      <DependentUpon>201710051409246_Reduced min comment length.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -106,6 +110,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710051133088_Changing Db ICollections.resx">
       <DependentUpon>201710051133088_Changing Db ICollections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710051409246_Reduced min comment length.resx">
+      <DependentUpon>201710051409246_Reduced min comment length.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

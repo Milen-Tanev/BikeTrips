@@ -8,6 +8,7 @@ using BikeTrips.Services.Data;
 using BikeTrips.Services.Data.Contracts;
 using BikeTrips.Services.Web;
 using BikeTrips.Services.Web.Contracts;
+using BikeTrips.Utils;
 using BikeTrips.Web.Hubs;
 using Microsoft.AspNet.SignalR;
 using System.Data.Entity;
@@ -51,6 +52,7 @@ namespace BikeTrips.Web.App_Start
 
         private static void RegisterServices(ContainerBuilder builder)
         {
+            Guard.ThrowIfNull(builder, "Builder");
             // Configure the db context, user manager and signin manager to use a single instance per request
             builder.RegisterType<BikeTripsDbContext>().AsSelf().InstancePerRequest();
             builder.Register(c => c.Resolve<BikeTripsDbContext>()).As<DbContext>().InstancePerRequest();

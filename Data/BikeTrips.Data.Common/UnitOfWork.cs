@@ -1,5 +1,6 @@
 ﻿using System;
 using BikeTrips.Data.Common.Contracts;
+using BikeTrips.Utils;
 
 namespace BikeTrips.Data.Common
 {
@@ -9,6 +10,8 @@ namespace BikeTrips.Data.Common
 
         public UnitOfWork(BikeTripsDbContext context)
         {
+            Guard.ThrowIfNull(context, "Context");
+
             this.context = context;
         }
 

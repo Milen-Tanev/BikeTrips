@@ -82,6 +82,10 @@
     <Compile Include="Utils\IDateTimeConverter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\BikeTrips.Utils\BikeTrips.Utils.csproj">
+      <Project>{0CFF446F-D73B-4B2B-833F-8539466DEBB8}</Project>
+      <Name>BikeTrips.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\BikeTrips.Data.Common\BikeTrips.Data.Common.csproj">
       <Project>{1A06C937-1720-4979-851A-0001BB9EB1AE}</Project>
       <Name>BikeTrips.Data.Common</Name>

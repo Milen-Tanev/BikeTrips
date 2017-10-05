@@ -4,6 +4,7 @@ using BikeTrips.Data.Common.Contracts;
 using System.Linq;
 using System;
 using BikeTrips.Services.Web.Contracts;
+using BikeTrips.Utils;
 
 namespace BikeTrips.Services.Data
 {
@@ -26,6 +27,12 @@ namespace BikeTrips.Services.Data
             IDateTimeConverter converter, 
             IIdentifierProvider identifierProvider)
         {
+            Guard.ThrowIfNull(trips, "Trips");
+            Guard.ThrowIfNull(users, "Users");
+            Guard.ThrowIfNull(unitOfWork, "Unif of work");
+            Guard.ThrowIfNull(converter, "Converter");
+            Guard.ThrowIfNull(identifierProvider, "Identifier provider");
+
             this.trips = trips;
             this.users = users;
             this.unitOfWork = unitOfWork;

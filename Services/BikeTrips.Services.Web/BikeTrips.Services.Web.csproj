@@ -82,6 +82,10 @@
       <Project>{CDC143CC-B8FA-4A91-A0A5-045D5047D50D}</Project>
       <Name>BikeTrips.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\BikeTrips.Utils\BikeTrips.Utils.csproj">
+      <Project>{0CFF446F-D73B-4B2B-833F-8539466DEBB8}</Project>
+      <Name>BikeTrips.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\BikeTrips.Data.Models\BikeTrips.Data.Models.csproj">
       <Project>{0798AD76-AB34-4EA5-A8FB-28E7FCF70A51}</Project>
       <Name>BikeTrips.Data.Models</Name>

@@ -42,7 +42,7 @@ namespace BikeTrips.Web.ViewModels.TripModels
 
         [StringLength(CommonStringLengthConstants.LongMaxLength,
             ErrorMessage = ErrorMessageConstants.InvalidTripNameLengthErrorMessage,
-            MinimumLength = CommonStringLengthConstants.StandardMinLength)]
+            MinimumLength = CommonStringLengthConstants.MinMinLength)]
         public string Description { get; set; }
 
         [Required]

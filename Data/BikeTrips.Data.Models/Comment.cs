@@ -16,7 +16,7 @@ namespace BikeTrips.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [MinLength(CommonStringLengthConstants.StandardMinLength)]
+        [MinLength(CommonStringLengthConstants.MinMinLength)]
         public string Content { get; set; }
 
         [Required]

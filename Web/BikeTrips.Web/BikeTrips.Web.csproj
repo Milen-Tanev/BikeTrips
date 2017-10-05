@@ -244,7 +244,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
@@ -431,7 +430,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -442,6 +440,10 @@
     <ProjectReference Include="..\..\Common\BikeTrips.Common.csproj">
       <Project>{CDC143CC-B8FA-4A91-A0A5-045D5047D50D}</Project>
       <Name>BikeTrips.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\BikeTrips.Utils\BikeTrips.Utils.csproj">
+      <Project>{0CFF446F-D73B-4B2B-833F-8539466DEBB8}</Project>
+      <Name>BikeTrips.Utils</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Data\BikeTrips.Data.Common\BikeTrips.Data.Common.csproj">
       <Project>{1a06c937-1720-4979-851a-0001bb9eb1ae}</Project>
