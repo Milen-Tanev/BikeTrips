@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoMapper;
-using System.Linq;
-using System.Reflection;
-
-namespace BikeTrips.Web.Infrastructure.Mappings
+﻿namespace BikeTrips.Web.Infrastructure.Mappings
 {
+    using AutoMapper;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+
     public class AutoMapperConfig
     {
         public static MapperConfiguration Configuration { get; private set; }

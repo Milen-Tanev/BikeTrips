@@ -1,8 +1,9 @@
-﻿using Common.Constants;
-using System;
-
-namespace BikeTrips.Utils
+﻿namespace BikeTrips.Utils
 {
+    using System;
+
+    using Common.Constants;
+
     public static class Guard
     {
         public static void ThrowIfNull(object argumentValue, string argumentName)

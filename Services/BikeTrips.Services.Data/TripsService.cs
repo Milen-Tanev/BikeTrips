@@ -1,13 +1,14 @@
-﻿using BikeTrips.Services.Data.Contracts;
-using BikeTrips.Data.Models;
-using BikeTrips.Data.Common.Contracts;
-using System.Linq;
-using System;
-using BikeTrips.Services.Web.Contracts;
-using BikeTrips.Utils;
-
-namespace BikeTrips.Services.Data
+﻿namespace BikeTrips.Services.Data
 {
+    using System;
+    using System.Linq;
+
+    using BikeTrips.Data.Models;
+    using BikeTrips.Data.Common.Contracts;
+    using Contracts;
+    using Utils;
+    using Web.Contracts;
+
     public class TripsService : ITripsService
     {
         private IBikeTripsDbRepository<Trip> trips;

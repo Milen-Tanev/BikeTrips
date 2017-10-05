@@ -1,9 +1,8 @@
-﻿using System;
-using BikeTrips.Data.Common.Contracts;
-using BikeTrips.Utils;
-
-namespace BikeTrips.Data.Common
+﻿namespace BikeTrips.Data.Common
 {
+    using Contracts;
+    using Utils;
+
     public class UnitOfWork : IUnitOfWork
     {
         private readonly BikeTripsDbContext context;

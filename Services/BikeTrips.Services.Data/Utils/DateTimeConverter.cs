@@ -1,8 +1,11 @@
-﻿using BikeTrips.Services.Web.Contracts;
-using System;
+﻿
 
 namespace BikeTrips.Services.Web
 {
+    using System;
+
+    using Contracts;
+
     public class DateTimeConverter : IDateTimeConverter
     {
         public DateTime Convert(DateTime date, DateTime time)

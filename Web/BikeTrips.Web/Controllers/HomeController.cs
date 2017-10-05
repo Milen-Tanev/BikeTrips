@@ -1,15 +1,17 @@
-﻿using BikeTrips.Services.Data.Contracts;
-using BikeTrips.Services.Web.Contracts;
-using BikeTrips.Web.Infrastructure.Mapping;
-using BikeTrips.Web.ViewModels.TripModels;
-using Common.Constants;
-using PagedList;
-using System;
-using System.Linq;
-using System.Web.Mvc;
-
-namespace BikeTrips.Web.Controllers
+﻿namespace BikeTrips.Web.Controllers
 {
+    using PagedList;
+    using System;
+    using System.Linq;
+    using System.Web.Mvc;
+
+    using Common.Constants;
+    using Infrastructure.Mapping;
+    using Services.Data.Contracts;
+    using Services.Web.Contracts;
+    using Utils;
+    using ViewModels.TripModels;
+
     public class HomeController : Controller
     {
         private ITripsService trips;
@@ -17,6 +19,9 @@ namespace BikeTrips.Web.Controllers
 
         public HomeController(ITripsService trips, ICacheService cacheService)
         {
+            Guard.ThrowIfNull(trips, "Trips service");
+            Guard.ThrowIfNull(cacheService, "HTTP cache service");
+
             this.trips = trips;
             this.cacheService = cacheService;
         }

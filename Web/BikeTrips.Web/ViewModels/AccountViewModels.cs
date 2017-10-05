@@ -1,9 +1,10 @@
-﻿using Common.Constants;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace BikeTrips.Web.Models
+﻿namespace BikeTrips.Web.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using Common.Constants;
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

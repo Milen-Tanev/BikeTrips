@@ -1,22 +1,21 @@
-﻿using Autofac;
-using Autofac.Integration.Mvc;
-using Autofac.Integration.SignalR;
-using BikeTrips.Data;
-using BikeTrips.Data.Common;
-using BikeTrips.Data.Common.Contracts;
-using BikeTrips.Services.Data;
-using BikeTrips.Services.Data.Contracts;
-using BikeTrips.Services.Web;
-using BikeTrips.Services.Web.Contracts;
-using BikeTrips.Utils;
-using BikeTrips.Web.Hubs;
-using Microsoft.AspNet.SignalR;
-using System.Data.Entity;
-using System.Reflection;
-using System.Web.Mvc;
-
-namespace BikeTrips.Web.App_Start
+﻿namespace BikeTrips.Web.App_Start
 {
+    using Autofac;
+    using Autofac.Integration.Mvc;
+    using Microsoft.AspNet.SignalR;
+    using System.Data.Entity;
+    using System.Reflection;
+    using System.Web.Mvc;
+
+    using Data;
+    using Data.Common;
+    using Data.Common.Contracts;
+    using Hubs;
+    using Services.Data.Contracts;
+    using Services.Web;
+    using Services.Web.Contracts;
+    using Utils;
+
     public static class AutofacConfig
     {
         public static void RegisterAutofac()

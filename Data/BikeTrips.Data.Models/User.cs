@@ -1,13 +1,14 @@
-﻿using BikeTrips.Data.Common.Contracts;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Claims;
-using System.Threading.Tasks;
-
-namespace BikeTrips.Data.Models
+﻿namespace BikeTrips.Data.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+
+    using Common.Contracts;
+    
     public class User : IdentityUser, IDeletable
     {
         public User()

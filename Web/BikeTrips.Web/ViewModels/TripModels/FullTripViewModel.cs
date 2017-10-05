@@ -1,15 +1,16 @@
-﻿using System;
-using AutoMapper;
-using BikeTrips.Data.Models;
-using BikeTrips.Web.Infrastructure.Mappings;
-using System.Collections.Generic;
-using BikeTrips.Services.Web.Contracts;
-using BikeTrips.Services.Web;
-using BikeTrips.Web.ViewModels.UserModels;
-using BikeTrips.Web.ViewModels.CommentModels;
-
-namespace BikeTrips.Web.ViewModels.TripModels
+﻿namespace BikeTrips.Web.ViewModels.TripModels
 {
+    using AutoMapper;
+    using System;
+    using System.Collections.Generic;
+
+    using CommentModels;
+    using Data.Models;
+    using Infrastructure.Mappings;
+    using Services.Web.Contracts;
+    using Services.Web;
+    using UserModels;
+
     public class FullTripViewModel : IMapFrom<Trip>, IMapTo<Trip>, ICustomMappings
     {
         public int Id { get; set; }
@@ -51,9 +52,6 @@ namespace BikeTrips.Web.ViewModels.TripModels
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {            
-            //configuration.CreateMap<Trip, FullTripViewModel>()
-            //    .ForMember(x => x.Comments, opt => opt.MapFrom(x => x.Comments
-            //    .Select(p => p.Id).ToList()));
             configuration.CreateMap<Trip, FullTripViewModel>()
                 .ForMember(x => x.User, opt => opt.MapFrom(x => x.Creator.UserName));
         }

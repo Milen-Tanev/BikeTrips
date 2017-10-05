@@ -1,12 +1,11 @@
-﻿using AutoMapper.QueryableExtensions;
-using BikeTrips.Web.Infrastructure.Mappings;
-using System;
-using System.Linq;
-using System.Linq.Expressions;
-
-namespace BikeTrips.Web.Infrastructure.Mapping
+﻿namespace BikeTrips.Web.Infrastructure.Mapping
 {
+    using AutoMapper.QueryableExtensions;
+    using System;
+    using System.Linq;
+    using System.Linq.Expressions;
 
+    using Mappings;
 
     public static class QueryableExtensions
     {
@@ -14,5 +13,5 @@ namespace BikeTrips.Web.Infrastructure.Mapping
         {
             return source.ProjectTo(AutoMapperConfig.Configuration, membersToExpand);
         }
-    }
+    }   
 }

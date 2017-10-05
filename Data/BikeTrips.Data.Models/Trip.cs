@@ -1,12 +1,12 @@
-﻿using BikeTrips.Data.Common.Contracts;
-using Common.Constants;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace BikeTrips.Data.Models
+﻿namespace BikeTrips.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using Common.Contracts;
+    using global::Common.Constants;
+
     public class Trip : IDeletable
     {
         public Trip()

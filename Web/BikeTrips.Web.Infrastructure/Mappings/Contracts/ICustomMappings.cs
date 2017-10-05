@@ -1,7 +1,7 @@
-﻿using AutoMapper;
-
-namespace BikeTrips.Web.Infrastructure.Mappings
+﻿namespace BikeTrips.Web.Infrastructure.Mappings
 {
+    using AutoMapper;
+
     public interface ICustomMappings
     {
         void CreateMappings(IMapperConfigurationExpression configuration);

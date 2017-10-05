@@ -1,12 +1,13 @@
-﻿using AutoMapper;
-using BikeTrips.Data.Models;
-using BikeTrips.Services.Web;
-using BikeTrips.Services.Web.Contracts;
-using BikeTrips.Web.Infrastructure.Mappings;
-using System;
-
-namespace BikeTrips.Web.ViewModels.TripModels
+﻿namespace BikeTrips.Web.ViewModels.TripModels
 {
+    using AutoMapper;
+    using System;
+
+    using Data.Models;
+    using Services.Web;
+    using Services.Web.Contracts;
+    using Infrastructure.Mappings;
+
     public class TripViewModel : IMapFrom<Trip>, ICustomMappings
     {
         public int Id { get; set; }

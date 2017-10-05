@@ -1,13 +1,13 @@
-﻿using BikeTrips.Data.Models;
-using BikeTrips.Web.Infrastructure.Mappings;
-using System;
-using System.ComponentModel.DataAnnotations;
-using AutoMapper;
-using System.ComponentModel;
-using Common.Constants;
-
-namespace BikeTrips.Web.ViewModels.TripModels
+﻿namespace BikeTrips.Web.ViewModels.TripModels
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
+
+    using Common.Constants;
+    using Data.Models;
+    using Infrastructure.Mappings;
+ 
     public class CreateTripViewModel : IMapTo<Trip>
     {
         [Required]

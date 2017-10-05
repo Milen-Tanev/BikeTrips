@@ -1,9 +1,9 @@
-﻿using BikeTrips.Services.Web;
-using Common.Constants;
-using NUnit.Framework;
-
-namespace BikeTrips.Services.Web.Tests
+﻿namespace BikeTrips.Services.Web.Tests
 {
+    using NUnit.Framework;
+
+    using Web;
+
     [TestFixture]
     public class IdentifierProviderShould
     {

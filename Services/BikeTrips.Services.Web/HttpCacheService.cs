@@ -1,10 +1,11 @@
-﻿using BikeTrips.Services.Web.Contracts;
-using System;
-using System.Web;
-using System.Web.Caching;
-
-namespace BikeTrips.Services.Web
+﻿namespace BikeTrips.Services.Web
 {
+    using System;
+    using System.Web;
+    using System.Web.Caching;
+
+    using Contracts;
+
     public class HttpCacheService : ICacheService
     {
         private static readonly object LockObject = new object();

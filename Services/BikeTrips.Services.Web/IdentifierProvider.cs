@@ -1,10 +1,11 @@
-﻿using BikeTrips.Services.Web.Contracts;
-using Common.Constants;
-using System;
-using System.Text;
-
-namespace BikeTrips.Services.Web
+﻿namespace BikeTrips.Services.Web
 {
+    using System;
+    using System.Text;
+
+    using Contracts;
+    using Common.Constants;
+
     public class IdentifierProvider : IIdentifierProvider
     {
         public int GetId(string urlId)

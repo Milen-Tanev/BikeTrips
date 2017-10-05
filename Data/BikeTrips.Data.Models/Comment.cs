@@ -1,10 +1,11 @@
-﻿using BikeTrips.Data.Common.Contracts;
-using Common.Constants;
-using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace BikeTrips.Data.Models
+﻿namespace BikeTrips.Data.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using Common.Contracts;
+    using global::Common.Constants;
+
     public class Comment : IDeletable, IComparable<Comment>
     {
         public Comment()

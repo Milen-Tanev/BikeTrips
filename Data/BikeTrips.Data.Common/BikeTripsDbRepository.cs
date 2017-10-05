@@ -1,10 +1,10 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
-using System.Linq.Expressions;
-
-namespace BikeTrips.Data.Common.Contracts
+﻿namespace BikeTrips.Data.Common.Contracts
 {
+    using System;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Linq.Expressions;
+
     public class BikeTripsDbRepository<T> : IBikeTripsDbRepository<T>
         where T : class, IDeletable
     {

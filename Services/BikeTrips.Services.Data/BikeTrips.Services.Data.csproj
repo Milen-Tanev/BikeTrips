@@ -71,8 +71,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChatService.cs" />
-    <Compile Include="Contracts\IChatService.cs" />
+    <Compile Include="CommentsService.cs" />
+    <Compile Include="Contracts\ICommentsService.cs" />
     <Compile Include="Contracts\ITripsService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

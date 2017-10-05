@@ -1,9 +1,9 @@
-﻿using System;
-using System.ComponentModel;
-using System.Reflection;
-
-namespace BikeTrips.Services.Web
+﻿namespace BikeTrips.Services.Web
 {
+    using System;
+    using System.ComponentModel;
+    using System.Reflection;
+
     public static class EnumDescriptionParser
     {
         public static string GetDescription(this Enum value)

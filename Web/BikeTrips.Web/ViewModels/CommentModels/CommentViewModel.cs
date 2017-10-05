@@ -1,10 +1,11 @@
-﻿using BikeTrips.Data.Models;
-using BikeTrips.Web.Infrastructure.Mappings;
-using System;
-using AutoMapper;
-
-namespace BikeTrips.Web.ViewModels.CommentModels
+﻿namespace BikeTrips.Web.ViewModels.CommentModels
 {
+    using AutoMapper;
+    using System;
+
+    using Data.Models;
+    using Infrastructure.Mappings;
+
     public class CommentViewModel: IMapFrom<Comment>, ICustomMappings
     {
         public string Content { get; set; }

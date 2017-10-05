@@ -64,7 +64,7 @@
                     console.log("user");
                 }
                 else {
-                    $('#discussion').append('<li class="other-user"><strong>' + htmlEncode(name)
+                    $('#discussion').prepend('<li class="other-user"><strong>' + htmlEncode(name)
                         + '</strong>: ' + htmlEncode(message) + '</li>');
                 }
             };

@@ -1,8 +1,8 @@
-﻿using BikeTrips.Data.Models;
-using BikeTrips.Web.Infrastructure.Mappings;
-
-namespace BikeTrips.Web.ViewModels.UserModels
+﻿namespace BikeTrips.Web.ViewModels.UserModels
 {
+    using Data.Models;
+    using Infrastructure.Mappings;
+
     public class ShortUserViewModel : IMapFrom<User>
     {
         public string id;

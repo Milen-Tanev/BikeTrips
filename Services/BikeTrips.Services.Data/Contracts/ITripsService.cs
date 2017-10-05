@@ -1,9 +1,9 @@
-﻿using BikeTrips.Data.Models;
-using System;
-using System.Linq;
-
-namespace BikeTrips.Services.Data.Contracts
+﻿namespace BikeTrips.Services.Data.Contracts
 {
+    using BikeTrips.Data.Models;
+    using System;
+    using System.Linq;
+
     public interface ITripsService
     {
         void AddTrip(Trip trip, DateTime tripDate, DateTime tripTime);

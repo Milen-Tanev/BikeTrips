@@ -1,14 +1,16 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using BikeTrips.Web.Models;
-
-namespace BikeTrips.Web.Controllers
+﻿namespace BikeTrips.Web.Controllers
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+
+    using Models;
+    using Utils;
+
     [Authorize]
     public class ManageController : Controller
     {
@@ -21,6 +23,9 @@ namespace BikeTrips.Web.Controllers
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
+            Guard.ThrowIfNull(userManager, "User manager");
+            Guard.ThrowIfNull(signInManager, "Sign in manager");
+
             UserManager = userManager;
             SignInManager = signInManager;
         }

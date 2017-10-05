@@ -1,10 +1,11 @@
-﻿using BikeTrips.Data.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
-
-namespace BikeTrips.Data
+﻿namespace BikeTrips.Data
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
+
+    using Models;
+
     public class BikeTripsDbContext : IdentityDbContext<User>
     {
         public BikeTripsDbContext()

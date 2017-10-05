@@ -1,14 +1,16 @@
-﻿using BikeTrips.Data.Models;
-using BikeTrips.Services.Data.Contracts;
-using BikeTrips.Services.Web.Contracts;
-using BikeTrips.Web.Infrastructure.Mappings;
-using BikeTrips.Web.ViewModels.TripModels;
-using Common.Constants;
-using System;
-using System.Web.Mvc;
-
-namespace BikeTrips.Web.Controllers
+﻿namespace BikeTrips.Web.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+
+    using Common.Constants;
+    using Data.Models;
+    using Infrastructure.Mappings;
+    using Services.Data.Contracts;
+    using Services.Web.Contracts;
+    using Utils;
+    using ViewModels.TripModels;
+
     public class TripController : Controller
     {
         private IUserService users;
@@ -26,6 +28,10 @@ namespace BikeTrips.Web.Controllers
                 ICacheService cacheService
             )
         {
+            Guard.ThrowIfNull(users, "Users service");
+            Guard.ThrowIfNull(trips, "Trips service");
+            Guard.ThrowIfNull(cacheService, "HTTP cache service");
+
             this.users = users;
             this.trips = trips;
             this.cacheService = cacheService;

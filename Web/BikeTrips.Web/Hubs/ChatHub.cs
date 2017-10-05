@@ -1,20 +1,24 @@
-﻿using System;
-using System.Web;
-using Microsoft.AspNet.SignalR;
-using BikeTrips.Services.Data.Contracts;
-
-namespace BikeTrips.Web.Hubs
+﻿namespace BikeTrips.Web.Hubs
 {
+    using Microsoft.AspNet.SignalR;
+    using System;
+    using System.Web;
+
+    using Services.Data.Contracts;
+    using Utils;
+
     public class ChatHub : Hub
     {
-        private IChatService comments;
+        private ICommentsService comments;
 
         public ChatHub()
         {
         }
 
-        public ChatHub(IChatService comments)
+        public ChatHub(ICommentsService comments)
         {
+            Guard.ThrowIfNull(comments, "Comments service");
+
             this.comments = comments;
         }
 

@@ -1,16 +1,18 @@
-﻿using BikeTrips.Data;
-using BikeTrips.Data.Migrations;
-using BikeTrips.Web.App_Start;
-using BikeTrips.Web.Infrastructure.Mappings;
-using System.Data.Entity;
-using System.Reflection;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
-
-namespace BikeTrips.Web
+﻿namespace BikeTrips.Web
 {
+    using System.Data.Entity;
+    using System.Reflection;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Optimization;
+    using System.Web.Routing;
+
+    using App_Start;
+    using Data;
+    using Data.Migrations;
+    using Infrastructure.Mappings;
+
+
     public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
