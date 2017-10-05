@@ -19,6 +19,7 @@ namespace BikeTrips.Web
             ViewEngines.Engines.Add(new RazorViewEngine());
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<BikeTripsDbContext, Configuration>());
             AutofacConfig.RegisterAutofac();
+            AutofacConfig.RegisterAutofacSignalR();
             AutoMapperConfig automapperConfig = new AutoMapperConfig();
             automapperConfig.Execute(Assembly.GetExecutingAssembly());
 

@@ -1,4 +1,7 @@
-﻿<h3 class="page-title">Chat</h3>
+﻿@using BikeTrips.Web.ViewModels.CommentModels;
+@model ICollection<CommentViewModel>
+
+<h3 class="page-title">Chat</h3>
 
 <div class="container">
     <input type="text" id="message" />
@@ -6,6 +9,21 @@
 </div>
 
 <div class="chat-preview-container">
-    <ul id="discussion"></ul>
-
+    <ul id="discussion">
+        @foreach (var comment in Model)
+        {
+            if (comment.Author == @Context.User.Identity.Name)
+            {
+                <li class="current-user">
+                    <strong>@comment.Author</strong>: @comment.Content
+                </li>
+            }
+            else
+            {
+                <li class="other-user">
+                    <strong>@comment.Author</strong>: @comment.Content
+                </li>
+            }
+        }
+    </ul>
 </div>

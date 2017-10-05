@@ -11,8 +11,8 @@ namespace BikeTrips.Data.Models
     {
         public Trip()
         {
-            this.Participants = new List<User>();
-            this.Comments = new List<Comment>();
+            this.Participants = new HashSet<User>();
+            this.Comments = new SortedSet<Comment>();
             this.UtcTime = DateTime.UtcNow;
         }
 

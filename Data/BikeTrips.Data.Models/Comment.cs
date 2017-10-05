@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BikeTrips.Data.Models
 {
-    public class Comment : IDeletable
+    public class Comment : IDeletable, IComparable<Comment>
     {
         public Comment()
         {
@@ -34,5 +34,10 @@ namespace BikeTrips.Data.Models
 
         [Required]
         public bool IsDeleted {  get; set; }
+
+        public int CompareTo(Comment other)
+        {
+            return this.UtcTime.CompareTo(other.UtcTime) * -1;
+        }
     }
 }

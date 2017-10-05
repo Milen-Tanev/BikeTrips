@@ -37,7 +37,7 @@ namespace BikeTrips.Web.Hubs
             }
             var name = HttpContext.Current.User.Identity.Name;
 
-            // this.comments.AddComment(content, urlId);
+            this.comments.AddComment(content, urlId);
 
             Clients.Group(urlId).AddNewMessageToPage(name, content);
         }

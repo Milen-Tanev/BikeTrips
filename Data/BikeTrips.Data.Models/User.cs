@@ -12,9 +12,9 @@ namespace BikeTrips.Data.Models
     {
         public User()
         {
-            this.AdministeredEvents = new LinkedList<Trip>();
-            this.VisitedEvents = new List<Trip>();
-            this.Comments = new List<Comment>();
+            this.AdministeredEvents = new HashSet<Trip>();
+            this.VisitedEvents = new HashSet<Trip>();
+            this.Comments = new HashSet<Comment>();
         }
           
         public virtual ICollection<Trip> AdministeredEvents { get; set; }

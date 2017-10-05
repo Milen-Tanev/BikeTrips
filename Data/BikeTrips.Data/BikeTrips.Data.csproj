@@ -86,13 +86,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BikeTripsDbContext.cs" />
-    <Compile Include="Migrations\201710040942503_Initial migration.cs" />
-    <Compile Include="Migrations\201710040942503_Initial migration.Designer.cs">
-      <DependentUpon>201710040942503_Initial migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710040944184_Remove unique index from TripName.cs" />
-    <Compile Include="Migrations\201710040944184_Remove unique index from TripName.Designer.cs">
-      <DependentUpon>201710040944184_Remove unique index from TripName.cs</DependentUpon>
+    <Compile Include="Migrations\201710051133088_Changing Db ICollections.cs" />
+    <Compile Include="Migrations\201710051133088_Changing Db ICollections.Designer.cs">
+      <DependentUpon>201710051133088_Changing Db ICollections.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,11 +104,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710040942503_Initial migration.resx">
-      <DependentUpon>201710040942503_Initial migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710040944184_Remove unique index from TripName.resx">
-      <DependentUpon>201710040944184_Remove unique index from TripName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710051133088_Changing Db ICollections.resx">
+      <DependentUpon>201710051133088_Changing Db ICollections.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

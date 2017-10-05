@@ -7,18 +7,18 @@ namespace BikeTrips.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class RemoveuniqueindexfromTripName : IMigrationMetadata
+    public sealed partial class ChangingDbICollections : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RemoveuniqueindexfromTripName));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangingDbICollections));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710040944184_Remove unique index from TripName"; }
+            get { return "201710051133088_Changing Db ICollections"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target
