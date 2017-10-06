@@ -7,13 +7,13 @@ namespace BikeTrips.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Reducedmincommentlength : IMigrationMetadata
+    public sealed partial class NewDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Reducedmincommentlength));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NewDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710051409246_Reduced min comment length"; }
+            get { return "201710061826037_New Db"; }
         }
         
         string IMigrationMetadata.Source

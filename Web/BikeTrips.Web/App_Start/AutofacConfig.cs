@@ -2,6 +2,8 @@
 {
     using Autofac;
     using Autofac.Integration.Mvc;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Microsoft.AspNet.Identity.Owin;
     using Microsoft.AspNet.SignalR;
     using System.Data.Entity;
     using System.Reflection;
@@ -10,6 +12,7 @@
     using Data;
     using Data.Common;
     using Data.Common.Contracts;
+    using Data.Models;
     using Hubs;
     using Services.Data.Contracts;
     using Services.Web;
@@ -18,6 +21,8 @@
 
     public static class AutofacConfig
     {
+        public static bool ApplicationUser { get; private set; }
+
         public static void RegisterAutofac()
         {
             var builder = new ContainerBuilder();
@@ -62,10 +67,8 @@
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.Register(x => new IdentifierProvider()).As<IIdentifierProvider>().InstancePerRequest();
 
-
-            //SignalR !!!!!
-            //builder.RegisterType<ChatHub>().ExternallyOwned();
-            //builder.Register(x => new ChatService()).As<IChatService>().InstancePerLifetimeScope();
+            builder.Register<UserStore<User>>(c => new UserStore<User>()).AsImplementedInterfaces();
+            builder.Register<IdentityFactoryOptions<ApplicationUserManager>>(c => new IdentityFactoryOptions<ApplicationUserManager>());
 
             builder.RegisterGeneric(typeof(BikeTripsDbRepository<>)).As(typeof(IBikeTripsDbRepository<>)).InstancePerRequest();
         }

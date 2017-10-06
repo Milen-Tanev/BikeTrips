@@ -32,3 +32,19 @@ else if (User.Identity.IsAuthenticated)
               InsertionMode = InsertionMode.Replace
           }, new { @class = "btn btn-danger my-custom-button", @role = "button" });
 }
+<div class="participants-container">
+    @switch (Model.Participants.Count)
+            {
+                case 0:
+            <p class="text-medium">This event has no participants currently</p>
+            break;
+        case 1:
+            @Html.Partial("_ParticipantsPartial", Model)
+            <p>/This event has 1 participant/</p>
+            break;
+        default:
+            @Html.Partial("_ParticipantsPartial", Model)
+            <p>/This event has @Model.Participants.Count participants/</p>
+            break;
+    }
+</div>

@@ -62,12 +62,14 @@
         }
 
         [HttpGet]
+        [Authorize(Roles = SeedConstants.UserRoleName)]
         public ActionResult Create()
         {
             return this.View();
         }
 
         [HttpPost]
+        [Authorize(Roles = SeedConstants.UserRoleName)]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateTripViewModel model)
         {

@@ -116,7 +116,7 @@ ul {
     float: right;
 }
 
-.chat-preview-container{
+.chat-preview-container {
     border: 2px solid #2C5197;
     border-radius: 5px;
     overflow-y: scroll;
@@ -125,14 +125,18 @@ ul {
     margin-top: 20px;
 }
 
-textarea{
+textarea {
     resize:none;
 }
 
-.current-user{
+.current-user {
     color: #2C5197;
 }
 
 .other-user{
     color: #C21807;
+}
+
+.my-custom-button {
+    margin: 5px;
 }

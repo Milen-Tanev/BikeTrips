@@ -1,5 +1,4 @@
-﻿@using System.Web.Script.Serialization
-@using BikeTrips.Web.ViewModels.TripModels
+﻿@using BikeTrips.Web.ViewModels.TripModels
 @model FullTripViewModel
 
 @{
@@ -24,27 +23,11 @@
         }
         <p>Details: @Model.Description</p>
         <p>Created by @Model.User</p>
-        <div class="participants-container">
-            @if (Model.Participants.Count <= 0)
-            {
-                <p class="text-medium">This events has no participants currently</p>
-            }
-            else if (Model.Participants.Count == 1)
-            {
-                @Html.Partial("_ParticipantsPartial", Model)
-                <p>/This event has 1 participant/</p>
-            }
-            else
-            {
-                @Html.Partial("_ParticipantsPartial", Model)
-                <p>/This event has @Model.Participants.Count participants/</p>
-            }
-        </div>
     </div>
 
     @if (User.Identity.IsAuthenticated)
-    {
-        @Html.Hidden("UserNamePasser", Context.User.Identity.Name, new { @id = "user-username" })
+            {
+                @Html.Hidden("UserNamePasser", Context.User.Identity.Name, new { @id = "user-username" })
         @Html.Hidden("UrlPasser", Model.UrlId, new { @id = "trip-url" })
         <div class="chat-container">
             @Html.Partial("_ChatPartial", Model.Comments)
@@ -52,7 +35,7 @@
     }
 </div>
 @section Scripts{
-    @Scripts.Render("~/Scripts/jquery.signalR-2.1.1.js")
+                @Scripts.Render("~/Scripts/jquery.signalR-2.1.1.js")
     @Scripts.Render("~/SignalR/hubs")
     @Scripts.Render("~/Scripts/Custom/chatScript.js")
 }

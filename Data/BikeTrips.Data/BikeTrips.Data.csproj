@@ -86,13 +86,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BikeTripsDbContext.cs" />
-    <Compile Include="Migrations\201710051133088_Changing Db ICollections.cs" />
-    <Compile Include="Migrations\201710051133088_Changing Db ICollections.Designer.cs">
-      <DependentUpon>201710051133088_Changing Db ICollections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710051409246_Reduced min comment length.cs" />
-    <Compile Include="Migrations\201710051409246_Reduced min comment length.Designer.cs">
-      <DependentUpon>201710051409246_Reduced min comment length.cs</DependentUpon>
+    <Compile Include="Migrations\201710061826037_New Db.cs" />
+    <Compile Include="Migrations\201710061826037_New Db.Designer.cs">
+      <DependentUpon>201710061826037_New Db.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,17 +98,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\BikeTrips.Common.csproj">
+      <Project>{CDC143CC-B8FA-4A91-A0A5-045D5047D50D}</Project>
+      <Name>BikeTrips.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BikeTrips.Data.Models\BikeTrips.Data.Models.csproj">
       <Project>{0798ad76-ab34-4ea5-a8fb-28e7fcf70a51}</Project>
       <Name>BikeTrips.Data.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710051133088_Changing Db ICollections.resx">
-      <DependentUpon>201710051133088_Changing Db ICollections.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710051409246_Reduced min comment length.resx">
-      <DependentUpon>201710051409246_Reduced min comment length.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710061826037_New Db.resx">
+      <DependentUpon>201710061826037_New Db.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
