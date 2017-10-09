@@ -11,6 +11,7 @@
     using Data.Models;
     using Models;
     using Utils;
+    using Common.Constants;
 
     [Authorize]
     public class AccountController : Controller
@@ -79,11 +80,9 @@
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
+
             switch (result)
             {
-                // bool result = User.IsInRole("admin") 
-
-
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:

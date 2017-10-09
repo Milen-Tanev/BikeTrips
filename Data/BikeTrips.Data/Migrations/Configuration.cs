@@ -30,15 +30,15 @@ namespace BikeTrips.Data.Migrations
             
             var userStore = new UserStore<User>(context);
             var userManager = new UserManager<User>(userStore);
-            var user = new User
+            var adminUser = new User
             {
                 UserName = SeedConstants.AdminUserName,
                 Email = SeedConstants.AdminEmail,
                 EmailConfirmed = true
             };
 
-            userManager.Create(user, SeedConstants.AdminPassowrd);
-            userManager.AddToRole(user.Id, adminRoleName);
+            userManager.Create(adminUser, SeedConstants.AdminPassowrd);
+            userManager.AddToRole(adminUser.Id, adminRoleName);
         }
     }
 }

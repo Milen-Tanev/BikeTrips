@@ -140,3 +140,10 @@ textarea {
 .my-custom-button {
     margin: 5px;
 }
+
+.is-deleted {
+    color: #C21807;
+}
+.is-not-deleted {
+    color: #2C5197;
+}

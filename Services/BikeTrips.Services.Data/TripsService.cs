@@ -107,5 +107,12 @@
                 .Where(t => t.TripName == tripName).FirstOrDefault();
             return trip;
         }
+
+        public IQueryable<Trip> GetAllAdmin()
+        {
+            var trips = this.trips.AdminAll();
+
+            return trips;
+        }
     }
 }

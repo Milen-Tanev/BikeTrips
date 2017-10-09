@@ -29,6 +29,10 @@
         [HttpGet]
         public ActionResult Index(int? page)
         {
+            if (User.IsInRole(SeedConstants.AdminRoleName))
+            {
+                return Redirect("Admin/Home/Index");
+            }
             var trips = this.cacheService.Get("trips", () =>
             this.trips.GetAll()
             .To<TripViewModel>().ToList()

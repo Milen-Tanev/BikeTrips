@@ -1,5 +1,7 @@
 ﻿namespace BikeTrips.Services.Data
 {
+    using System.Linq;
+
     using BikeTrips.Data.Models;
     using BikeTrips.Data.Common.Contracts;
     using Contracts;
@@ -61,6 +63,13 @@
             comment.Subject = trip;
             this.comments.Add(comment);
             this.unitOfWork.Commit();
+        }
+
+        public IQueryable<Comment> GetAllAdmin()
+        {
+            var comments = this.comments.AdminAll();
+
+            return comments;
         }
     }
 }

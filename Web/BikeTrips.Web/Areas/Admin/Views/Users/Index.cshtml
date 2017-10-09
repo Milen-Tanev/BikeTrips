@@ -1,0 +1,14 @@
+﻿@using GridMvc.Html
+@model IQueryable<BikeTrips.Data.Models.User>
+@{
+    ViewBag.Title = "Users administration";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Grid(Model).SetRowCssClasses(x => x.IsDeleted ? "is-deleted" : "is-not-deleted").Columns(c =>
+{
+    c.Add(x => x.Id).Titled("Id");
+    c.Add(x => x.UserName).Titled("Name");
+    c.Add(x => x.Email).Titled("Email");
+    c.Add(x => x.IsDeleted).Titled("Is deleted");
+}).WithPaging(5)

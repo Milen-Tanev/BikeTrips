@@ -34,5 +34,12 @@
 
             return currentUser;
         }
+
+        public IQueryable<User> GetAllAdmin()
+        {
+            var users = this.users.AdminAll();
+
+            return users;
+        }
     }
 }

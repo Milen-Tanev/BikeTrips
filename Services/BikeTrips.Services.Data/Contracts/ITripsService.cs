@@ -17,8 +17,11 @@
         void AddParticipantTo(Trip trip);
 
         void RemoveParticipantFrom(Trip trip);
+
         void DeleteTrip(Trip trip);
 
         Trip GetTripByName(string tripName);
+
+        IQueryable<Trip> GetAllAdmin();
     }
 }
