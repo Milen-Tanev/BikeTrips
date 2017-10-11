@@ -67,7 +67,8 @@
 
         public IQueryable<Comment> GetAllAdmin()
         {
-            var comments = this.comments.AdminAll();
+            var comments = this.comments.AdminAll()
+                .OrderBy(c => c.Author.UserName);
 
             return comments;
         }

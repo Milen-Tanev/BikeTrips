@@ -130,11 +130,11 @@ textarea {
 }
 
 .current-user {
-    color: #2C5197;
+    color: #C21807;
 }
 
 .other-user{
-    color: #C21807;
+    color: #2C5197;
 }
 
 .my-custom-button {
@@ -146,4 +146,33 @@ textarea {
 }
 .is-not-deleted {
     color: #2C5197;
+}
+
+.admin-trip-title {
+    color: inherit;
+}
+
+.table-container {
+    width: 100%;
+    font-size: 120%;
+}
+
+.table-head {
+    color: #2C5197;
+    font-size: 120%;
+    align-self: center;
+}
+
+.custom-table {
+    border: 1px solid black;
+    margin: 5px;
+    align-self: center;
+}
+
+.custom-col {
+    border: 1px solid black;
+    width: 10%;
+    line-height: 20px;
+    text-align: center;
+    padding: 10px;
 }

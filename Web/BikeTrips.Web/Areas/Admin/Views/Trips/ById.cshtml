@@ -1,0 +1,42 @@
+﻿@using BikeTrips.Web.ViewModels.TripModels
+@model FullTripViewModel
+
+@{
+    ViewBag.Title = Model.TripName;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="information-container">
+        <h2 class="page-title">Name: @Model.TripName</h2>
+
+        @*<div id="buttons-container">
+            @Html.Partial("_ButtonsPartial", Model)
+        </div>*@
+
+        <p class="text-medium">@Model.Type</p>
+        <p class="text-medium">Starting in: @Model.StartingPoint</p>
+        <p class="text-medium">On: @Model.StartingTime</p>
+
+        Distance length: @Model.Distance km.
+        @if (Model.Denivelation > 0.5)
+        {
+            <p>Denivelation: @Model.Denivelation m.</p>
+        }
+        <p>Details: @Model.Description</p>
+        <p>Created by @Model.User</p>
+    </div>
+
+    @*@if (User.Identity.IsAuthenticated)
+            {
+                @Html.Hidden("UserNamePasser", Context.User.Identity.Name, new { @id = "user-username" })
+        @Html.Hidden("UrlPasser", Model.UrlId, new { @id = "trip-url" })
+        <div class="chat-container">
+            @Html.Partial("_ChatPartial", Model.Comments)
+        </div>
+    }*@
+</div>
+@*@section Scripts{
+    @Scripts.Render("~/Scripts/jquery.signalR-2.1.1.js")
+    @Scripts.Render("~/SignalR/hubs")
+    @Scripts.Render("~/Scripts/Custom/chatScript.js")
+}*@

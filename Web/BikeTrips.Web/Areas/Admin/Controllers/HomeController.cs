@@ -1,16 +1,11 @@
 ﻿namespace BikeTrips.Web.Areas.Admin.Controllers
 {
-    using PagedList;
-    using System;
     using System.Linq;
     using System.Web.Mvc;
-
-    using Common.Constants;
-    using Infrastructure.Mapping;
+    
     using Services.Data.Contracts;
-    using Services.Web.Contracts;
     using Utils;
-    using ViewModels.TripModels;
+    using ViewModels;
 
     public class HomeController : Controller
     {
@@ -30,23 +25,32 @@
         }
         
         [HttpGet]
-        public ActionResult Index(int? page)
+        public ActionResult Index()
         {
-            var pageNumber = page ?? 1;
-            var pageSize = 5;
+            var users = this.users.GetAllAdmin();
+            var trips = this.trips.GetAllAdmin();
+            var comments = this.comments.GetAllAdmin();
 
-            var trips = this.trips.GetAllAdmin()
-                .OrderBy(t => t.TripName)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .To<TripViewModel>()
-                .ToList();
-            var comments = this.comments.GetAllAdmin()
-                .OrderBy(c => c.Author)
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize);
+            var allParticipants = (from trip in trips select trip.Participants.Count()).Sum();
 
-            return this.View(trips);
+            var model = new HomeIndexViewModel
+            {
+                UsersCount = users.Count(),
+                UsersCountNotDeleted = users.Where(u => u.IsDeleted == false).Count(),
+                UsersCountDeleted = users.Where(u => u.IsDeleted == true).Count(),
+                AverageTripsPerUser = (double)trips.Count() / users.Count(),
+                AverageCommentsPerUser = (double)comments.Count() / users.Count(),
+                TripsCount = trips.Count(),
+                TripsCountNotDeleted = trips.Where(t => t.IsDeleted == false).Count(),
+                TripsCountDeleted = trips.Where(t => t.IsDeleted == true).Count(),
+                AverageParticipantsInTrip = (double)allParticipants / trips.Count(),
+                AverageCommentsPerTrip = (double)comments.Count() / trips.Count(),
+                CommentsCount = comments.Count(),
+                CommentsCountNotDeleted = comments.Where(c => c.IsDeleted == false).Count(),
+                CommentsCountDeleted = comments.Where(c => c.IsDeleted == true).Count(),
+            };
+
+            return this.View(model);
         }
 
         //[HttpPost]

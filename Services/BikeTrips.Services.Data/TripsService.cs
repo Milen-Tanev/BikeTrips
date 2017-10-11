@@ -110,7 +110,8 @@
 
         public IQueryable<Trip> GetAllAdmin()
         {
-            var trips = this.trips.AdminAll();
+            var trips = this.trips.AdminAll()
+                .OrderBy(t => t.StartingTime);
 
             return trips;
         }

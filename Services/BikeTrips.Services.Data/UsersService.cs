@@ -37,7 +37,8 @@
 
         public IQueryable<User> GetAllAdmin()
         {
-            var users = this.users.AdminAll();
+            var users = this.users.AdminAll()
+                .OrderBy(u => u.UserName);
 
             return users;
         }

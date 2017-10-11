@@ -1,4 +1,77 @@
-﻿@{
+﻿@using BikeTrips.Web.Areas.Admin.ViewModels
+@model HomeIndexViewModel
+
+@{
     ViewBag.Title = "Site administration";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
+<h3 class="page-title">@Html.ActionLink("Users stats", "Index", "Users")</h3>
+<div class="table-container">
+    <table class="custom-table">
+        <thead class="table-head">  
+            <tr>
+                <th class="custom-col">Count</th>
+                <th class="custom-col">Not deleted</th>
+                <th class="custom-col">Deleted</th>
+                <th class="custom-col">Avg. trips</th>
+                <th class="custom-col">Avg. comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="custom-col">@Model.UsersCount</td>
+                <td class="custom-col">@Model.UsersCountDeleted</td>
+                <td class="custom-col">@Model.UsersCountNotDeleted</td>
+                <td class="custom-col">@string.Format("{0:F2}", @Model.AverageTripsPerUser)</td>
+                <td class="custom-col">@string.Format("{0:F2}", @Model.AverageCommentsPerUser)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="page-title">@Html.ActionLink("Trips stats", "Index", "Trips")</h3>
+    <table class="custom-table">
+        <thead class="table-head">
+            <tr>
+                <th class="custom-col">Count</th>
+                <th class="custom-col">Not deleted</th>
+                <th class="custom-col">Deleted</th>
+                <th class="custom-col">Avg. participants</th>
+                <th class="custom-col">Avg. comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="custom-col">@Model.TripsCount</td>
+                <td class="custom-col">@Model.TripsCountDeleted</td>
+                <td class="custom-col">@Model.TripsCountNotDeleted</td>
+                <td class="custom-col">@string.Format("{0:F2}", @Model.AverageParticipantsInTrip)</td>
+                <td class="custom-col">@string.Format("{0:F2}", @Model.AverageCommentsPerTrip)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="page-title">@Html.ActionLink("Comments stats", "Index", "Comments")</h3>
+    <table class="custom-table">
+        <thead class="table-head">
+            <tr>
+                <th class="custom-col">Count</th>
+                <th class="custom-col">Not deleted</th>
+                <th class="custom-col">Deleted</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="custom-col">@Model.CommentsCount</td>
+                <td class="custom-col">@Model.CommentsCountNotDeleted</td>
+                <td class="custom-col">@Model.CommentsCountDeleted</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.ActionLink("Create administrator", "../Index/Create", null, new { @class = "btn btn-info", @role = "button" })
+    </div>
+</div>
