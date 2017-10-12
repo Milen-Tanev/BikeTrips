@@ -37,9 +37,9 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.TripTime, new { @class = "col-md-2 control-label", @id="startingTime"})
+            @Html.LabelFor(m => m.TripTime, new { @class = "col-md-2 control-label"})
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.TripTime, new { @class = "form-control", type = "time" })
+                @Html.TextBoxFor(m => m.TripTime, new { @class = "form-control", type = "time", @id = "startingTime" })
             </div>
         </div>
         <div class="form-group">
@@ -74,5 +74,7 @@ else
     @Scripts.Render("~/Scripts/Custom/redirectAfterWait.js")
 }
 
-@Scripts.Render("~/Scripts/Custom/getTimeOffset.js")
-@Scripts.Render("~/Scripts/Custom/setupDatePicker.js")
+@section Scripts {
+    @Scripts.Render("~/Scripts/Custom/getTimeOffset.js")
+    @Scripts.Render("~/Scripts/Custom/setupDatePicker.js")
+}

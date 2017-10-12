@@ -6,7 +6,7 @@
     using System.Web.Mvc;
 
     using Common.Constants;
-    using Infrastructure.Mapping;
+    using Infrastructure.Mappings;
     using Services.Data.Contracts;
     using Services.Web.Contracts;
     using Utils;
@@ -55,7 +55,7 @@
             .Where(t => t.StartingTime.AddMinutes(t.LocalTimeOffsetMinutes) > DateTime.UtcNow),
             CommonNumericConstants.TwoHoursSpan)
             .Where(t => t.StartingPoint.ToLower().Contains(searchString)
-                            || t.User.ToLower().Contains(searchString)
+                            || t.Creator.UserName.ToLower().Contains(searchString)
                             || t.TripName.ToLower().Contains(searchString));
             
             var pageNumber = page ?? 1;

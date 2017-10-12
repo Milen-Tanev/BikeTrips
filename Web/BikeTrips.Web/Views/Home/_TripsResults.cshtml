@@ -21,7 +21,7 @@
                 <td class="trip-list">@Html.ActionLink(@trip.TripName, "ById", "Trip", new { urlId = trip.UrlId }, new { @class = "trip-title" })</td>
                 <td class="trip-list">@trip.StartingPoint</td>
                 <td class="trip-list">@trip.StartingTime</td>
-                <td class="trip-list">@trip.User</td>
+                <td class="trip-list">@Html.ActionLink(@trip.Creator.UserName, "ById", "User", new { trip.Creator.Id }, new { @class= "admin-trip-title" })</td>
             </tr>
         }
     </table>

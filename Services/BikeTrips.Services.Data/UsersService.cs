@@ -35,12 +35,20 @@
             return currentUser;
         }
 
-        public IQueryable<User> GetAllAdmin()
+        public IQueryable<User> GetAllUsersAdmin()
         {
             var users = this.users.AdminAll()
                 .OrderBy(u => u.UserName);
 
             return users;
+        }
+
+        public object GetUserById(string id)
+        {
+            var user = this.users.GetById(id);
+            Guard.ThrowIfNull(user, "User");
+
+            return user;
         }
     }
 }

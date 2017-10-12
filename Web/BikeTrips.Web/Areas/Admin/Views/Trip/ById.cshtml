@@ -1,0 +1,43 @@
+﻿@using BikeTrips.Web.ViewModels.TripModels
+@model FullTripViewModel
+
+@{
+    ViewBag.Title = Model.TripName;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <h2 class="page-title">Name: @Model.TripName</h2>
+    <div class="information-container-div">
+
+        <div class="text-medium">@Model.Type</div>
+        <div class="text-medium">Starting in: @Model.StartingPoint</div>
+        <div class="text-medium">On: @Model.StartingTime</div>
+
+        Distance length: @Model.Distance km.
+        @if (Model.Denivelation > 0.5)
+        {
+            <div>Denivelation: @Model.Denivelation m.</div>
+        }
+        <div>Details: @Model.Description</div>
+        <div>Created by @Html.ActionLink(@Model.User, "ById", "User", new { id=Model.Creator.Id }, new { @class= "admin-trip-title" })</div>
+    </div>
+    <div class="participants-container-div">
+        <ul class="participants-container">
+            Participants
+            @foreach (var participant in Model.Participants)
+            {
+                <li>@participant.UserName</li>
+            }
+        </ul>
+    </div>
+
+    <div class="comments-container-div">
+        <ul class="comments-container">
+            Comments
+            @foreach (var comment in Model.Comments)
+            {
+                <li><strong>@comment.Author:</strong> @comment.Content</li>
+            }
+        </ul>
+    </div>
+</div>

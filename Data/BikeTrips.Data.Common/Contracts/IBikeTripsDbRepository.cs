@@ -19,6 +19,7 @@
 
         T GetById(int id);
 
+        T GetById(string id);
 
         IQueryable<T> Search(Expression<Func<T, bool>> predicate);
     }

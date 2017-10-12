@@ -5,7 +5,7 @@
 
     public class ShortUserViewModel : IMapFrom<User>
     {
-        public string id;
+        public string Id;
 
         public string UserName { get; set; }
     }

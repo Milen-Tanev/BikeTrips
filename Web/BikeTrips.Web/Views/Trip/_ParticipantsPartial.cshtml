@@ -4,29 +4,18 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
+<button id="myBtn" class="btn btn-info my-custom-button">View participants</button>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>_ParticipantsPartial</title>
-
-</head>
-<body>
-    <button id="myBtn" class="btn btn-info my-custom-button">View participants</button>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h4 class="page-title">Participants in @Model.TripName</h4>
-            <ul>
-                @foreach (var user in Model.Participants)
-                {
-                    <li>@user.UserName</li>
-                }
-            </ul>
-        </div>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h4 class="page-title">Participants in @Model.TripName</h4>
+        <ul>
+            @foreach (var user in Model.Participants)
+            {
+                <li>@Html.ActionLink(@user.UserName, "ById", "User", new { id = user.Id }, new { @class = "admin-trip-title" })</li>
+            }
+        </ul>
     </div>
-    @Scripts.Render("~/Scripts/Custom/listInModal.js")
-</body>
-</html>
+</div>
+@Scripts.Render("~/Scripts/Custom/listInModal.js")

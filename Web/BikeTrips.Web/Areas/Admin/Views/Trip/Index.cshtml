@@ -1,0 +1,29 @@
+﻿@using GridMvc.Html
+@using BikeTrips.Web.Areas.Admin.ViewModels
+
+@model IQueryable<TripAdminViewModel>
+@{
+    ViewBag.Title = "Trips administration";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Grid(Model).SetRowCssClasses(x => x.IsDeleted ? "is-deleted" : "is-not-deleted").Columns(c =>
+{
+    c.Add(x => x.Id).Titled("Id");
+    c.Add(x => x.TripName).Titled("Name")
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(x => @Html.ActionLink(x.TripName, "ById", "Trip", new { urlId = x.UrlId }, new { @class = "admin-trip-title" }));
+    c.Add(x => x.Creator.UserName).Titled("Created by")
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(x => @Html.ActionLink(x.Creator.UserName, "ById", "User", new { id = x.Creator.Id }, new { @class = "admin-trip-title" }));
+    c.Add(x => x.StartingPoint).Titled("Starting place");
+    c.Add(x => x.StartingTime).Titled("Starting time");
+    c.Add(x => x.Type).Titled("Trip type");
+    c.Add(x => x.Distance).Titled("Trip length");
+    c.Add(x => x.Description).Titled("Description");
+    c.Add(x => x.IsDeleted).Titled("Is deleted");
+}).WithPaging(5).Sortable(true)

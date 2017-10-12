@@ -69,11 +69,13 @@
         public void AddParticipantTo(Trip trip)
         {
             var user = this.users.GetCurrentUser();
+            Guard.ThrowIfNull(user, "User");
+
             trip.Participants.Add(user);
             this.unitOfWork.Commit();
         }
 
-        public void RemoveParticipantFrom(Trip trip)
+        public void LeaveTrip(Trip trip)
         {
             var user = this.users.GetCurrentUser();
             trip.Participants.Remove(user);
@@ -83,7 +85,6 @@
         public void DeleteTrip(Trip trip)
         {
             var user = this.users.GetCurrentUser();
-
             Guard.ThrowIfDifferent(user, trip.Creator, ErrorMessageConstants.NotCreator);
 
             trip.IsDeleted = true;
@@ -92,13 +93,19 @@
 
         public Trip GetTripById(int id)
         {
-            return this.trips.GetById(id);
+            var trip = this.trips.GetById(id);
+            Guard.ThrowIfNull(trip, "Trip");
+
+            return trip;
         }
 
         public Trip GetTripById(string urlId)
         {
             var id = this.identifierProvider.GetId(urlId);
-            return this.trips.GetById(id);
+            var trip = this.trips.GetById(id);
+            Guard.ThrowIfNull(trip, "Trip");
+
+            return trip;
         }
 
         public Trip GetTripByName(string tripName)

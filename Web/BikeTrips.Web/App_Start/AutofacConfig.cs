@@ -2,7 +2,6 @@
 {
     using Autofac;
     using Autofac.Integration.Mvc;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.AspNet.SignalR;
     using System.Data.Entity;
@@ -12,12 +11,16 @@
     using Data;
     using Data.Common;
     using Data.Common.Contracts;
-    using Data.Models;
     using Hubs;
     using Services.Data.Contracts;
     using Services.Web;
     using Services.Web.Contracts;
     using Utils;
+    using Microsoft.Owin.Security.DataProtection;
+    using Data.Models;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Web;
+    using Microsoft.Owin.Security;
 
     public static class AutofacConfig
     {
@@ -58,7 +61,7 @@
         {
             Guard.ThrowIfNull(builder, "Builder");
             // Configure the db context, user manager and signin manager to use a single instance per request
-            builder.RegisterType<BikeTripsDbContext>().AsSelf().InstancePerRequest();
+            builder.RegisterType<BikeTripsDbContext>().AsSelf().InstancePerRequest(); // .SingleInstance();
             builder.Register(c => c.Resolve<BikeTripsDbContext>()).As<DbContext>().InstancePerRequest();
             var servicesAssembly = Assembly.GetAssembly(typeof(ITripsService));
             builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
@@ -67,8 +70,12 @@
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.Register(x => new IdentifierProvider()).As<IIdentifierProvider>().InstancePerRequest();
 
-            builder.Register<UserStore<User>>(c => new UserStore<User>()).AsImplementedInterfaces();
-            builder.Register<IdentityFactoryOptions<ApplicationUserManager>>(c => new IdentityFactoryOptions<ApplicationUserManager>());
+            //builder.Register<UserStore<User>>(c => new UserStore<User>()).AsImplementedInterfaces();
+            builder.Register(c => new IdentityFactoryOptions<ApplicationUserManager>(){ DataProtectionProvider = new DpapiDataProtectionProvider("BikeTrips") });
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            //builder.Register(c => new ApplicationOAuthProvider(c.Resolve<ApplicationUserManager>())).AsImplementedInterfaces().InstancePerRequest();
+            builder.Register(c => new UserStore<User>(c.Resolve<BikeTripsDbContext>())).AsImplementedInterfaces().InstancePerRequest();
+            //builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).As<IAuthenticationManager>();
 
             builder.RegisterGeneric(typeof(BikeTripsDbRepository<>)).As(typeof(IBikeTripsDbRepository<>)).InstancePerRequest();
         }

@@ -3,10 +3,13 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
+    using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
-    
+
+    using Data.Models;
     using Utils;
+    using ViewModels;
 
     [Authorize]
     public class AccountController : Controller
@@ -51,6 +54,32 @@
             }
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterAdminViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User { UserName = model.Name, Email = model.Email };
+                var result = await UserManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    result = UserManager.AddToRole(user.Id, "Administrator");
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
+            }
+
+            return View(model);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]

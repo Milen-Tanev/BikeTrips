@@ -1,0 +1,23 @@
+﻿@using GridMvc.Html
+@using BikeTrips.Web.ViewModels.UserModels
+@model IQueryable<UserViewModel>
+@{
+    ViewBag.Title = "Users administration";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Grid(Model).SetRowCssClasses(x => x.IsDeleted ? "is-deleted" : "is-not-deleted").Columns(c =>
+{
+    c.Add(x => x.Id).Titled("Id")
+    .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(x => @Html.ActionLink(x.Id, "ById", "User", new { id = x.Id }, new { @class = "admin-trip-title" }));
+    c.Add(x => x.UserName).Titled("Name")
+        .Filterable(true)
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(x => @Html.ActionLink(x.UserName, "ById", "User", new { id = x.Id }, new { @class = "admin-trip-title" }));
+    c.Add(x => x.Email).Titled("Email");
+    c.Add(x => x.IsDeleted).Titled("Is deleted");
+}).WithPaging(5).Sortable(true)

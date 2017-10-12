@@ -1,14 +1,14 @@
 ﻿namespace BikeTrips.Web.ViewModels.TripModels
 {
-    using AutoMapper;
     using System;
 
     using Data.Models;
+    using Infrastructure.Mappings;
     using Services.Web;
     using Services.Web.Contracts;
-    using Infrastructure.Mappings;
+    using UserModels;
 
-    public class TripViewModel : IMapFrom<Trip>, ICustomMappings
+    public class TripViewModel : IMapFrom<Trip>
     {
         public int Id { get; set; }
 
@@ -20,7 +20,7 @@
 
         public DateTime StartingTime { get; set; }
 
-        public string User { get; set; }
+        public ShortUserViewModel Creator { get; set; }
 
         public short LocalTimeOffsetMinutes { get; set; }
 
@@ -31,12 +31,6 @@
                 IIdentifierProvider identifier = new IdentifierProvider();
                 return identifier.GetUrlId(this.Id);
             }
-        }
-
-        public void CreateMappings(IMapperConfigurationExpression configuration)
-        {
-            configuration.CreateMap<Trip, TripViewModel>()
-                .ForMember(x => x.User, opt => opt.MapFrom(x => x.Creator.UserName));
         }
     }
 }

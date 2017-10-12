@@ -11,7 +11,6 @@
     using Data.Models;
     using Models;
     using Utils;
-    using Common.Constants;
 
     [Authorize]
     public class AccountController : Controller

@@ -8,6 +8,7 @@
     {
         User GetCurrentUser();
 
-        IQueryable<User> GetAllAdmin();
+        IQueryable<User> GetAllUsersAdmin();
+        object GetUserById(string urlId);
     }
 }

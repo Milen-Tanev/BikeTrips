@@ -11,7 +11,7 @@
     using Services.Web;
     using UserModels;
 
-    public class FullTripViewModel : IMapFrom<Trip>, IMapTo<Trip>, ICustomMappings
+    public class FullTripViewModel : IMapFrom<Trip>, IMapTo<Trip>, ICustomMapped
     {
         public int Id { get; set; }
 

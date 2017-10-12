@@ -22,20 +22,20 @@
             <p>Denivelation: @Model.Denivelation m.</p>
         }
         <p>Details: @Model.Description</p>
-        <p>Created by @Model.User</p>
+        <p>Created by: @Html.ActionLink(@Model.Creator.UserName, "ById", "User", new { Model.Creator.Id }, new { @class = "admin-trip-title" })</p>
     </div>
 
     @if (User.Identity.IsAuthenticated)
             {
                 @Html.Hidden("UserNamePasser", Context.User.Identity.Name, new { @id = "user-username" })
-        @Html.Hidden("UrlPasser", Model.UrlId, new { @id = "trip-url" })
+                @Html.Hidden("UrlPasser", Model.UrlId, new { @id = "trip-url" })
         <div class="chat-container">
             @Html.Partial("_ChatPartial", Model.Comments)
         </div>
     }
 </div>
 @section Scripts{
-                @Scripts.Render("~/Scripts/jquery.signalR-2.1.1.js")
+    @Scripts.Render("~/Scripts/jquery.signalR-2.1.1.js")
     @Scripts.Render("~/SignalR/hubs")
     @Scripts.Render("~/Scripts/Custom/chatScript.js")
 }

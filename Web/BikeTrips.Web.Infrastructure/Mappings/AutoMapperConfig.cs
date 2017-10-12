@@ -64,10 +64,10 @@
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
-                        where typeof(ICustomMappings).IsAssignableFrom(t) &&
+                        where typeof(ICustomMapped).IsAssignableFrom(t) &&
                               !t.IsAbstract &&
                               !t.IsInterface
-                        select (ICustomMappings)Activator.CreateInstance(t)).ToArray();
+                        select (ICustomMapped)Activator.CreateInstance(t)).ToArray();
 
             foreach (var map in maps)
             {

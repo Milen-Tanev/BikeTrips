@@ -2,7 +2,7 @@
 @using BikeTrips.Web.ViewModels.TripModels
 @model FullTripViewModel
 
-@if (Model.Participants.Any(x => x.id == User.Identity.GetUserId()))
+@if (Model.Participants.Any(x => x.Id == User.Identity.GetUserId()))
 {
     @Ajax.ActionLink("Leave event", "LeaveTrip", "Trip", new { id = Model.Id },
           new AjaxOptions()
@@ -10,7 +10,7 @@
               HttpMethod = "POST",
               UpdateTargetId = "buttons-container",
               InsertionMode=InsertionMode.Replace
-          }, new { @class = "btn btn-warning my-custom-button", @role = "button" })
+          }, new { @class = "btn btn-warning my-custom-button btn-vertical", @role = "button" })
 }
 else if (User.Identity.IsAuthenticated)
 {
@@ -20,7 +20,7 @@ else if (User.Identity.IsAuthenticated)
               HttpMethod = "POST",
               UpdateTargetId = "buttons-container",
               InsertionMode = InsertionMode.Replace
-          }, new { @class = "btn btn-info my-custom-button", @role = "button" });
+          }, new { @class = "btn btn-info my-custom-button btn-vertical", @role = "button" });
 }
 @if (Model.Creator.Id == User.Identity.GetUserId())
 {
@@ -30,7 +30,7 @@ else if (User.Identity.IsAuthenticated)
               HttpMethod = "POST",
               UpdateTargetId = "buttons-container",
               InsertionMode = InsertionMode.Replace
-          }, new { @class = "btn btn-danger my-custom-button", @role = "button" });
+          }, new { @class = "btn btn-danger my-custom-button btn-vertical", @role = "button" });
 }
 <div class="participants-container">
     @switch (Model.Participants.Count)

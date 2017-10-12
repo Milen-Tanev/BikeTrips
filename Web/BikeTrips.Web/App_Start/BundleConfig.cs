@@ -14,8 +14,7 @@
                         "~/Scripts/jquery.validate*"));
             // Ajax
             bundles.Add(new ScriptBundle("~/bundles/jqueryajax").Include(
-                        "~/Scripts/jquery.unobtrusive-ajax.js",
-                        "~/Scripts/jquery.unobtrusive-ajax.min.js"));
+                        "~/Scripts/jquery.unobtrusive-ajax.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

@@ -16,7 +16,7 @@
 
         void AddParticipantTo(Trip trip);
 
-        void RemoveParticipantFrom(Trip trip);
+        void LeaveTrip(Trip trip);
 
         void DeleteTrip(Trip trip);
 

@@ -1,0 +1,16 @@
+﻿@using GridMvc.Html
+@using BikeTrips.Web.Areas.Admin.ViewModels
+@model IQueryable<CommentViewModel>
+@{
+    ViewBag.Title = "Users administration";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Grid(Model).SetRowCssClasses(x => x.IsDeleted ? "is-deleted" : "is-not-deleted").Columns(c =>
+{
+    c.Add(x => x.Id).Titled("Id");
+    c.Add(x => x.Author).Titled("Author");
+    c.Add(x => x.Content).Titled("Content");
+    c.Add(x => x.Subject).Titled("Subject");
+    c.Add(x => x.IsDeleted).Titled("Is deleted");
+}).WithPaging(5).Sortable(true)

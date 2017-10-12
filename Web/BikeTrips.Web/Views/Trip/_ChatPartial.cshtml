@@ -12,16 +12,16 @@
     <ul id="discussion">
         @foreach (var comment in Model)
         {
-            if (comment.Author == @Context.User.Identity.Name)
+            if (comment.Author.UserName == @Context.User.Identity.Name)
             {
                 <li class="current-user">
-                    <strong>@comment.Author</strong>: @comment.Content
+                    <strong>@Html.ActionLink(@comment.Author.UserName, "ById", "User", new { id = comment.Author.Id }, new { @class = "admin-trip-title" })</strong>: @comment.Content
                 </li>
             }
             else
             {
                 <li class="other-user">
-                    <strong>@comment.Author</strong>: @comment.Content
+                    <strong>@Html.ActionLink(@comment.Author.UserName, "ById", "User", new { id = comment.Author.Id }, new { @class = "admin-trip-title" })</strong>: @comment.Content
                 </li>
             }
         }

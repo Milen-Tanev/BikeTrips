@@ -2,18 +2,19 @@
 {
     using System;
     using System.Collections.Generic;
-
+    
     using Data.Models;
     using Infrastructure.Mappings;
     using Services.Web;
     using Services.Web.Contracts;
+    using Web.ViewModels.UserModels;
 
     public class TripAdminViewModel : IMapFrom<Trip>
     {
         public TripAdminViewModel()
         {
-            this.Participants = new HashSet<User>();
-            this.Comments = new SortedSet<Comment>();
+            this.Participants = new HashSet<UserViewModel>();
+            this.Comments = new SortedSet<CommentViewModel>();
             this.UtcTime = DateTime.UtcNow;
         }
 
@@ -37,11 +38,11 @@
 
         public DateTime UtcTime { get; protected set; }
 
-        public User Creator { get; set; }
+        public UserViewModel Creator { get; set; }
 
-        public ICollection<User> Participants { get; protected set; }
+        public ICollection<UserViewModel> Participants { get; protected set; }
 
-        public ICollection<Comment> Comments { get; protected set; }
+        public ICollection<CommentViewModel> Comments { get; protected set; }
 
         public bool IsDeleted { get; set; }
 

@@ -50,10 +50,10 @@ textarea {
     font-size: 1.5em;
 }
 
-/*Crete trip btn*/
-body > div.container.body-content > div:nth-child(3) > div > a {
+/*Crete trip btn
+.create-trip-btn {
     font-size: 1.5em;
-}
+}*/
 
 .text-medium {
     font-size: 1.3em;
@@ -169,10 +169,44 @@ textarea {
     align-self: center;
 }
 
+.btn-vertical {
+    float: left;
+}
+
 .custom-col {
     border: 1px solid black;
     width: 10%;
     line-height: 20px;
     text-align: center;
     padding: 10px;
+}
+.information-container-div{
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 30%;
+    float: left;
+    margin-right: 3px;
+    padding: 3px;
+}
+.participants-container-div {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 33%;
+    display: inline-block;
+    overflow-y: scroll;
+}
+
+.participants-container {
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.comments-container-div {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 30%;
+    display: inline-block;
+    overflow-y: scroll;
+    position: absolute;
+    margin-left: 3px;
 }

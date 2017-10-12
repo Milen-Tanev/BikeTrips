@@ -1,4 +1,4 @@
-﻿namespace BikeTrips.Web.Infrastructure.Mapping
+﻿namespace BikeTrips.Web.Infrastructure.Mappings
 {
     using AutoMapper.QueryableExtensions;
     using System;

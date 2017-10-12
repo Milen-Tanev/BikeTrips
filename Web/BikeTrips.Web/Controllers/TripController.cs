@@ -125,7 +125,7 @@
         public PartialViewResult LeaveTrip(int id)
         {
             var trip = this.trips.GetTripById(id);
-            this.trips.RemoveParticipantFrom(trip);
+            this.trips.LeaveTrip(trip);
             this.cacheService.Remove("trips");
 
             var viewModel = AutoMapperConfig

@@ -1,0 +1,27 @@
+﻿@using BikeTrips.Web.ViewModels.UserModels
+@model UserViewModel
+
+@{
+    ViewBag.Title = Model.UserName;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <h2 class="page-title">Name: @Model.UserName</h2>
+    <div class="information-container-div">
+
+        <div class="text-medium">@Model.Email</div>
+        <div class="text-medium">Created events: @Model.AdministeredEvents.Count()</div>
+        <div class="text-medium">Visited events: @Model.VisitedEvents.Count()</div>
+        <div class="text-medium">Comments: @Model.Comments.Count</div>
+    </div>
+    <div class="participants-container-div">
+        <ul class="participants-container">
+            Took part in
+            @foreach (var ev in Model.VisitedEvents)
+            {
+                <li>@ev.TripName</li>
+            }
+        </ul>
+    </div>
+
+</div>
