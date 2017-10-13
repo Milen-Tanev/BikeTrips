@@ -14,6 +14,7 @@
     using Infrastructure.Mappings;
     using Web.ViewModels.UserModels;
 
+    [Authorize(Roles = SeedConstants.AdminRoleName)]
     public class UserController : Controller
     {
         private IUserService users;
@@ -40,7 +41,7 @@
             }
         }
 
-        // GET: Admin/Users
+        [HttpGet]
         public async Task<ActionResult> Index()
         {
             var users = this.users.GetAllUsersAdmin();

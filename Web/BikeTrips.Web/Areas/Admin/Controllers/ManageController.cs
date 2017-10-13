@@ -8,10 +8,11 @@
     using System.Web;
     using System.Web.Mvc;
 
+    using Common.Constants;
     using Models;
     using Utils;
 
-    [Authorize]
+    [Authorize(Roles = SeedConstants.AdminRoleName)]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;

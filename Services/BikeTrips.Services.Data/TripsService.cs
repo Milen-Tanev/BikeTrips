@@ -14,6 +14,7 @@
     {
         private IBikeTripsDbRepository<Trip> trips;
         private IUserService users;
+        private ICommentsService comments;
         private IUnitOfWork unitOfWork;
         private IDateTimeConverter converter;
         private IIdentifierProvider identifierProvider;
@@ -25,18 +26,21 @@
         public TripsService(
             IBikeTripsDbRepository<Trip> trips,
             IUserService users,
+            ICommentsService comments,
             IUnitOfWork unitOfWork,
             IDateTimeConverter converter, 
             IIdentifierProvider identifierProvider)
         {
             Guard.ThrowIfNull(trips, "Trips");
             Guard.ThrowIfNull(users, "Users");
+            Guard.ThrowIfNull(comments, "Comments");
             Guard.ThrowIfNull(unitOfWork, "Unif of work");
             Guard.ThrowIfNull(converter, "Converter");
             Guard.ThrowIfNull(identifierProvider, "Identifier provider");
 
             this.trips = trips;
             this.users = users;
+            this.comments = comments;
             this.unitOfWork = unitOfWork;
             this.converter = converter;
             this.identifierProvider = identifierProvider;
@@ -86,6 +90,12 @@
         {
             var user = this.users.GetCurrentUser();
             Guard.ThrowIfDifferent(user, trip.Creator, ErrorMessageConstants.NotCreator);
+
+            var comments = trip.Comments;
+            if (comments.Count() > 0)
+            {
+                this.comments.DeleteAllComments(comments);
+            }
 
             trip.IsDeleted = true;
             this.unitOfWork.Commit();

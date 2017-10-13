@@ -13,6 +13,7 @@
     using Data.Models;
     using System.Collections.Generic;
 
+    [Authorize(Roles = SeedConstants.AdminRoleName)]
     public class HomeController : Controller
     {
         private IUserService users;
@@ -48,7 +49,7 @@
                 this.userManager = value;
             }
         }
-
+        
         [HttpGet]
         public async Task<ActionResult> Index()
         {
@@ -84,11 +85,6 @@
             };
 
             return this.View(model);
-        }
-        
-        public ActionResult About()
-        {
-            return this.View();
         }
     }
 }

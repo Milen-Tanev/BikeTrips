@@ -7,6 +7,7 @@
     using Contracts;
     using Utils;
     using Web.Contracts;
+    using System.Collections.Generic;
 
     public class CommentsService : ICommentsService
     {
@@ -71,6 +72,19 @@
                 .OrderBy(c => c.Author.UserName);
 
             return comments;
+        }
+
+        public void DeleteAllComments(ICollection<Comment> comments)
+        {
+            Guard.ThrowIfNull(comments, "Comments list");
+
+            if (comments.Count() > 0)
+            {
+                foreach (var comment in comments)
+                {
+                    this.comments.Delete(comment);
+                }
+            }
         }
     }
 }

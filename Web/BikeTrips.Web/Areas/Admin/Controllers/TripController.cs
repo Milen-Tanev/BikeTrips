@@ -3,12 +3,14 @@
     using System.Linq;
     using System.Web.Mvc;
 
+    using Infrastructure.Mappings;
+    using Common.Constants;
     using Services.Data.Contracts;
     using Utils;
     using ViewModels;
-    using Infrastructure.Mappings;
     using Web.ViewModels.TripModels;
 
+    [Authorize(Roles = SeedConstants.AdminRoleName)]
     public class TripController : Controller
     {
         private ITripsService trips;

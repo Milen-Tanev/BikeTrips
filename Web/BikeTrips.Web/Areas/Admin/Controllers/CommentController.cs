@@ -1,12 +1,14 @@
 ﻿namespace BikeTrips.Web.Areas.Admin.Controllers
 {
-    using Infrastructure.Mappings;
-    using Services.Data;
-    using Services.Data.Contracts;
     using System.Web.Mvc;
+
+    using Common.Constants;
+    using Infrastructure.Mappings;
+    using Services.Data.Contracts;
     using Utils;
     using ViewModels;
 
+    [Authorize(Roles = SeedConstants.AdminRoleName)]
     public class CommentController : Controller
     {
         private ICommentsService comments;

@@ -7,11 +7,12 @@
     using System.Web;
     using System.Web.Mvc;
 
+    using Common.Constants;
     using Data.Models;
     using Utils;
     using ViewModels;
 
-    [Authorize]
+    [Authorize(Roles = SeedConstants.AdminRoleName)]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

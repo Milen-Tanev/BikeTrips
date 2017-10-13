@@ -27,6 +27,7 @@ else if (User.Identity.IsAuthenticated)
     @Ajax.ActionLink("Delete event", "DeleteTrip", "Trip", new { id = Model.Id },
           new AjaxOptions()
           {
+              Confirm = "Are you sure you want to delete this event?",
               HttpMethod = "POST",
               UpdateTargetId = "buttons-container",
               InsertionMode = InsertionMode.Replace
