@@ -31,7 +31,7 @@
             Guard.ThrowIfNull(trips, "Trips");
             Guard.ThrowIfNull(users, "Users");
             Guard.ThrowIfNull(identifierProvider, "Identifier provider");
-            Guard.ThrowIfNull(unitOfWork, "Unif of work");
+            Guard.ThrowIfNull(unitOfWork, "Unit of work");
 
             this.comments = comments;
             this.trips = trips;
