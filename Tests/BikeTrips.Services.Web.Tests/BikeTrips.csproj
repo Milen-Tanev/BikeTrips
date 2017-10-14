@@ -88,6 +88,7 @@
     <Compile Include="Services.Data.Tests\CommentsService\ConstructorShould.cs" />
     <Compile Include="Services.Data.Tests\CommentsService\DeleteAllCommentsShould.cs" />
     <Compile Include="Services.Data.Tests\CommentsService\GetAllAdminShould.cs" />
+    <Compile Include="Services.Data.Tests\TripsService\ConstructorShould.cs" />
     <Compile Include="Services.Data.Tests\Utils\DateTimeConverterShould.cs" />
     <Compile Include="Services.Web.Tests\IdentifierProviderShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
