@@ -22,17 +22,17 @@
         [Test]
         public void CreateInstanceOfCommentsServiceWithoutParameters()
         {
-            // Arrange & Act
+            //Act
             var service = new CommentsService();
 
-            // Assert
+            //Assert
             Assert.IsInstanceOf<ICommentsService>(service);
         }
 
         [Test]
         public void CreateInstanceOfCommentsServiceWithtParameters()
         {
-            // Act
+            //Act
             var service = new CommentsService
                 (this.commentRepositoryMock,
                 this.tripRepositoryMock,
@@ -40,14 +40,14 @@
                 this.identifierProviderMock,
                 this.unitOfWorkMock);
 
-            // Assert
+            //Assert
             Assert.IsInstanceOf<ICommentsService>(service);
         }
 
         [Test]
         public void ThrowIfCommentsRepositoryIsNull()
         {
-            // Act / Assert
+            //Act / Assert
             Assert.That(() => new CommentsService
                 (null,
                 this.tripRepositoryMock,
@@ -60,7 +60,7 @@
         [Test]
         public void ThrowIfTripsRepositoryIsNull()
         {
-            // Act / Assert
+            //Act / Assert
             Assert.That(() => new CommentsService
                 (this.commentRepositoryMock,
                 null,
@@ -73,7 +73,7 @@
         [Test]
         public void ThrowIfUsersServiceIsNull()
         {
-            // Act / Assert
+            //Act / Assert
             Assert.That(() => new CommentsService
                 (this.commentRepositoryMock,
                 this.tripRepositoryMock,
@@ -86,7 +86,7 @@
         [Test]
         public void ThrowIfIdentifierProviderIsNull()
         {
-            // Act / Assert
+            //Act / Assert
             Assert.That(() => new CommentsService
                 (this.commentRepositoryMock,
                 this.tripRepositoryMock,

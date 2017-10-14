@@ -51,11 +51,12 @@
                 this.identifierProviderMock.Object,
                 this.unitOfWorkMock.Object);
 
+            var mockComment = new Mock<Comment>();
             var commentsCollection = new List<Comment>();
 
             for (int i = 0; i < collectionLength; i++)
             {
-                commentsCollection.Add(new Comment());
+                commentsCollection.Add(mockComment.Object);
             }
             //Act
             service.DeleteAllComments(commentsCollection);

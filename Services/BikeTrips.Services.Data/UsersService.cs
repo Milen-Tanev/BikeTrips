@@ -21,7 +21,7 @@
         public UsersService(IBikeTripsDbRepository<User> users, IUnitOfWork unitOfWork)
         {
             Guard.ThrowIfNull(users, "Users");
-            Guard.ThrowIfNull(unitOfWork, "Users");
+            Guard.ThrowIfNull(unitOfWork, "Unit of work");
 
             this.users = users;
             this.unitOfWork = unitOfWork;

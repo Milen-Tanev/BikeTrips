@@ -3,6 +3,7 @@
     using Moq;
     using NUnit.Framework;
     using System;
+    using System.Collections.Generic;
 
     using BikeTrips.Data.Common.Contracts;
     using BikeTrips.Data.Models;
@@ -45,8 +46,10 @@
                 this.identifierProviderMock.Object,
                 this.unitOfWorkMock.Object);
 
+            var mockUser = new Mock<User>();
+
             this.tripRepositoryMock.Setup(t => t.GetById(It.IsAny<int>())).Returns((Trip)null);
-            this.usersServiceMock.Setup(x => x.GetCurrentUser()).Returns(new User());
+            this.usersServiceMock.Setup(x => x.GetCurrentUser()).Returns(mockUser.Object);
 
             //Act / Assert
             Assert.That(() => service.AddComment(ValidString, ValidString),
@@ -65,7 +68,9 @@
                 this.identifierProviderMock.Object,
                 this.unitOfWorkMock.Object);
 
-            this.tripRepositoryMock.Setup(t => t.GetById(It.IsAny<int>())).Returns(new Trip());
+            var mockTrip = new Mock<Trip>();
+
+            this.tripRepositoryMock.Setup(t => t.GetById(It.IsAny<int>())).Returns(mockTrip.Object);
             this.usersServiceMock.Setup(x => x.GetCurrentUser()).Returns((User)null);
 
             //Act / Assert
@@ -85,15 +90,19 @@
                 this.identifierProviderMock.Object,
                 this.unitOfWorkMock.Object);
 
-            var trip = new Trip();
-            this.tripRepositoryMock.Setup(x => x.GetById(It.IsAny<int>())).Returns(trip);
-            this.usersServiceMock.Setup(x => x.GetCurrentUser()).Returns(new User());
+            var mockTrip = new Mock<Trip>();
+            mockTrip.Setup(t => t.Comments).Returns(new List<Comment>());
+
+            this.tripRepositoryMock.Setup(x => x.GetById(It.IsAny<int>())).Returns(mockTrip.Object);
+
+            var mockUser = new Mock<User>();
+            this.usersServiceMock.Setup(x => x.GetCurrentUser()).Returns(mockUser.Object);
             
             //Act
             service.AddComment(ValidString, ValidString);
 
             //Assert
-            Assert.AreEqual(trip.Comments.Count, 1);
+            Assert.AreEqual(mockTrip.Object.Comments.Count, 1);
         }
 
         [Test]
@@ -109,8 +118,12 @@
                 this.identifierProviderMock.Object,
                 this.unitOfWorkMock.Object);
 
-            this.tripRepositoryMock.Setup(x => x.GetById(It.IsAny<int>())).Returns(new Trip());
-            this.usersServiceMock.Setup(x => x.GetCurrentUser()).Returns(new User());
+            var mockTrip = new Mock<Trip>();
+            mockTrip.Setup(t => t.Comments).Returns(new List<Comment>());
+
+            var mockUser = new Mock<User>();
+            this.tripRepositoryMock.Setup(x => x.GetById(It.IsAny<int>())).Returns(mockTrip.Object);
+            this.usersServiceMock.Setup(x => x.GetCurrentUser()).Returns(mockUser.Object);
 
             //Act
             service.AddComment(ValidString, ValidString);
@@ -131,8 +144,12 @@
                 this.identifierProviderMock.Object,
                 unitOfWorkMock.Object);
 
-            this.tripRepositoryMock.Setup(x => x.GetById(It.IsAny<int>())).Returns(new Trip());
-            this.usersServiceMock.Setup(x => x.GetCurrentUser()).Returns(new User());
+            var mockTrip = new Mock<Trip>();
+            mockTrip.Setup(t => t.Comments).Returns(new List<Comment>());
+
+            var mockUser = new Mock<User>();
+            this.tripRepositoryMock.Setup(x => x.GetById(It.IsAny<int>())).Returns(mockTrip.Object);
+            this.usersServiceMock.Setup(x => x.GetCurrentUser()).Returns(mockUser.Object);
 
             //Act
             service.AddComment(ValidString, ValidString);

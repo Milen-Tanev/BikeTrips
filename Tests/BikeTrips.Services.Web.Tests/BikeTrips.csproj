@@ -88,7 +88,17 @@
     <Compile Include="Services.Data.Tests\CommentsService\ConstructorShould.cs" />
     <Compile Include="Services.Data.Tests\CommentsService\DeleteAllCommentsShould.cs" />
     <Compile Include="Services.Data.Tests\CommentsService\GetAllAdminShould.cs" />
+    <Compile Include="Services.Data.Tests\TripsService\AddParticipantToShould.cs" />
+    <Compile Include="Services.Data.Tests\TripsService\AddTripShould.cs" />
     <Compile Include="Services.Data.Tests\TripsService\ConstructorShould.cs" />
+    <Compile Include="Services.Data.Tests\TripsService\DeleteTripShould.cs" />
+    <Compile Include="Services.Data.Tests\TripsService\GetAllAdminShould.cs" />
+    <Compile Include="Services.Data.Tests\TripsService\GetAllShould.cs" />
+    <Compile Include="Services.Data.Tests\TripsService\GetTripByIdAdminShould.cs" />
+    <Compile Include="Services.Data.Tests\TripsService\GetTripByIntIdShould.cs" />
+    <Compile Include="Services.Data.Tests\TripsService\GetTripByNameShould.cs" />
+    <Compile Include="Services.Data.Tests\TripsService\GetTripByStringIdShould.cs" />
+    <Compile Include="Services.Data.Tests\TripsService\LeaveTripShould.cs" />
     <Compile Include="Services.Data.Tests\Utils\DateTimeConverterShould.cs" />
     <Compile Include="Services.Web.Tests\IdentifierProviderShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -34,7 +34,7 @@
             Guard.ThrowIfNull(trips, "Trips");
             Guard.ThrowIfNull(users, "Users");
             Guard.ThrowIfNull(comments, "Comments");
-            Guard.ThrowIfNull(unitOfWork, "Unif of work");
+            Guard.ThrowIfNull(unitOfWork, "Unit of work");
             Guard.ThrowIfNull(converter, "Converter");
             Guard.ThrowIfNull(identifierProvider, "Identifier provider");
 
@@ -131,6 +131,7 @@
         {
             var trip = this.trips.All()
                 .Where(t => t.TripName == tripName).FirstOrDefault();
+
             return trip;
         }
 

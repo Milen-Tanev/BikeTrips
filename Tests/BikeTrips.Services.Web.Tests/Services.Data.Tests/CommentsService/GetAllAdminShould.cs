@@ -32,11 +32,46 @@
                 this.unitOfWorkMock.Object);
 
             var expectedCollection = new List<Comment>();
+
+            var mockComment = new Mock<Comment>();
             for (int i = 0; i < 10; i++)
             {
-                expectedCollection.Add(new Comment() { Author = new User { UserName = i + "username" } });
+                mockComment.Setup(c => c.Author.UserName).Returns(i + "username");
+                expectedCollection.Add(mockComment.Object);
             }
             this.commentRepositoryMock.Setup(x => x.AdminAll()).Returns(expectedCollection.AsQueryable);
+
+            //Act
+            var commentsCollection = service.GetAllAdmin().ToList();
+
+            //Assert
+            Assert.AreEqual(expectedCollection, commentsCollection);
+        }
+
+        [Test]
+        public void ReturnExpectedCollectionSorted()
+        {
+            //Arrange
+            var service = new CommentsService
+                (this.commentRepositoryMock.Object,
+                this.tripRepositoryMock.Object,
+                this.usersServiceMock.Object,
+                this.identifierProviderMock.Object,
+                this.unitOfWorkMock.Object);
+
+            var expectedCollection = new List<Comment>();
+            var mockComment = new Mock<Comment>();
+            for (int i = 10; i > 0; i--)
+            {
+                mockComment.Setup(c => c.Author.UserName).Returns(i + "username");
+                expectedCollection.Add(mockComment.Object);
+            }
+            this.commentRepositoryMock.Setup(x => x.AdminAll()).Returns(expectedCollection.AsQueryable);
+
+            expectedCollection.Sort(delegate (Comment x, Comment y)
+            {
+                return x.Author.UserName.CompareTo(y.Author.UserName);
+            });
 
             //Act
             var commentsCollection = service.GetAllAdmin().ToList();
