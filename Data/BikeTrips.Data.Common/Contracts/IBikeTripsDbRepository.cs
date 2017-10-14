@@ -22,5 +22,9 @@
         T GetById(string id);
 
         IQueryable<T> Search(Expression<Func<T, bool>> predicate);
+
+        T GetByIdWithDeleted(int id);
+
+        T GetByIdWithDeleted(string id);
     }
 }

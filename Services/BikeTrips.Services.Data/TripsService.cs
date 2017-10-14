@@ -118,6 +118,15 @@
             return trip;
         }
 
+        public Trip GetTripByIdAdmin(string urlId)
+        {
+            var id = this.identifierProvider.GetId(urlId);
+            var trip = this.trips.GetByIdWithDeleted(id);
+            Guard.ThrowIfNull(trip, "Trip");
+
+            return trip;
+        }
+
         public Trip GetTripByName(string tripName)
         {
             var trip = this.trips.All()

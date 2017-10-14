@@ -1,0 +1,17 @@
+﻿namespace BikeTrips.Services.Web.Tests.Services.Data.Tests.Utils
+{
+    using NUnit.Framework;
+    using System;
+
+    [TestFixture]
+    class DateTimeConverterShould
+    {
+        private readonly DateTime ValidDateTime = new DateTime(2017, 10, 18, 10, 10, 10);
+        [TestCase()]
+        [TestCase()]
+        public void ThrowIfAnyParameterIsNull()
+        {
+
+        }
+    }
+}

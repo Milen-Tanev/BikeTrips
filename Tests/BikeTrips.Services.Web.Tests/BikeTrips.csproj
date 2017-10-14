@@ -45,6 +45,7 @@
       <HintPath>..\..\packages\Castle.Core.4.1.1\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.SignalR.Core.2.1.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
       <Private>True</Private>
@@ -83,8 +84,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services.Data.Tests\CommentsServiceAddCommentShould.cs" />
-    <Compile Include="Services.Data.Tests\CommentsServiceConstructorShould.cs" />
+    <Compile Include="Services.Data.Tests\CommentsService\AddCommentShould.cs" />
+    <Compile Include="Services.Data.Tests\CommentsService\ConstructorShould.cs" />
+    <Compile Include="Services.Data.Tests\CommentsService\DeleteAllCommentsShould.cs" />
+    <Compile Include="Services.Data.Tests\CommentsService\GetAllAdminShould.cs" />
+    <Compile Include="Services.Data.Tests\Utils\DateTimeConverterShould.cs" />
     <Compile Include="Services.Web.Tests\IdentifierProviderShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

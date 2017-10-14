@@ -75,6 +75,16 @@
             return entity;
         }
 
+        public T GetByIdWithDeleted(int id)
+        {
+            return this.DbSet.Find(id);
+        }
+
+        public T GetByIdWithDeleted(string id)
+        {
+            return this.DbSet.Find(id);
+        }
+
         public IQueryable<T> Search(Expression<Func<T, bool>> predicate)
         {
             return this.DbSet.Where(predicate)

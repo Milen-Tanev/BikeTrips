@@ -44,7 +44,7 @@
                 return RedirectToAction("Index", "Home");
             }
 
-            var model = this.trips.GetTripById(urlId);
+            var model = this.trips.GetTripByIdAdmin(urlId);
 
             if (model == null)
             {

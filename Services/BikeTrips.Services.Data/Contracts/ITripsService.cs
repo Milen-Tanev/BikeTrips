@@ -23,5 +23,7 @@
         Trip GetTripByName(string tripName);
 
         IQueryable<Trip> GetAllAdmin();
+
+        Trip GetTripByIdAdmin(string id);
     }
 }
