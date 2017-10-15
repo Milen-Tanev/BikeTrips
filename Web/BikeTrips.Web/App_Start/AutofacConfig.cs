@@ -21,6 +21,9 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using System.Web;
     using Microsoft.Owin.Security;
+    using AutoMapper;
+    using Infrastructure.Mappings;
+    using System.Collections.Generic;
 
     public static class AutofacConfig
     {
@@ -53,8 +56,6 @@
             var container = builder.Build();
             DependencyResolver.SetResolver(new Autofac.Integration.Mvc.AutofacDependencyResolver(container));
 
-            //SignalR
-            //GlobalHost.DependencyResolver = new Autofac.Integration.SignalR.AutofacDependencyResolver(container);
         }
 
         private static void RegisterServices(ContainerBuilder builder)
@@ -69,13 +70,12 @@
             builder.Register(x => new DateTimeConverter()).As<IDateTimeConverter>().InstancePerRequest();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.Register(x => new IdentifierProvider()).As<IIdentifierProvider>().InstancePerRequest();
-
-            //builder.Register<UserStore<User>>(c => new UserStore<User>()).AsImplementedInterfaces();
+            
             builder.Register(c => new IdentityFactoryOptions<ApplicationUserManager>(){ DataProtectionProvider = new DpapiDataProtectionProvider("BikeTrips") });
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
-            //builder.Register(c => new ApplicationOAuthProvider(c.Resolve<ApplicationUserManager>())).AsImplementedInterfaces().InstancePerRequest();
             builder.Register(c => new UserStore<User>(c.Resolve<BikeTripsDbContext>())).AsImplementedInterfaces().InstancePerRequest();
-            //builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).As<IAuthenticationManager>();
+            builder.Register(x => Mapper.Instance).As<IMapper>().InstancePerRequest();
+            
 
             builder.RegisterGeneric(typeof(BikeTripsDbRepository<>)).As(typeof(IBikeTripsDbRepository<>)).InstancePerRequest();
         }

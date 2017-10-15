@@ -36,7 +36,7 @@
             Comments
             @foreach (var comment in Model.Comments)
             {
-                <li><strong>@comment.Author:</strong> @comment.Content</li>
+                <li><strong>@comment.Author.UserName:</strong> @comment.Content</li>
             }
         </ul>
     </div>

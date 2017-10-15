@@ -1,21 +1,24 @@
 ﻿namespace BikeTrips.Web.Controllers
 {
+    using AutoMapper;
     using System.Web.Mvc;
-
-    using Infrastructure.Mappings;
+    
     using Services.Data.Contracts;
     using Utils;
     using ViewModels.UserModels;
 
-    public class UsersController : Controller
+    public class UserController : Controller
     {
         private IUserService users;
-
-        public UsersController(IUserService users)
+        private IMapper mapper;
+        
+        public UserController(IUserService users, IMapper mapper)
         {
             Guard.ThrowIfNull(users, "Users");
+            Guard.ThrowIfNull(mapper, "Mapper");
 
             this.users = users;
+            this.mapper = mapper;
         }
 
         [HttpGet]
@@ -33,7 +36,8 @@
                 return RedirectToAction("Index", "Home");
             }
 
-            var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<UserViewModel>(model);
+            var viewModel = this.mapper
+                .Map<UserViewModel>(model);
             return View(viewModel);
         }
     }

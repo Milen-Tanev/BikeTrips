@@ -10,12 +10,14 @@
     using Services.Web.Contracts;
     using Utils;
     using ViewModels.TripModels;
+    using AutoMapper;
 
     public class TripController : Controller
     {
         private IUserService users;
         private ITripsService trips;
         private ICacheService cacheService;
+        private IMapper mapper;
 
         public TripController()
         {
@@ -25,16 +27,19 @@
             (
                 IUserService users,
                 ITripsService trips,
-                ICacheService cacheService
+                ICacheService cacheService,
+                IMapper mapper
             )
         {
             Guard.ThrowIfNull(users, "Users service");
             Guard.ThrowIfNull(trips, "Trips service");
             Guard.ThrowIfNull(cacheService, "HTTP cache service");
+            Guard.ThrowIfNull(mapper, "Mapper");
 
             this.users = users;
             this.trips = trips;
             this.cacheService = cacheService;
+            this.mapper = mapper;
         }
 
         [HttpGet]
@@ -57,7 +62,7 @@
                 return RedirectToAction("Index", "Home");
             }
 
-            var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<FullTripViewModel>(model);
+            var viewModel = this.mapper.Map<FullTripViewModel>(model);
             return View(viewModel);
         }
 
@@ -92,16 +97,12 @@
                     return View(model);
                 }
 
-                var trip = AutoMapperConfig
-                    .Configuration.CreateMapper()
-                    .Map<Trip>(model);
+                var trip = this.mapper.Map<Trip>(model);
                 this.trips.AddTrip(trip, model.TripDate, model.TripTime);
 
                 this.cacheService.Remove("trips");
 
-                var viewModel = AutoMapperConfig
-                    .Configuration.CreateMapper()
-                    .Map<FullTripViewModel>(trip);
+                var viewModel = this.mapper.Map<FullTripViewModel>(trip);
                 return RedirectToAction("ById", new { urlId = viewModel.UrlId });
             }
 
@@ -115,9 +116,8 @@
             this.trips.AddParticipantTo(trip);
             this.cacheService.Remove("trips");
 
-            var viewModel = AutoMapperConfig
-                    .Configuration.CreateMapper()
-                    .Map<FullTripViewModel>(trip);
+
+            var viewModel = this.mapper.Map<FullTripViewModel>(trip);
             return PartialView("_ButtonsPartial", viewModel);
         }
 
@@ -128,9 +128,7 @@
             this.trips.LeaveTrip(trip);
             this.cacheService.Remove("trips");
 
-            var viewModel = AutoMapperConfig
-                    .Configuration.CreateMapper()
-                    .Map<FullTripViewModel>(trip);
+            var viewModel = this.mapper.Map<FullTripViewModel>(trip);
 
             return PartialView("_ButtonsPartial", viewModel);
         }
@@ -146,4 +144,3 @@
         }
     }
 }
-

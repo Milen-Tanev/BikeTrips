@@ -26,7 +26,7 @@
             var service = new CommentsService();
 
             //Assert
-            Assert.IsInstanceOf<ICommentsService>(service);
+            Assert.IsInstanceOf<CommentsService>(service);
         }
 
         [Test]
@@ -41,7 +41,7 @@
                 this.unitOfWorkMock);
 
             //Assert
-            Assert.IsInstanceOf<ICommentsService>(service);
+            Assert.IsInstanceOf<CommentsService>(service);
         }
 
         [Test]

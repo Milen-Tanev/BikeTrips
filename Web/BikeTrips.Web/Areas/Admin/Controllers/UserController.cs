@@ -1,5 +1,6 @@
 ﻿namespace BikeTrips.Web.Areas.Admin.Controllers
 {
+    using AutoMapper;
     using Microsoft.AspNet.Identity.Owin;
     using System.Collections.Generic;
     using System.Linq;
@@ -19,14 +20,17 @@
     {
         private IUserService users;
         private ApplicationUserManager userManager;
+        private IMapper mapper;
 
-        public UserController(IUserService users, ApplicationUserManager userManager)
+        public UserController(IUserService users, ApplicationUserManager userManager, IMapper mapper)
         {
             Guard.ThrowIfNull(users, "Users");
             Guard.ThrowIfNull(userManager, "User manager");
+            Guard.ThrowIfNull(mapper, "Mapper");
 
             this.users = users;
             this.UserManager = userManager;
+            this.mapper = mapper;
         }
 
         public ApplicationUserManager UserManager
@@ -75,7 +79,7 @@
                 return RedirectToAction("Index", "Home");
             }
 
-            var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<UserViewModel>(model);
+            var viewModel = this.mapper.Map<UserViewModel>(model);
             return View(viewModel);
         }
     }

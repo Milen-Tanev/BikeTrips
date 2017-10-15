@@ -1,10 +1,11 @@
 ﻿namespace BikeTrips.Web.Areas.Admin.Controllers
 {
+    using AutoMapper;
     using System.Linq;
     using System.Web.Mvc;
 
-    using Infrastructure.Mappings;
     using Common.Constants;
+    using Infrastructure.Mappings;
     using Services.Data.Contracts;
     using Utils;
     using ViewModels;
@@ -14,16 +15,19 @@
     public class TripController : Controller
     {
         private ITripsService trips;
+        private IMapper mapper;
 
         public TripController()
         {
-
         }
-        public TripController(ITripsService trips)
+
+        public TripController(ITripsService trips, IMapper mapper)
         {
             Guard.ThrowIfNull(trips, "Trips");
+            Guard.ThrowIfNull(mapper, "Mapper");
 
             this.trips = trips;
+            this.mapper = mapper;
         }
         
         [HttpGet]
@@ -51,7 +55,7 @@
                 return RedirectToAction("Index", "Home");
             }
             
-            var viewModel = AutoMapperConfig.Configuration.CreateMapper().Map<FullTripViewModel>(model);
+            var viewModel = this.mapper.Map<FullTripViewModel>(model);
             return View(viewModel);
         }
     }

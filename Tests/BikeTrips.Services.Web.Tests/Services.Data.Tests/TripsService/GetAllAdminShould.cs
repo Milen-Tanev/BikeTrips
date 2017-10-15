@@ -99,6 +99,5 @@
             tripsRepositoryMock.Verify(r => r.AdminAll(),
                 Times.Once);
         }
-
     }
 }

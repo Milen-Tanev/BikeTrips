@@ -8,21 +8,22 @@
 
     public class AutoMapperConfig
     {
-        public static MapperConfiguration Configuration { get; private set; }
+        public static IMapperConfigurationExpression Configuration { get; private set; }
 
         public void Execute(Assembly assembly)
         {
-            Configuration = new MapperConfiguration(
+            Mapper.Initialize(
                 cfg =>
                 {
                     var types = assembly.GetExportedTypes();
                     LoadStandardMappings(types, cfg);
                     LoadReverseMappings(types, cfg);
                     LoadCustomMappings(types, cfg);
+                    Configuration = cfg;
                 });
         }
 
-        private static void LoadStandardMappings(IEnumerable<Type> types, IMapperConfigurationExpression configuration)
+        private static void LoadStandardMappings(IEnumerable<Type> types, IMapperConfigurationExpression mapperConfiguration)
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
@@ -37,11 +38,11 @@
 
             foreach (var map in maps)
             {
-                configuration.CreateMap(map.Source, map.Destination);
+                mapperConfiguration.CreateMap(map.Source, map.Destination);
             }
         }
 
-        private static void LoadReverseMappings(IEnumerable<Type> types, IMapperConfigurationExpression configuration)
+        private static void LoadReverseMappings(IEnumerable<Type> types, IMapperConfigurationExpression mapperConfiguration)
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
@@ -56,11 +57,11 @@
 
             foreach (var map in maps)
             {
-                configuration.CreateMap(map.Source, map.Destination);
+                mapperConfiguration.CreateMap(map.Source, map.Destination);
             }
         }
 
-        private static void LoadCustomMappings(IEnumerable<Type> types, IMapperConfigurationExpression configuration)
+        private static void LoadCustomMappings(IEnumerable<Type> types, IMapperConfigurationExpression mapperConfiguration)
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
@@ -71,7 +72,7 @@
 
             foreach (var map in maps)
             {
-                map.CreateMappings(configuration);
+                map.CreateMappings(mapperConfiguration);
             }
         }
     }

@@ -27,7 +27,7 @@
             var service = new TripsService();
 
             //Assert
-            Assert.IsInstanceOf<ITripsService>(service);
+            Assert.IsInstanceOf<TripsService>(service);
         }
 
         [Test]
@@ -43,7 +43,7 @@
                 this.identifierProviderMock.Object);
 
             //Assert
-            Assert.IsInstanceOf<ITripsService>(service);
+            Assert.IsInstanceOf<TripsService>(service);
         }
 
         [Test]
