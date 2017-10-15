@@ -1,7 +1,7 @@
 version: 1.0.{build}
 
 before_build:
-- cmd: nuget restore ./BikeTrips.sln
+- ps: nuget restore ./BikeTrips.sln
 
 build:
   project: ./BikeTrips.sln
