@@ -143,6 +143,13 @@
     <Compile Include="Services.Data.Tests\Utils\DateTimeConverterShould.cs" />
     <Compile Include="Services.Web.Tests\IdentifierProviderShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web.Controllers\TripController\ByIdShould.cs" />
+    <Compile Include="Web.Controllers\TripController\ConstructorShould.cs" />
+    <Compile Include="Web.Controllers\TripController\CreateGetShould.cs" />
+    <Compile Include="Web.Controllers\TripController\CreatePostShould.cs" />
+    <Compile Include="Web.Controllers\TripController\DeleteTripShould.cs" />
+    <Compile Include="Web.Controllers\TripController\JoinTripShould.cs" />
+    <Compile Include="Web.Controllers\TripController\LeaveTripShould.cs" />
     <Compile Include="Web.Controllers\UserController\ByIdShould.cs" />
     <Compile Include="Web.Controllers\UserController\ConstructorShould.cs" />
   </ItemGroup>

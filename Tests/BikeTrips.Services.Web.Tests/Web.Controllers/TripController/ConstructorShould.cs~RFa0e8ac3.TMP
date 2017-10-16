@@ -1,0 +1,42 @@
+﻿namespace BikeTrips.Services.Web.Tests.Web.Controllers.TripController
+{
+    using AutoMapper;
+    using Moq;
+    using NUnit.Framework;
+    using System;
+
+    using BikeTrips.Web.Controllers;
+    using Data.Contracts;
+    using Contracts;
+
+    [TestFixture]
+    public class ConstructorShould
+    {
+        private readonly Mock<IUserService> usersServiceMock = new Mock<IUserService>();
+        private readonly Mock<ITripsService> tripsServiceMocks = new Mock<ITripsService>();
+        private readonly Mock<ICacheService> cacheServiceMock = new Mock<ICacheService>();
+        private readonly Mock<IMapper> mapperMock = new Mock<IMapper>();
+
+        [Test]
+        public void CreateInstanceOfTripControllerWithoutParameters()
+        {
+            //Act
+            var controller = new TripController();
+
+            //Assert
+            Assert.IsInstanceOf<TripController>(controller);
+        }
+
+        [Test]
+        public void CreateInstanceOfTripControllerWithParameters()
+        {
+            //Act
+            var controller = new TripController(
+                this.usersServiceMock.Object,
+                this.tripsServiceMock);
+
+            //Assert
+            Assert.IsInstanceOf<TripController>(controller);
+        }
+    }
+}

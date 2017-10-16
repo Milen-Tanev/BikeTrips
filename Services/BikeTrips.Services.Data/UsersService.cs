@@ -46,7 +46,6 @@
         public object GetUserById(string id)
         {
             var user = this.users.GetById(id);
-            Guard.ThrowIfNull(user, "User");
 
             return user;
         }

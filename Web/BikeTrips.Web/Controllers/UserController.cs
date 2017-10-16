@@ -40,5 +40,15 @@
                 .Map<UserViewModel>(model);
             return View(viewModel);
         }
+
+        private string notification;
+        protected void AddNotification(string message)
+        {
+            this.notification = message;
+        }
+        protected override void OnResultExecuting(ResultExecutingContext filterContext)
+        {
+            if (!string.IsNullOrWhiteSpace(this.notification)) filterContext.Controller.ViewData.Add("PageLoadNotification", this.notification);
+        }
     }
 }

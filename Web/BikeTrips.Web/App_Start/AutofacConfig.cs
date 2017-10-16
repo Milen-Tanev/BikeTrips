@@ -75,7 +75,6 @@
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
             builder.Register(c => new UserStore<User>(c.Resolve<BikeTripsDbContext>())).AsImplementedInterfaces().InstancePerRequest();
             builder.Register(x => Mapper.Instance).As<IMapper>().InstancePerRequest();
-            
 
             builder.RegisterGeneric(typeof(BikeTripsDbRepository<>)).As(typeof(IBikeTripsDbRepository<>)).InstancePerRequest();
         }

@@ -1,16 +1,15 @@
 ﻿namespace BikeTrips.Web.Controllers
 {
+    using AutoMapper;
     using System;
     using System.Web.Mvc;
 
     using Common.Constants;
     using Data.Models;
-    using Infrastructure.Mappings;
     using Services.Data.Contracts;
     using Services.Web.Contracts;
     using Utils;
     using ViewModels.TripModels;
-    using AutoMapper;
 
     public class TripController : Controller
     {
@@ -116,7 +115,6 @@
             this.trips.AddParticipantTo(trip);
             this.cacheService.Remove("trips");
 
-
             var viewModel = this.mapper.Map<FullTripViewModel>(trip);
             return PartialView("_ButtonsPartial", viewModel);
         }
@@ -129,7 +127,6 @@
             this.cacheService.Remove("trips");
 
             var viewModel = this.mapper.Map<FullTripViewModel>(trip);
-
             return PartialView("_ButtonsPartial", viewModel);
         }
 

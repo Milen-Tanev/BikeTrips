@@ -90,6 +90,14 @@
     <Compile Include="Migrations\201710061826037_New Db.Designer.cs">
       <DependentUpon>201710061826037_New Db.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710152336094_Migration.cs" />
+    <Compile Include="Migrations\201710152336094_Migration.Designer.cs">
+      <DependentUpon>201710152336094_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710152337533_Migration1.cs" />
+    <Compile Include="Migrations\201710152337533_Migration1.Designer.cs">
+      <DependentUpon>201710152337533_Migration1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -110,6 +118,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710061826037_New Db.resx">
       <DependentUpon>201710061826037_New Db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710152336094_Migration.resx">
+      <DependentUpon>201710152336094_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710152337533_Migration1.resx">
+      <DependentUpon>201710152337533_Migration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,8 +2,6 @@
 {
     using Moq;
     using NUnit.Framework;
-    using System;
-    using System.Linq;
 
     using BikeTrips.Data.Common.Contracts;
     using BikeTrips.Data.Models;
@@ -14,24 +12,6 @@
     {
         private readonly Mock<IBikeTripsDbRepository<User>> usersRepositoryMock = new Mock<IBikeTripsDbRepository<User>>();
         private readonly Mock<IUnitOfWork> unitOfWorkMock = new Mock<IUnitOfWork>();
-
-        [Test]
-        public void ThrowIfUserIsNullWithCorrectMessage()
-        {
-            //Arrange
-            var service = new UsersService(
-                this.usersRepositoryMock.Object,
-                this.unitOfWorkMock.Object
-            );
-
-            this.usersRepositoryMock.Setup(x => x.GetById(It.IsAny<string>()))
-                .Returns((User)null);
-
-            //Act / Assert
-            Assert.That(() => service.GetUserById(It.IsAny<string>()),
-                Throws.TypeOf<ArgumentNullException>()
-                .With.Message.Contains("User"));
-        }
 
         [Test]
         public void ReturnCorrectUser()

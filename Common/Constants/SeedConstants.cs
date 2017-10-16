@@ -8,5 +8,7 @@
         public const string AdminUserName = "Administrator";
         public const string AdminEmail = "Administrator@admin.com";
         public const string AdminPassowrd = "Admin12";
+
+        public const string DefaultPassword = "Password1";
     }
 }

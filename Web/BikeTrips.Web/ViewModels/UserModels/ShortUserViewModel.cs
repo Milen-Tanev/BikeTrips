@@ -8,5 +8,7 @@
         public string Id;
 
         public string UserName { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

@@ -36,7 +36,6 @@
             var controller = new UserController(this.usersServiceMock.Object, this.mapperMock.Object);
 
             //Act / Assert
-
             controller.WithCallTo(x => x.ById(ValidIdString)).ShouldRedirectToRoute("");
         }
 
@@ -63,7 +62,7 @@
             var controller = new UserController(this.usersServiceMock.Object, this.mapperMock.Object);
 
             //Act / Assert
-            controller.WithCallTo(x => x.ById(ValidIdString))
+            controller.WithCallTo(c => c.ById(ValidIdString))
                 .ShouldRenderView("ById")
                 .WithModel<UserViewModel>();
         }
